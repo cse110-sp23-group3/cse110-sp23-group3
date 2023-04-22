@@ -48,7 +48,7 @@ Michael is a developer.
 
 ### [Nick Yousefi](https://github.com/nsyousef)
 
-Nick is a developer.
+Nick is a developer. He is very interested in the intersection between healthcare and technology, especially software. In his free time, he enjoys spending time with his family, playing board gamees, and travelling.
 
 ### [Jiaen Yu](https://github.com/yujiaen1999)
 
