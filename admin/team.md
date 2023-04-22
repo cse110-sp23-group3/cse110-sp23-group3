@@ -16,7 +16,7 @@ Welcome to the Powell's Pride Tech team page! We're a group of talented individu
 
 ### [Faith Rivera](https://github.com/fnriv)
 
-Faith is a team lead.
+Faith is a team lead. She is a second year chemical engineering student from Sixth- she also has a twin sister at UCSD. In her free time she loves to dance and is interested in music, food and fashion.
 
 ### [Henry Zhang](https://github.com/henryzhang03)
 
@@ -52,6 +52,6 @@ Nick is a developer. He is very interested in the intersection between healthcar
 
 ### [Jiaen Yu](https://github.com/yujiaen1999)
 
-Jiaen is a planner
+Jiaen is a planner.
 
 Thank you for visiting our team page! We're excited to bring our values and expertise to your next project.
