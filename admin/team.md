@@ -20,7 +20,7 @@ Faith is a team lead. She is a second year chemical engineering student from Six
 
 ### [Henry Zhang](https://github.com/henryzhang03)
 
-Henry is a team lead.
+Henry is a team lead. He is a second year CS major from Sixth. He is most interested in reverse engineering websites and is currently learning Rust.
 
 ### [Anh Pham](https://github.com/phuanh004)
 
