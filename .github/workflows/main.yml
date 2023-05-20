@@ -46,10 +46,3 @@ jobs:
 
     - name: JSDoc
       run: npx jsdoc -c jsdoc.config.json
-
-    - name: CodeClimate
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
-        ./cc-test-reporter before-build
-        ./cc-test-reporter after-build --exit-code ${{ steps.jest.outputs.status == 'failure' && 1 || 0 }}
