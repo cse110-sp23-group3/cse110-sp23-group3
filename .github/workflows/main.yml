@@ -41,7 +41,8 @@ jobs:
       run: npx htmlhint "./source/**/*.html"
 
     - name: Jest (optional)
-      run: npx jest
+      id: jest
+      run: npx jest || echo '::set-output name=status::failure'
 
     - name: JSDoc
       run: npx jsdoc -c jsdoc.config.json
@@ -51,4 +52,4 @@ jobs:
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
         ./cc-test-reporter before-build
-        ./cc-test-reporter after-build --exit-code ${{ exit_code }}
+        ./cc-test-reporter after-build --exit-code ${{ steps.jest.outputs.status == 'failure' && 1 || 0 }}
