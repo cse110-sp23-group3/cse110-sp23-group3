@@ -23,3 +23,11 @@ When someone pushes or makes a pull request to the `main` branch, the pipeline r
 * `- name: Jest (optional)`: This step runs Jest to execute your tests. If Jest fails, it sets an output variable `status` to `failure`.
 * `- name: JSDoc`: This step generates documentation from your JS files using JSDoc.
 * `- name: Commit JSDoc changes`: This step commits any changes made by JSDoc and pushes them to your repository. It first sets the user name and email for Git, then adds all changes, commits them with the message "Update JSDoc", and finally pushes the changes to your repository using the `GITHUB_TOKEN` for authentication.
+
+## Diagram of Pipeline:
+
+![](phase1.png)
+
+## Future Plans
+
+(to be added)
