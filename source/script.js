@@ -6,7 +6,7 @@
 const x = 5;
 
 /**
- * This function logs a message depending on the value of x.
+ * This function logs depending on the value of x.
  * @param {number} x - The value to check.
  */
 function checkValue(x) {
