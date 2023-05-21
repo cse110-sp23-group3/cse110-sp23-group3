@@ -1,11 +1,11 @@
 /**
  * This function is used to demo the CI pipeline. It just does random stuff.
  */
-function messAroundWithJavascript () {
+function messAroundWithJavascript() {
   let thisVariableIsFalse = true;
   if (thisVariableIsFalse) {
-      console.log('There is a paradox in this code.');
-      thisVariableIsFalse = false;
+    console.log('There is a paradox in this code.');
+    thisVariableIsFalse = false;
   } else {
     console.log('There is still a paradox in this code');
   }
