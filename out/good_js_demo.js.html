@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: good_js_demo.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,36 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: good_js_demo.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This function is used to demo the CI pipeline. It just does random stuff.
+ */
+function messAroundWithJavascript() {
+  let thisVariableIsFalse = true;
+  if (thisVariableIsFalse) {
+    console.log('There is a paradox in this code.');
+    thisVariableIsFalse = false;
+  } else {
+    console.log('There is still a paradox in this code');
+  }
+}
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+console.log('running');
+for (let i = 0; i &lt; 5; i++) {
+  console.log(`i ${i}`);
+  messAroundWithJavascript();
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
