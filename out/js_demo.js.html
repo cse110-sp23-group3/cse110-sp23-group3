@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: script.js</title>
+    <title>JSDoc: Source: js_demo.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: script.js</h1>
+    <h1 class="page-title">Source: js_demo.js</h1>
 
     
 
@@ -27,25 +27,23 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This is a simple script that checks the value of x.
+ * This function is used to demo the CI pipeline. It just does random stuff.
  */
-
-// This is the value we'll be checking.
-const x = 5;
-
-/**
- * This function logs depending on the value of x.
- * @param {number} x - The value to check.
- */
-function checkValue(x) {
-  if (x === 5) {
-    console.log('x is 5');
+function messAroundWithJavascript() {
+  let thisVariableIsFalse = true;
+  if (thisVariableIsFalse) {
+    console.log('There is a paradox in this code.');
+    thisVariableIsFalse = false;
   } else {
-    console.log('x is not 5');
+    console.log('There is still a paradox in this code');
   }
 }
 
-checkValue(x);
+console.log('running');
+for (let i = 0; i &lt; 5; i++) {
+  console.log(`i ${i}`);
+  messAroundWithJavascript();
+}
 </code></pre>
         </article>
     </section>
