@@ -30,4 +30,11 @@ When someone pushes or makes a pull request to the `main` branch, the pipeline r
 
 ## Future Plans
 
-(to be added)
+These are some features we are considering adding in the future:
+
+* more advanced code checker such as Codeclimate or Codacity
+* minification before deploying to production
+* code coverage analysis (measures percentage of code covered by unit tests, to help identify untested code)
+* assess site performance using Lighthouse (it has a Node command line tool)
+* accessibility testing
+* testing in multiple browsers using selenium
