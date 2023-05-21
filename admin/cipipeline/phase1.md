@@ -1,6 +1,6 @@
 # CI/CD Pipeline Phase 1
 
-Team 3: Powell's Pride Tech
+**Team 3:** Powell's Pride Tech
 
 ## What is currently functional:
 
