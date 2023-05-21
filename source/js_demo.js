@@ -1,4 +1,8 @@
 /**
+ * This is a simple script to demonstrate the CI pipeline
+ */
+
+/**
  * This function is used to demo the CI pipeline. It just does random stuff.
  */
 function messAroundWithJavascript() {
