@@ -4,7 +4,7 @@
 
 ## What is currently functional:
 
-When someone pushes or makes a pull request to the `main` branch, the pipeline runs linting software (ESLint, Stylelint, HTMLHint) on the JavaScript, CSS, and HTML files respectively. It then runs the unit tests using Jest and generates documentation using JSDoc. 
+When someone pushes or makes a pull request to the `main` branch, the pipeline runs linting software (ESLint, Stylelint, HTMLHint) on the JavaScript, CSS, and HTML files respectively. If the linting fails, feedback on why it failed is given in GitHub. If linting succeeds, the workflow then runs the unit tests using Jest if any are present. Next, the workflow generates documentation using JSDoc. The JSDoc documentation is stored in the `out` directory in the root of the repository.
 
 ## Step-By-Step breakdown of current pipeline:
 
@@ -34,7 +34,15 @@ These are some features we are considering adding in the future:
 
 * more advanced code checker such as Codeclimate or Codacity
 * minification before deploying to production
+  * **HTML Minifiers:** HTMLMinifier, Terser HTML
+  * **CSS Minifiers:** UglifyCSS, Clean-css
+  * **JavaScript Minifiers:** UglifyJS, Terser
+  * **Image Minifiers:** imagemin, MozJPEG
 * code coverage analysis (measures percentage of code covered by unit tests, to help identify untested code)
-* assess site performance using Lighthouse (it has a Node command line tool)
-* accessibility testing
+  * Istanbul ((https://istanbul.js.org/docs/tutorials/jest/)[https://istanbul.js.org/docs/tutorials/jest/]) is built into Jest, which we are already using so it might be a good option for coverage analysis
+* assess site performance using Lighthouse or WebPageTest
+  * Lighthouse is free
+  * Need to pay for WebPageTest to use integrations
+* accessibility testing (Pa11y)
 * testing in multiple browsers using selenium
+* integration testing (can use Jest)
