@@ -39,7 +39,7 @@ These are some features we are considering adding in the future:
   * **JavaScript Minifiers:** UglifyJS, Terser
   * **Image Minifiers:** imagemin, MozJPEG
 * code coverage analysis (measures percentage of code covered by unit tests, to help identify untested code)
-  * Istanbul ((https://istanbul.js.org/docs/tutorials/jest/)[https://istanbul.js.org/docs/tutorials/jest/]) is built into Jest, which we are already using so it might be a good option for coverage analysis
+  * Istanbul (https://istanbul.js.org/docs/tutorials/jest/) is built into Jest, which we are already using so it might be a good option for coverage analysis
 * assess site performance using Lighthouse or WebPageTest
   * Lighthouse is free
   * Need to pay for WebPageTest to use integrations
