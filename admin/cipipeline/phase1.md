@@ -4,7 +4,7 @@
 
 ## What is currently functional:
 
-When someone pushes or makes a pull request to the `main` branch, the pipeline runs linting software (ESLint, Stylelint, HTMLHint) on the JavaScript, CSS, and HTML files respectively. If the linting fails, feedback on why it failed is given in GitHub. If linting succeeds, the workflow then runs the unit tests using Jest if any are present. Next, the workflow generates documentation using JSDoc. The JSDoc documentation is stored in the `out` directory in the root of the repository.
+When someone pushes or makes a pull request to the `main` branch, the pipeline runs linting software (ESLint, Stylelint, HTMLHint) on the JavaScript, CSS, and HTML files respectively. If the linting fails, feedback on why it failed is provided in GitHub. If linting succeeds, the workflow then runs unit tests using Jest if any unit tests are present. Next, the workflow generates documentation using JSDoc. The JSDoc documentation is commmitted and pushed to the `out` directory in the root of the repository.
 
 ## Step-By-Step breakdown of current pipeline:
 
@@ -30,7 +30,7 @@ When someone pushes or makes a pull request to the `main` branch, the pipeline r
 
 ## Future Plans
 
-These are some features we are considering adding in the future:
+These are some features we are considering adding in the future. None of the tools listed here are finalized yet.
 
 * more advanced code checker such as Codeclimate or Codacity
 * minification before deploying to production
