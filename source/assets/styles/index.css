@@ -86,7 +86,7 @@ button[type="submit"] {
 }
 
 .outgoing-message .message-bubble {
-    background-color: var(--gray);
+    background-color: var(--blue);
     align-self: flex-end;
 }
 
