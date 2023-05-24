@@ -45,12 +45,12 @@
 
     <!-- MAIN -->
     <main>
-
+        <div id="chat-messages" class="chat-messages"></div>
     </main>
 
     <!-- CHAT INPUT -->
     <section class="chat-container">
-        <form action="#" method="post">
+        <form id="chat-form" action="#" method="post">
             <label for="image">+</label>
             <input type="file" name="image" id="image">
             <label for="message"></label>
@@ -59,6 +59,48 @@
         </form>
     </section>
 
+    <!-- JavaScript -->
+    <script>
+        // Get references to the necessary elements
+        const chatForm = document.getElementById('chat-form');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get the user's message from the input field
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+
+            // Clear the input field
+            messageInput.value = '';
+
+            // Create a new chat message element
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', 'outgoing-message');
+
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('message-bubble');
+
+            const messageText = document.createElement('p');
+            messageText.classList.add('message-text');
+            messageText.textContent = message;
+
+            // Append the message text to the chat message bubble
+            messageBubble.appendChild(messageText);
+
+            // Append the chat message bubble to the chat messages container
+            messageElement.appendChild(messageBubble);
+            chatMessages.appendChild(messageElement);
+
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Add a submit event listener to the form
+        chatForm.addEventListener('submit', handleFormSubmit);
+    </script>
 </body>
 
 </html>

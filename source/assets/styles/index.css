@@ -2,6 +2,7 @@ main {
     display: flex;
     flex-direction: column;
     height: calc(100vh - var(--header-height) - var(--footer-height));
+    padding: 1rem;
 }
 
 section.chat-container {
@@ -57,4 +58,38 @@ button[type="submit"] {
     border-radius: var(--border-radius);
     padding: 0.65rem 1rem;
     cursor: pointer;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.chat-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.incoming-message {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    background-color: var(--blue);
+    color: black;
+    border-radius: 1rem;
+    padding: 0.75rem;
+    max-width: 80%;
+}
+
+.outgoing-message .message-bubble {
+    background-color: var(--gray);
+    align-self: flex-end;
+}
+
+.message-text {
+    margin: 0;
 }
