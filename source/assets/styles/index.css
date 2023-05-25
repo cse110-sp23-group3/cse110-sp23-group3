@@ -78,7 +78,7 @@ button[type="submit"] {
 }
 
 .message-bubble {
-    background-color: var(--blue);
+    background-color: var(--bg-primary);
     color: black;
     border-radius: 1rem;
     padding: 0.75rem;
@@ -86,7 +86,7 @@ button[type="submit"] {
 }
 
 .outgoing-message .message-bubble {
-    background-color: var(--blue);
+    background-color: var(--bg-secondary);
     align-self: flex-end;
 }
 
