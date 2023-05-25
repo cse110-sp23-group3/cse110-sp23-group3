@@ -1,4 +1,5 @@
 main {
+    background-color: var(--light-gray);
     display: flex;
     flex-direction: column;
     height: calc(100vh - var(--header-height) - var(--footer-height) - 2rem - 1px);
@@ -43,11 +44,11 @@ form label[for="image"] {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     cursor: pointer;
     margin: 0.13rem -2.25rem 0.13rem 0.1rem;
     border: 1px solid var(--text-primary);
-    background: white;
+    background: var(--bg-secondary);
     z-index: 1;
 }
 
@@ -78,15 +79,16 @@ button[type="submit"] {
 }
 
 .message-bubble {
-    background-color: var(--bg-primary);
-    color: black;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
     border-radius: 1rem;
     padding: 0.75rem;
     max-width: 80%;
 }
 
 .outgoing-message .message-bubble {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     align-self: flex-end;
 }
 

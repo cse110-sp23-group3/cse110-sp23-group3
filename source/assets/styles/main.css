@@ -1,11 +1,14 @@
 :root {
+    --light-gray: #eff1f0;
     --gray: #d9d9d9;
+
+    --light-blue: #e6e8ec;
     --blue: #1e90ff;
+    
+    --bg-primary: black;
+    --bg-secondary: var(--light-blue);
 
-    --bg-secondary: var(--blue);
-    --bg-primary: var(--gray);
-
-    --text-primary: #000;
+    --text-primary: white;
     --text-secondary: #000;
 
     --header-height: 3rem;
@@ -32,4 +35,5 @@ header {
     align-items: center;
     padding: 0 1rem;
     background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
