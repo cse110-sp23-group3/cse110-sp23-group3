@@ -98,3 +98,8 @@ button[type="submit"] {
 .message-text {
     margin: 0;
 }
+
+.choices-text {
+    margin-right: 10px;
+    margin-bottom: 1rem;
+}
