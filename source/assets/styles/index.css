@@ -8,6 +8,7 @@ main {
 
 section.chat-container {
     display: flex;
+    background-color: var(--light-blue);
     height: var(--footer-height);
     flex-direction: column;
     align-items: center;
@@ -28,8 +29,8 @@ form input[type="text"] {
     margin-right: 1rem;
     padding-left: 2.5rem;
     border-radius: var(--border-radius);
-    border: 1px solid var(--text-primary);
-    background-color: var(--bg-primary);
+    border: 1px solid var(--text-secondary);
+    background-color: var(--light-gray);
     color: var(--text-primary);
 }
 
@@ -47,15 +48,15 @@ form label[for="image"] {
     color: var(--text-secondary);
     cursor: pointer;
     margin: 0.13rem -2.25rem 0.13rem 0.1rem;
-    border: 1px solid var(--text-primary);
-    background: var(--bg-secondary);
+    border: 1px solid var(--text-secondary);
+    background: var(--light-blue);
     z-index: 1;
 }
 
 button[type="submit"] {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    border: 1px solid var(--text-primary);
+    background-color: var(--blue);
+    color: var(--text-secondary);
+    border: 1px solid var(--text-secondary);
     border-radius: var(--border-radius);
     padding: 0.65rem 1rem;
     cursor: pointer;

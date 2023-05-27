@@ -1,11 +1,11 @@
 :root {
-    --light-gray: #eff1f0;
+    --light-gray: #f9f9f9;
     --gray: #d9d9d9;
 
-    --light-blue: #e6e8ec;
-    --blue: #1e90ff;
+    --light-blue: #d8e4fc;
+    --blue: #bcdcfd;
     
-    --bg-primary: black;
+    --bg-primary: white;
     --bg-secondary: var(--light-blue);
 
     --text-primary: white;
@@ -22,7 +22,9 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
+body {
+    font-family: 'Irish Grover';font-size: 22px;
+}
 /* TODO: Open when develop menu */
 aside {
     display: none;
@@ -34,6 +36,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
 }
