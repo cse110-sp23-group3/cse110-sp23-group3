@@ -11,6 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="stylesheet" href="assets/styles/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'>
 </head>
 
 <body>
@@ -45,20 +46,102 @@
 
     <!-- MAIN -->
     <main>
-
+        <div id="chat-messages" class="chat-messages"></div>
     </main>
 
     <!-- CHAT INPUT -->
     <section class="chat-container">
-        <form action="#" method="post">
+        <form id="chat-form" action="#" method="post">
             <label for="image">+</label>
             <input type="file" name="image" id="image">
             <label for="message"></label>
-            <input type="text" name="message" id="message" placeholder="Type your message here...">
+            <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
             <button type="submit">Send</button>
         </form>
     </section>
 
+    <!-- JavaScript -->
+    <script>
+        // Get references to the necessary elements
+        const chatForm = document.getElementById('chat-form')
+        const chatMessages = document.getElementById('chat-messages')
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault() // Prevent the form from submitting
+
+            // Get the user's message from the input field
+            const messageInput = document.getElementById('message')
+            const message = messageInput.value
+
+            // Clear the input field
+            messageInput.value = ''
+
+            // Create a new chat message element
+            addMessageToChat(message, false)
+
+            // TODO: Remove this mockup function call
+            // getBotResponse(message)
+            mockBotResponse()
+        }
+
+        // Mockup function to simulate a bot response
+        function mockBotResponse() {
+            const botResponse = 'This is a mockup response from the bot'
+            addMessageToChat(botResponse, true)
+        }
+
+        /**
+         * Function to get the bot's response to the user's message
+         * @param {string} message - The user's message
+         */
+        async function getBotResponse(message) {
+            // Send the user message to the server
+            const response = await fetch('/get-response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            })
+
+            // Get the bot's response
+            const botResponse = await response.json()
+
+            // Add the bot's response to the chat
+            addMessageToChat(botResponse.message)
+        }
+
+        /**
+         * Function to add a message to the chat
+         * @param {string} message - The message to add to the chat
+         */
+        function addMessageToChat(message, isIncoming = false) {
+            // Create a new chat message element
+            const messageElement = document.createElement('div')
+            messageElement.classList.add('chat-message', isIncoming ? 'incoming-message' : 'outgoing-message')
+
+            const messageBubble = document.createElement('div')
+            messageBubble.classList.add('message-bubble')
+
+            const messageText = document.createElement('p')
+            messageText.classList.add('message-text')
+            messageText.textContent = message
+
+            // Append the message text to the chat message bubble
+            messageBubble.appendChild(messageText)
+
+            // Append the chat message bubble to the chat messages container
+            messageElement.appendChild(messageBubble)
+            chatMessages.appendChild(messageElement)
+
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight
+        }
+
+        // Add a submit event listener to the form
+        chatForm.addEventListener('submit', handleFormSubmit)
+    </script>
 </body>
 
 </html>

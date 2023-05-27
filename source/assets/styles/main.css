@@ -1,35 +1,46 @@
 :root {
+    --light-gray: #f9f9f9;
     --gray: #d9d9d9;
-    --blue: #1e90ff;
-
-    --bg-secondary: var(--blue);
-    --bg-primary: var(--gray);
-
-    --text-primary: #000;
-    --text-secondary: #000;
-
+  
+    --light-blue: #d8e4fc;
+    --blue: #bcdcfd;
+    
+    --bg-primary: white;
+    --bg-secondary: var(--light-blue);
+  
+    --text-primary: black;
+    --text-secondary: black;
+  
     --header-height: 3rem;
     --footer-height: 4rem;
     --aside-width: 20rem;
-
+  
     --border-radius: 3rem;
-}
-
-html, body {
+  }
+  
+  html, body {
     margin: 0;
     padding: 0;
-}
-
-/* TODO: Open when develop menu */
-aside {
+  }
+  
+  body {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 22px;
+  }
+  
+  /* TODO: Open when develop menu */
+  aside {
     display: none;
-}
-
-header {
+  }
+  
+  header {
     display: flex;
     height: var(--header-height);
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    background-color: var(--bg-primary);
-}
+    background-image: url('bg/cosmic.jpg');
+    background-size: cover;
+    color: white;
+  }
+  
