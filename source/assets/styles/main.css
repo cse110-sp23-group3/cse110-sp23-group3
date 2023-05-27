@@ -8,8 +8,8 @@
     --bg-primary: white;
     --bg-secondary: var(--light-blue);
   
-    --text-primary: white;
-    --text-secondary: #000;
+    --text-primary: black;
+    --text-secondary: black;
   
     --header-height: 3rem;
     --footer-height: 4rem;
@@ -41,6 +41,6 @@
     padding: 0 1rem;
     background-image: url('bg/cosmic.jpg');
     background-size: cover;
-    color: var(--text-primary);
+    color: white;
   }
   
