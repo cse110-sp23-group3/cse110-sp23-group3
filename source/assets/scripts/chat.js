@@ -48,6 +48,12 @@ const fateline = {
     "starts at the base of the thumb and crosses lifeline" : "support offered",
 };
 
+const histChats = {
+    "History 1": [],
+    "History 2": [],
+    "History 3": []
+  };
+
 // variables
 let wait = 0;
 let buttonChoice;
@@ -69,6 +75,7 @@ let userFortune = [];
 addMessageToChat("Hi, I'm Simba!", true);
 addMessageToChat("Would you like me to read your palm?", true);
 addButtons(palmLines);
+loadHist();
 
 // Constantly checking if one of the buttons choices were clicked
 window.setInterval( function(){
@@ -249,6 +256,7 @@ async function getBotResponse(message) {
  * @param {string} message - The message to add to the chat
  */
 function addMessageToChat(message, isIncoming = false) {
+
     // Create a new chat message element
     const messageElement = document.createElement('div')
     messageElement.classList.add('chat-message', isIncoming ? 'incoming-message' : 'outgoing-message')
@@ -269,6 +277,17 @@ function addMessageToChat(message, isIncoming = false) {
 
     // Scroll to the latest message
     chatMessages.scrollTop = chatMessages.scrollHeight
+}
+  
+// Load histories into the select dropdown
+function loadHist() {
+    const userSelect = document.getElementById("hist-select");
+    for (let hist in histChats) {
+      const option = document.createElement("option");
+      option.value = hist;
+      option.text = hist;
+      userSelect.appendChild(option);
+    }
 }
 
 // Add a submit event listener to the form
