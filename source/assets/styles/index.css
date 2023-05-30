@@ -103,3 +103,11 @@ button[type="submit"] {
     margin-right: 10px;
     margin-bottom: 1rem;
 }
+
+#hist-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}

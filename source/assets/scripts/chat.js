@@ -141,6 +141,11 @@ window.setInterval( function(){
         {
             addMessageToChat("Your palm reading results are: ", true);
             addMessageToChat(userFortune, true);
+
+            //added for CRUD
+            const histSelect = document.getElementById("hist-select");
+            const selectedHist = histSelect.value;
+            saveChat(selectedHist, userFortune);
         }
     }
 }, 10);
@@ -288,6 +293,36 @@ function loadHist() {
       option.text = hist;
       userSelect.appendChild(option);
     }
+}
+
+// Select a history and load the chat
+function selectHistory() {
+    const histSelect = document.getElementById("hist-select");
+    const selectedHist = histSelect.value;
+    if (selectedHist !== "") {
+      loadChats(selectedHist);
+    }
+}
+
+// Load chats for a specific history
+function loadChats(hist) {
+    const chats = histChats[hist];
+    const chatContainer = document.getElementById("hist-container");
+    chatContainer.innerHTML = "";
+    chats.forEach(chat => displayChat(chat));
+}
+
+// Display a chat message
+function displayChat(chat) {
+    const chatContainer = document.getElementById("hist-container");
+    const chatElement = document.createElement("div");
+    chatElement.textContent = chat;
+    chatContainer.appendChild(chatElement);
+}
+
+// Save a chat message for a history user
+function saveChat(user, chat) {
+    histChats[user].push(chat);
 }
 
 // Add a submit event listener to the form
