@@ -1,0 +1,51 @@
+on:
+  create:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Release Notes and Update README
+        id: release-notes
+        run: |
+          # Collect all commit messages between last and second to last tags
+          LAST_TAG=$(git describe --abbrev=0 --tags)
+          SECOND_TO_LAST_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
+          echo $LAST_TAG
+          echo $SECOND_TO_LAST_TAG
+          COMMIT_MESSAGES=$(git log --pretty=format:'%s' --no-merges $SECOND_TO_LAST_TAG..$LAST_TAG)
+          echo $COMMIT_MESSAGES
+
+          # Format commit messages as release notes
+          RELEASE_NOTES=$(echo "$COMMIT_MESSAGES" | awk -v ver="$LAST_TAG" 'BEGIN {print "## " ver "\n"} /^feat/ {print "- **Feature:** " substr($0, 6)} /^fix/ {print "- **Bug Fix:** " substr($0, 5)} /^docs/ {print "- **Documentation:** " substr($0, 6)}')
+          echo $RELEASE_NOTES
+
+          # Append release notes to README.md
+          echo -e "$RELEASE_NOTES" >> README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "<>"
+          git pull origin main
+          git add README.md
+          git commit -m "Add release notes"
+          git push origin HEAD:main
