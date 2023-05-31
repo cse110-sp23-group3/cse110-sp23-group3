@@ -1,1 +1,71 @@
-<>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Irish Grover" rel="stylesheet">
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <!-- <aside>
+        <div class="sidebar">
+            <div class="sidebar__menu">
+                <h3>Chat History</h3>
+                <ul>
+                    <li><a href="#">History #1</a></li>
+                    <li><a href="#">History #2</a></li>
+                    <li><a href="#">History #3</a></li>
+                </ul>
+            </div>
+            <div class="sidebar__settings">
+                <ul>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside> -->
+
+    <!-- HEADING -->
+    <header>
+        <div class="banner">
+            <h1>Powell's Pride Palm Reading</h1>
+        </div>
+        <div class="heading">
+            <h3>Chat History #1</h3>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <div id="chat-messages" class="chat-messages"></div>
+    </main>
+
+    <div id="spinner" style="display: none;">
+      <div class="loader"></div>
+    </div>
+
+    <!-- CHAT INPUT -->
+    <section class="chat-container">
+        <form id="chat-form" action="#" method="post">
+            <label for="image">+</label>
+            <input type="file" name="image" id="image">
+            <label for="message"></label>
+            <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="assets/scripts/chat.js"></script>
+</body>
+
+</html>
