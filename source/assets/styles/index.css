@@ -81,6 +81,12 @@ button[type="submit"] {
     justify-content: flex-start;
 }
 
+.bubble-image {
+    max-width: 100px;
+    height: auto;
+    margin-right: 1rem;
+}
+
 .message-bubble {
     background-color: var(--bg-secondary);
     color: var(--text-secondary);
@@ -88,12 +94,14 @@ button[type="submit"] {
     padding: 0.75rem;
     max-width: 80%;
 }
-
+  
 .outgoing-message .message-bubble {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     align-self: flex-end;
 }
+
+
 
 .message-text {
     margin: 0;
@@ -181,3 +189,4 @@ button[type="submit"] {
     background-color: #a1cffc; 
 }
 }
+

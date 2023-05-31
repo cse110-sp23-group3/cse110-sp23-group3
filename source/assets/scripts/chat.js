@@ -178,6 +178,15 @@ function addMessageToChat(message, isIncoming = false) {
   // Append the message text to the chat message bubble
   messageBubble.appendChild(messageText);
 
+  // If message is incoming, also append an image
+  if (isIncoming) {
+    const messageImage = document.createElement('img');
+    messageImage.src = "assets/styles/bg/simba.png";
+    messageImage.style.width = "50px";
+    messageImage.classList.add('message-image');
+    messageElement.appendChild(messageImage);
+  }
+
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
   chatMessages.appendChild(messageElement);
