@@ -88,7 +88,7 @@ button[type="submit"] {
     padding: 0.75rem;
     max-width: 80%;
 }
-
+  
 .outgoing-message .message-bubble {
     background-color: var(--bg-primary);
     color: var(--text-primary);
@@ -135,4 +135,24 @@ button[type="submit"] {
     padding: 0.65rem 1rem;
     cursor: pointer;
     margin-right: 10px;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 1rem;
+}
+
+.bubble-image {
+  max-width: 100px; /* Adjust the width of the image as needed */
+  height: auto;
+  margin-right: 1rem; /* Add spacing between the image and the bubble */
+}
+
+.message-bubble {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  max-width: 80%;
 }
