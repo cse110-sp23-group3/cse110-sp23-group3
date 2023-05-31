@@ -5,6 +5,8 @@ let buttonChoice; // variable for the button choice
 let next = false; // variable to check if the user has clicked a button
 let chatMessage = ''; // variable for the currently stored chat message from the user
 let overallFortune = ''; // variable for overall fortune
+let chatNumber = 1; // variable to know, which chat we are viewing
+let totalChats = 3; // variable for total number of chats
 
 const chatForm = document.getElementById('chat-form'); // form for the chat
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
@@ -18,7 +20,7 @@ const palmLines = new Set([
 ]);
 const basicChoices = new Set(['yes', 'no']);
 
-const chatArr = []; // array to store the chat messages
+let chatArr = []; // array to store the chat messages
 let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
 
 /**
@@ -72,16 +74,70 @@ function stopListening() {
 function saveToHistory(chatArr) {
   try {
     let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    console.log(palmReadings);
     if (palmReadings !== null) {
-      palmReadings[String(Date.now())] = chatArr;
+      palmReadings[chatNumber] = chatArr;
     } else {
-      palmReadings = { [String(Date.now())]: chatArr };
+      palmReadings = { [chatNumber]: chatArr };
     }
 
     window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
   } catch (error) {
     console.log(error);
   }
+}
+
+/**
+ * @description Creates the old chat by going through the array stored in localStorage
+ * @param {integer} localChatNumber - The chat key, which it is stored in the localStorage array
+ * @returns {void}
+ */
+function rebuildChat(localChatNumber) {
+  clearChat();
+  let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  chatArr = palmReadings[String(localChatNumber)];
+  if(chatArr !== undefined) {
+    for(let i = 0; i < chatArr.length; i++) {
+      addMessageToChat(chatArr[i]['message'], chatArr[i]['isIncoming'], true);
+    }
+  } else {
+    chatArr = [];
+  }
+}
+
+/**
+ * @description Clears the whole chat
+ * @param {}
+ * @returns {void}
+ */
+function clearChat() {
+  let container = document.getElementById('chat-messages');
+  while(container.hasChildNodes())
+  {
+    container.removeChild(container.firstChild);
+  }
+}
+
+/**
+ * @description Will make the buttons clickable
+ * @param {}
+ * @returns {void}
+ */
+function historyButtons() {
+  let buttons = document.querySelectorAll('.history-chat');
+    // on click it will print the option chosen and disable all buttons
+    buttons.forEach((x) => {
+      x.addEventListener('click', function () {
+        let localChatNumber = x.textContent;
+        console.log(localChatNumber);
+        if(chatNumber != localChatNumber && chatNumber <= totalChats)
+        {
+          chatNumber = localChatNumber;
+          rebuildChat(localChatNumber);
+          main();
+        }
+      });
+    });
 }
 
 /**
@@ -137,7 +193,7 @@ function addButtons(message, isIncoming = true) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
   const choicesButton = document.querySelectorAll(
-    'button:not([type="submit"])'
+    '.choices-text'
   );
 
   // on click it will print the option chosen and disable all buttons
@@ -157,9 +213,11 @@ function addButtons(message, isIncoming = true) {
  * Function to add a message to the chat
  * @param {string} message - The message to add to the chat
  */
-function addMessageToChat(message, isIncoming = false) {
+function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
   // first add message to chatArr
-  chatArr.push({ message, isIncoming });
+  if(!isRebuilding) {
+    chatArr.push({ message, isIncoming });
+  }
 
   // Create a new chat message element
   const messageElement = document.createElement('div');
@@ -191,6 +249,9 @@ function addMessageToChat(message, isIncoming = false) {
  * @returns {Promise} - A promise to indicate when the chat process has completed.
  */
 async function main() {
+  // initialize history buttons to have functionality
+  historyButtons();
+
   // Start the chat with some introductory messages
   addMessageToChat("Hi, I'm Simba!", true);
   addMessageToChat('Would you like me to read your palm?', true);
@@ -269,7 +330,7 @@ async function main() {
     // Add fortune to overall fortune
     overallFortune = overallFortune.concat(` ${botResponse.chatResponse}`);
 
-    palmLines.delete(buttonChoice);
+    // palmLines.delete(buttonChoice);
 
     // If now there are no other lines to read, break
     if (palmLines.size === 0) {
