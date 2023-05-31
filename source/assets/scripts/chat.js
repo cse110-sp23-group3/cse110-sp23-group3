@@ -32,7 +32,7 @@ function handleSubmit(event) {
 
   // If the message is empty, alert the user to enter a message
   if (chatMessage === '') {
-    window.alert('Please enter a message');
+    addMessageToChat('Please enter a message!', true);
     return;
   }
 
@@ -198,10 +198,6 @@ async function main() {
   }
 
   while (true) {
-    if (palmLines.size === 0) {
-      break;
-    }
-
     // Case where buttonChoice is Yes, then read the palm.
     addMessageToChat(
       'Which palm line would you like me to read? Select from the buttons below.',
@@ -265,6 +261,11 @@ async function main() {
     overallFortune = overallFortune.concat(` ${botResponse.chatResponse}`);
 
     palmLines.delete(buttonChoice);
+
+    // If now there are no other lines to read, break
+    if (palmLines.size === 0) {
+      break;
+    }
 
     // Ask the user if they would like to continue with the palm reading
     addMessageToChat('Would you like me to continue reading your palm?', true);

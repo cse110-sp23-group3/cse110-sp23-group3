@@ -28,10 +28,6 @@
     font-size: 22px;
   }
   
-  /* TODO: Open when develop menu */
-  aside {
-    display: none;
-  }
   
   header {
     display: flex;
