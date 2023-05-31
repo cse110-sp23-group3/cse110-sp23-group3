@@ -27,7 +27,6 @@ const headline = {
     "straight line" : "thinks realistically",
     "broken head line" : "inconsistencies in thought"
 };
-
 const lifeline = {
     "runs close to thumb" : "often tired",
     "long, deep" : "vitality", 
@@ -39,7 +38,6 @@ const lifeline = {
     "straight and close to the edge of the palm" : "cautious when it comes",
     "circle in line indicates" : "hospitalied or injured",
 };
-
 const fateline = {
     "deep line" : "strongly controlled by fate",
     "breaks and changes of direction" : "prone to many changes in life",
@@ -49,10 +47,19 @@ const fateline = {
 };
 
 const histChats = {
-    "History 1": [],
-    "History 2": [],
-    "History 3": []
-  };
+  "History 1": [],
+  "History 2": [],
+  "History 3": []
+};
+
+// Saves a chatArr to local storage using the unix timestamp as the key, as it is unique.
+function saveToHistory (chatArr) {
+  try {
+    localStorage.setItem(String(Date.now()), JSON.stringify(chatArr));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // variables
 let wait = 0;
@@ -71,11 +78,50 @@ let values = [];
 // holds values of user fortune
 let userFortune = [];
 
-// Introduction
-addMessageToChat("Hi, I'm Simba!", true);
-addMessageToChat("Would you like me to read your palm?", true);
-addButtons(palmLines);
-loadHist();
+const chatArr = [];
+
+const timeout = async ms => new Promise(res => setTimeout(res, ms));
+let next = false; // this is to be changed on user input
+
+async function waitUserInput() {
+  while (next === false) await timeout(50); // pauses script
+  next = false; // reset var for next wait
+}
+
+async function main() {
+  addMessageToChat("Hi, I'm Simba!", true);
+  addMessageToChat("Would you like me to read your palm?", true);
+  addButtons(["Yes", "No"]);
+  await waitUserInput();
+  if (buttonChoice == "No") {
+    addMessageToChat("When you're ready, just reload!", true);
+    return;
+  }
+  addMessageToChat("Which palm line would you like me to read?", true);
+  addButtons(palmLines);
+  await waitUserInput();
+  switch (buttonChoice) {
+    case "heartline":
+
+
+      break;
+    
+    case "headline":
+
+      break;
+
+    case "lifeline":
+
+      break;
+
+    case "fateline":
+
+      break;
+  }
+
+
+  loadHist();
+}
 
 // Constantly checking if one of the buttons choices were clicked
 window.setInterval( function(){
@@ -193,6 +239,7 @@ function addButtons(message, isIncoming = true) {
 
     // on click it will print the option chosen and disable all buttons
     choicesButton.forEach(x => {x.addEventListener("click", function(){
+        next = true;
         wait++;
         buttonChoice = x.textContent;
         addMessageToChat(buttonChoice, false);
@@ -261,6 +308,8 @@ async function getBotResponse(message) {
  * @param {string} message - The message to add to the chat
  */
 function addMessageToChat(message, isIncoming = false) {
+    // first add message to chatArr
+    chatArr.push({ message, isIncoming });
 
     // Create a new chat message element
     const messageElement = document.createElement('div')
