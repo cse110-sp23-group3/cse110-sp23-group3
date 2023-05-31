@@ -125,3 +125,14 @@ button[type="submit"] {
     overflow-y: scroll;
     margin-bottom: 20px;
 }
+
+
+.message-button button {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    border-radius: var(--border-radius);
+    padding: 0.65rem 1rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
