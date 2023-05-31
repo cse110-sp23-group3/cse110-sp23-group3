@@ -37,7 +37,7 @@
     <!-- HEADING -->
     <header>
         <div class="banner">
-            <h1>Palm Reading</h1>
+            <h1>Powell's Pride Palm Reading</h1>
         </div>
         <div class="heading">
             <h3>Chat History #1</h3>
@@ -49,6 +49,10 @@
         <div id="chat-messages" class="chat-messages"></div>
     </main>
 
+    <div id="spinner" style="display: none;">
+      <div class="loader"></div>
+    </div>
+
     <!-- CHAT INPUT -->
     <section class="chat-container">
         <form id="chat-form" action="#" method="post">
@@ -58,14 +62,6 @@
             <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
             <button type="submit">Send</button>
         </form>
-    </section>
-
-    <!-- CHAT HISTORY -->
-    <section class="chat-history">
-        <select id="hist-select" onchange="selectHistory()">
-            <option value="">Select history</option>
-        </select>
-        <div id="hist-container"></div>
     </section>
 
     <!-- JavaScript -->

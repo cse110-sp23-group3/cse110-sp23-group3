@@ -1,306 +1,147 @@
-// Get references to the necessary elements
-const chatForm = document.getElementById('chat-form')
-const chatMessages = document.getElementById('chat-messages')
+// When DOM content has loaded, run the main function
+window.addEventListener('DOMContentLoaded', main);
 
-// objects of different line readings
-const heartline = {
-    "begins below the index finger" : "content with love life",
-    "wavy" : "many relationships and lovers, absence of serious",
-    "Touches life line" : "heart is broken easily",
-    "Begins below the middle finger" : "selfish when it comes to love",
-    "long and curvy" : "freely expresses emotions and feelings",
-    "circle on the line" : "sadness or depression",
-    "Begins in the middle" : "falls in love easily",
-    "straight and parallel to the head line" : "good handle on emotions",
-    "smaller lines crossing through heart line" : "emotional trauma",
-    "straight and short" : "less interest in romance",
-    "broken line" : "emotional trauma",
-};
-const headline = {
-    "short line" : "prefers physical achievements over mental ones",
-    "curved, sloping line" : "creativity",
-    "separated from life line" : "enthusiasm for life",
-    "deep, long line" : "thinking is clear and focused",
-    "donuts or cross in head line" : "emotional crisis",
-    "multiple crosses through head line" : "momentous decisions",
-    "wavy line" : "short attention span",
-    "straight line" : "thinks realistically",
-    "broken head line" : "inconsistencies in thought"
-};
-const lifeline = {
-    "runs close to thumb" : "often tired",
-    "long, deep" : "vitality", 
-    "curvy" : "plenty of energy",
-    "swoops around in a semicircle" : "strength, and enthusiasm",
-    "multiple life lines" : "extra vitality",
-    "break" : "sudden change in lifestyle",
-    "short and shallow" : "manipulated by others",
-    "straight and close to the edge of the palm" : "cautious when it comes",
-    "circle in line indicates" : "hospitalied or injured",
-};
-const fateline = {
-    "deep line" : "strongly controlled by fate",
-    "breaks and changes of direction" : "prone to many changes in life",
-    "starts joined to life line" : "self-made individual; develops aspirations early on",
-    "joins with the lifeline around in the middle" : "signifies a point at which one's interests must be surrendered to those of others",
-    "starts at the base of the thumb and crosses lifeline" : "support offered",
-};
+let buttonChoice; // variable for the button choice
+let next = false; // variable to check if the user has clicked a button
+let chatMessage = ''; // variable for the currently stored chat message from the user
+let overallFortune = ''; // variable for overall fortune
 
-const histChats = {
-  "History 1": [],
-  "History 2": [],
-  "History 3": []
-};
+const chatForm = document.getElementById('chat-form'); // form for the chat
+const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
 
-// Saves a chatArr to local storage using the unix timestamp as the key, as it is unique.
-function saveToHistory (chatArr) {
+// Set of palm lines and basic choices
+const palmLines = new Set([
+  'heart line',
+  'head line',
+  'life line',
+  'fate line',
+]);
+const basicChoices = new Set(['yes', 'no']);
+
+const chatArr = []; // array to store the chat messages
+let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
+
+/**
+ * @description Handles the 'submit' event by preventing the default form submission, validating the input, and adding the message to the chat.
+ * @param {Event} event - The event object from the 'submit' event.
+ */
+function handleSubmit(event) {
+  event.preventDefault();
+
+  chatMessage = document.getElementById('message').value;
+
+  // If the message is empty, alert the user to enter a message
+  if (chatMessage === '') {
+    window.alert('Please enter a message');
+    return;
+  }
+
+  addMessageToChat(chatMessage, false);
+
+  next = true;
+
+  document.getElementById('message').value = '';
+}
+
+/**
+ * @description Activates a 'submit' event listener on 'chatForm' if not already listening.
+ */
+function startListening() {
+  if (!isListening) {
+    chatForm.addEventListener('submit', handleSubmit);
+    isListening = true;
+  }
+}
+
+/**
+ * @description Deactivates the 'submit' event listener on 'chatForm' if currently listening.
+ */
+function stopListening() {
+  if (isListening) {
+    chatForm.removeEventListener('submit', handleSubmit);
+    isListening = false;
+  }
+}
+
+/**
+ * @description Saves the provided chat array to localStorage with the current timestamp as the key.
+ * @param {Array} chatArr - The chat array to be saved.
+ */
+function saveToHistory(chatArr) {
   try {
-    localStorage.setItem(String(Date.now()), JSON.stringify(chatArr));
+    window.localStorage.setItem(String(Date.now()), JSON.stringify(chatArr));
   } catch (error) {
     console.log(error);
   }
 }
 
-// variables
-let wait = 0;
-let buttonChoice;
-let arraySpot = 0;
-let hasChosenPalm = false;
+/**
+ * @description Returns a promise that resolves after a specified amount of time.
+ * @param {number} ms - The number of milliseconds to wait before the promise should resolve.
+ * @returns {Promise} - A promise that resolves after the specified amount of time.
+ */
+async function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-// arrays for button choices
-let palmLines = ["heartline", "headline", "lifeline", "fateline"];
-let basicChoices = ['yes', 'no'];
-
-// holds the values of the palm line looked at
-let keys = [];
-let values = [];
-
-// holds values of user fortune
-let userFortune = [];
-
-const chatArr = [];
-
-const timeout = async ms => new Promise(res => setTimeout(res, ms));
-let next = false; // this is to be changed on user input
-
+/**
+ * @description Pauses script execution until the 'next' variable is set to true. Resets 'next' to false after resuming.
+ * @returns {Promise} - A promise that resolves when 'next' is true.
+ */
 async function waitUserInput() {
+  // eslint-disable-next-line no-unmodified-loop-condition
   while (next === false) await timeout(50); // pauses script
   next = false; // reset var for next wait
 }
 
-async function main() {
-  addMessageToChat("Hi, I'm Simba!", true);
-  addMessageToChat("Would you like me to read your palm?", true);
-  addButtons(["Yes", "No"]);
-  await waitUserInput();
-  if (buttonChoice == "No") {
-    addMessageToChat("When you're ready, just reload!", true);
-    return;
-  }
-  addMessageToChat("Which palm line would you like me to read?", true);
-  addButtons(palmLines);
-  await waitUserInput();
-  switch (buttonChoice) {
-    case "heartline":
-
-
-      break;
-    
-    case "headline":
-
-      break;
-
-    case "lifeline":
-
-      break;
-
-    case "fateline":
-
-      break;
-  }
-
-
-  loadHist();
-}
-
-// Constantly checking if one of the buttons choices were clicked
-window.setInterval( function(){
-    if(wait == 1)
-    {
-        wait = 0;
-
-        // based on the button clicked it will assign keys the keys of an object
-        // takes the option chosen off the array for the future when we have to pick another palm line
-        if(buttonChoice == "heartline") {
-            keys = Object.keys(heartline);
-            values = Object.values(heartline);
-            arraySpot = 0;
-            palmLines = find("heartline", palmLines);
-            hasChosenPalm = true;
-        } else if(buttonChoice == "headline")
-        {
-            keys = Object.keys(headline);
-            values = Object.values(headline);
-            arraySpot = 0;
-            palmLines = find("headline", palmLines);
-            hasChosenPalm = true;
-        } else if(buttonChoice == "lifeline")
-        {
-            keys = Object.keys(lifeline);
-            values = Object.values(lifeline);
-            arraySpot = 0;
-            palmLines = find("lifeline", palmLines);
-            hasChosenPalm = true;
-        } else if(buttonChoice == "fateline")
-        {
-            keys = Object.keys(fateline);
-            values = Object.values(fateline);
-            arraySpot = 0;
-            palmLines = find("fateline", palmLines);
-            hasChosenPalm = true;
-        }
-        let done = arraySpot < keys.length
-
-        // will only print the question keys when a palm has been chosen, and won't try to print more than the # of elements
-        if(hasChosenPalm && done) {
-            if(palmLines.indexOf('fortune') == -1) {
-                palmLines.push('fortune');
-            }
-            addMessageToChat(keys[arraySpot], true);
-            addButtons(basicChoices);
-
-            // adding the corresponding value to their fortune
-            if(buttonChoice == 'yes') {
-                userFortune.push(values[arraySpot]);
-            }
-            arraySpot++;
-        }
-
-        // Prompts to choose a different line if want to continue
-        if(!done && palmLines.length > 1) {
-            addMessageToChat("Would you like me to keep reading your palm?", true);
-            addButtons(palmLines);
-        }
-
-        // If no more choices then print fortune or if fortune button is clicked
-        if(buttonChoice == 'fortune' || (palmLines.length == 1 && !done))
-        {
-            addMessageToChat("Your palm reading results are: ", true);
-            addMessageToChat(userFortune, true);
-
-            //added for CRUD
-            const histSelect = document.getElementById("hist-select");
-            const selectedHist = histSelect.value;
-            saveChat(selectedHist, userFortune);
-        }
-    }
-}, 10);
-
-// finds index of x in array y
-// returns index
-function find(element, array) {
-    const index = array.indexOf(element);
-    if(index > -1) 
-    {
-        array.splice(index, 1);
-    }
-    return array;
-}
-
-
-// adds buttons for each element of the choices array
-function addButtons(message, isIncoming = true) {
-    // Create a new chat message element
-    const messageElement = document.createElement('div')
-    messageElement.classList.add('choices', isIncoming ? 'incoming-message' : 'outgoing-message')
-
-    const messageBubble = document.createElement('div')
-    messageBubble.classList.add('message-button')
-
-    // Making a button for each option
-    for(let i = 0; i < message.length; i++)
-    {
-        const messageText = document.createElement('button')
-        messageText.classList.add('choices-text')
-        messageText.textContent = message[i]
-
-        // Append the message text to the chat message bubble
-        messageBubble.appendChild(messageText)
-
-        // Append the chat message bubble to the chat messages container
-        messageElement.appendChild(messageBubble)
-        chatMessages.appendChild(messageElement)
-    }
-
-    // Scroll to the latest message
-    chatMessages.scrollTop = chatMessages.scrollHeight
-
-    let choicesButton = document.querySelectorAll('button')
-
-    // on click it will print the option chosen and disable all buttons
-    choicesButton.forEach(x => {x.addEventListener("click", function(){
-        next = true;
-        wait++;
-        buttonChoice = x.textContent;
-        addMessageToChat(buttonChoice, false);
-        for(let i = 0; i < choicesButton.length; i++)
-        {
-            console.log(choicesButton[i]);
-            choicesButton[i].disabled = true;
-        }
-        })
-    });
-}
-
-// Function to handle form submission
-function handleFormSubmit(event) {
-    event.preventDefault() // Prevent the form from submitting
-
-    // Get the user's message from the input field
-    const messageInput = document.getElementById('message')
-    const message = messageInput.value
-
-    // If the message is empty, alert the user to enter a message
-    if (message === '') {
-        alert('Please enter a message');
-    }
-
-    // Clear the input field
-    messageInput.value = ''
-
-    // Create a new chat message element
-    addMessageToChat(message, false)
-
-    // TODO: Remove this mockup function call
-    // getBotResponse(message)
-    mockBotResponse()
-}
-
-// Mockup function to simulate a bot response
-function mockBotResponse() {
-    const botResponse = 'This is a mockup response from the bot'
-    addMessageToChat(botResponse, true)
-}
-
 /**
- * Function to get the bot's response to the user's message
- * @param {string} message - The user's message
+ * @description Creates chat message buttons from the provided message array. The buttons are added to the chat interface, and an event listener is set up to handle button clicks.
+ * @param {Array} message - An array of message options for the buttons.
+ * @param {boolean} isIncoming - Optional boolean that specifies whether the message is incoming (default) or outgoing.
  */
-async function getBotResponse(message) {
-    // Send the user message to the server
-    const response = await fetch('/get-response', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message })
-    })
+function addButtons(message, isIncoming = true) {
+  // Create a new chat message element
+  const messageElement = document.createElement('div');
+  messageElement.classList.add(
+    'choices',
+    isIncoming ? 'incoming-message' : 'outgoing-message'
+  );
 
-    // Get the bot's response
-    const botResponse = await response.json()
+  const messageBubble = document.createElement('div');
+  messageBubble.classList.add('message-button');
 
-    // Add the bot's response to the chat
-    addMessageToChat(botResponse.message)
+  // Making a button for each option
+  for (const choice of message) {
+    const messageText = document.createElement('button');
+    messageText.classList.add('choices-text');
+    messageText.textContent = choice;
+
+    // Append the message text to the chat message bubble
+    messageBubble.appendChild(messageText);
+
+    // Append the chat message bubble to the chat messages container
+    messageElement.appendChild(messageBubble);
+    chatMessages.appendChild(messageElement);
+  }
+
+  // Scroll to the latest message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  const choicesButton = document.querySelectorAll(
+    'button:not([type="submit"])'
+  );
+
+  // on click it will print the option chosen and disable all buttons
+  choicesButton.forEach((x) => {
+    x.addEventListener('click', function () {
+      buttonChoice = x.textContent;
+      addMessageToChat(buttonChoice, false);
+      for (const choiceButton of choicesButton) {
+        choiceButton.disabled = true;
+      }
+      next = true;
+    });
+  });
 }
 
 /**
@@ -308,71 +149,142 @@ async function getBotResponse(message) {
  * @param {string} message - The message to add to the chat
  */
 function addMessageToChat(message, isIncoming = false) {
-    // first add message to chatArr
-    chatArr.push({ message, isIncoming });
+  // first add message to chatArr
+  chatArr.push({ message, isIncoming });
 
-    // Create a new chat message element
-    const messageElement = document.createElement('div')
-    messageElement.classList.add('chat-message', isIncoming ? 'incoming-message' : 'outgoing-message')
+  // Create a new chat message element
+  const messageElement = document.createElement('div');
+  messageElement.classList.add(
+    'chat-message',
+    isIncoming ? 'incoming-message' : 'outgoing-message'
+  );
 
-    const messageBubble = document.createElement('div')
-    messageBubble.classList.add('message-bubble')
+  const messageBubble = document.createElement('div');
+  messageBubble.classList.add('message-bubble');
 
-    const messageText = document.createElement('p')
-    messageText.classList.add('message-text')
-    messageText.textContent = message
+  const messageText = document.createElement('p');
+  messageText.classList.add('message-text');
+  messageText.textContent = message;
 
-    // Append the message text to the chat message bubble
-    messageBubble.appendChild(messageText)
+  // Append the message text to the chat message bubble
+  messageBubble.appendChild(messageText);
 
-    // Append the chat message bubble to the chat messages container
-    messageElement.appendChild(messageBubble)
-    chatMessages.appendChild(messageElement)
+  // Append the chat message bubble to the chat messages container
+  messageElement.appendChild(messageBubble);
+  chatMessages.appendChild(messageElement);
 
-    // Scroll to the latest message
-    chatMessages.scrollTop = chatMessages.scrollHeight
+  // Scroll to the latest message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-  
-// Load histories into the select dropdown
-function loadHist() {
-    const userSelect = document.getElementById("hist-select");
-    for (let hist in histChats) {
-      const option = document.createElement("option");
-      option.value = hist;
-      option.text = hist;
-      userSelect.appendChild(option);
+
+/**
+ * @description Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
+ * @returns {Promise} - A promise to indicate when the chat process has completed.
+ */
+async function main() {
+  // Start the chat with some introductory messages
+  addMessageToChat("Hi, I'm Simba!", true);
+  addMessageToChat('Would you like me to read your palm?', true);
+  addButtons(basicChoices);
+  await waitUserInput();
+
+  // Case where buttonChoice is No, then obviously don't read the palm and do nothing.
+  if (buttonChoice === 'no') {
+    addMessageToChat(
+      "When you're ready for a palm reading, just reload!",
+      true
+    );
+    return;
+  }
+
+  while (true) {
+    if (palmLines.size === 0) {
+      break;
     }
-}
 
-// Select a history and load the chat
-function selectHistory() {
-    const histSelect = document.getElementById("hist-select");
-    const selectedHist = histSelect.value;
-    if (selectedHist !== "") {
-      loadChats(selectedHist);
+    // Case where buttonChoice is Yes, then read the palm.
+    addMessageToChat(
+      'Which palm line would you like me to read? Select from the buttons below.',
+      true
+    );
+    addButtons(palmLines);
+    await waitUserInput();
+
+    // Determine which palm line was chosen and read it by asking a series of questions
+    let botResponse = '';
+
+    // description of each palm line
+    const palmLineDesc = {
+      'heart line':
+        "runs horizontally across your palm and is the topmost line you'll see. It begins at the edge of your palm on the pinkie side, and runs to just underneath your index or middle finger.",
+      'head line':
+        'begins under your index finger along the edge of your palm and extends part-way across your palm in a graceful curve flowing in a slightly downward direction.',
+      'life line':
+        'begins between your thumb and index finger and travels down your palm through the middle.',
+      'fate line':
+        'is a vertical line running up the palm towards the base of the middle finger.',
+    };
+
+    // First describe the location of the chosen line, and then ask the user to describe the line
+    addMessageToChat(`The ${buttonChoice} ${palmLineDesc[buttonChoice]}`, true);
+    addMessageToChat(
+      `How would you describe your ${buttonChoice}? Use adjectives such as "wavy", "long", "curvy", and the start and end locations of the line. Be as specific as possible.`,
+      true
+    );
+    startListening();
+    await waitUserInput();
+    stopListening();
+
+    // Show the spinner
+    document.getElementById('spinner').style.display = 'block';
+
+    // Query AI API for chat response.
+    botResponse = await fetch(
+      'https://cse110-team3.up.railway.app/api/ask-chat',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: `Act as a fortune teller for palm reading. I describe my ${buttonChoice} as ${chatMessage}, what does this mean? Limit your response to 2 sentences.`,
+        }),
+      }
+    );
+
+    // Get the bot's response
+    botResponse = await botResponse.json();
+
+    // Hide the spinner
+    document.getElementById('spinner').style.display = 'none';
+
+    // Add the bot's response to the chat
+    addMessageToChat(botResponse.chatResponse, true);
+
+    // Add fortune to overall fortune
+    overallFortune = overallFortune.concat(` ${botResponse.chatResponse}`);
+
+    palmLines.delete(buttonChoice);
+
+    // Ask the user if they would like to continue with the palm reading
+    addMessageToChat('Would you like me to continue reading your palm?', true);
+    addButtons(basicChoices);
+    await waitUserInput();
+    if (buttonChoice === 'no') {
+      break;
     }
-}
+  }
 
-// Load chats for a specific history
-function loadChats(hist) {
-    const chats = histChats[hist];
-    const chatContainer = document.getElementById("hist-container");
-    chatContainer.innerHTML = "";
-    chats.forEach(chat => displayChat(chat));
-}
+  addMessageToChat(`Your overall palm reading is:`, true);
+  addMessageToChat(
+    `${
+      overallFortune === ''
+        ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
+        : overallFortune
+    }`,
+    true
+  );
 
-// Display a chat message
-function displayChat(chat) {
-    const chatContainer = document.getElementById("hist-container");
-    const chatElement = document.createElement("div");
-    chatElement.textContent = chat;
-    chatContainer.appendChild(chatElement);
+  // Save the chatArr to local storage
+  saveToHistory(chatArr);
 }
-
-// Save a chat message for a history user
-function saveChat(user, chat) {
-    histChats[user].push(chat);
-}
-
-// Add a submit event listener to the form
-chatForm.addEventListener('submit', handleFormSubmit)
