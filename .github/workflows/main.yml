@@ -55,7 +55,8 @@ jobs:
         git commit -m 'Update JSDoc' || echo 'No changes to commit'
 
         if [[ -n "${{ github.event.pull_request.number }}" ]]; then
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:refs/pull/${{ github.event.pull_request.number }}/merge
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.event.pull_request.base.ref }}
         else
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
         fi
+
