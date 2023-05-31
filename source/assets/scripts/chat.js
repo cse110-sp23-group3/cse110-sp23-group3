@@ -64,12 +64,21 @@ function stopListening() {
 }
 
 /**
- * @description Saves the provided chat array to localStorage with the current timestamp as the key.
- * @param {Array} chatArr - The chat array to be saved.
+ * Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
+ *
+ * @param {Array} chatArr - The chat array to be saved or added.
+ * @returns {void}
  */
 function saveToHistory(chatArr) {
   try {
-    window.localStorage.setItem(String(Date.now()), JSON.stringify(chatArr));
+    let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    if (palmReadings !== null) {
+      palmReadings[String(Date.now())] = chatArr;
+    } else {
+      palmReadings = { [String(Date.now())]: chatArr };
+    }
+
+    window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
   } catch (error) {
     console.log(error);
   }
