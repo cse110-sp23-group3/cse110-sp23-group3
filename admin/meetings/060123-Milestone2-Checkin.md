@@ -4,6 +4,8 @@
 
 **Type of Meeting:** check-ins
 
+**Time/Place:** Zoom, June 1, 2023 4:00 PM - 4:30 PM
+
 ## Attendance:
 
 * Nick
