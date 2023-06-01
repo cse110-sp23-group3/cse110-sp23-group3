@@ -202,6 +202,9 @@ function addMessageToChat(message, isIncoming = false) {
  * @returns {Promise} - A promise to indicate when the chat process has completed.
  */
 async function main() {
+  // Start listening to 'submit' event
+  startListening();
+
   // Start the chat with some introductory messages
   addMessageToChat("Hi, I'm Simba!", true);
   addMessageToChat('Would you like me to read your palm?', true);
