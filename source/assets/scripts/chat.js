@@ -214,8 +214,8 @@ function addButtons(message, isIncoming = true) {
  * @param {string} message - The message to add to the chat
  */
 function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
-  // first add message to chatArr
-  if(!isRebuilding) {
+  // First add message to chatArr
+  if (!isRebuilding) {
     chatArr.push({ message, isIncoming });
   }
 
@@ -229,12 +229,33 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
   const messageBubble = document.createElement('div');
   messageBubble.classList.add('message-bubble');
 
-  const messageText = document.createElement('p');
-  messageText.classList.add('message-text');
-  messageText.textContent = message;
+  // If message is incoming, append the message text directly
+  if (isIncoming) {
+    // Create the typing indicator element
+    const typingIndicator = document.createElement('div');
+    typingIndicator.classList.add('typing-indicator');
 
-  // Append the message text to the chat message bubble
-  messageBubble.appendChild(messageText);
+    const typingText = document.createElement('span');
+    typingText.classList.add('typing-text');
+    typingText.textContent = "...";
+
+    const typingDots = document.createElement('span');
+    typingDots.classList.add('typing-dots');
+    typingDots.textContent = "...";
+
+    typingIndicator.appendChild(typingText);
+    typingIndicator.appendChild(typingDots);
+
+    // Append the typing indicator to the message bubble
+    messageBubble.appendChild(typingIndicator);
+  } else {
+    const messageText = document.createElement('p');
+    messageText.classList.add('message-text');
+    messageText.textContent = message;
+
+    // Append the message text to the chat message bubble
+    messageBubble.appendChild(messageText);
+  }
 
   // If message is incoming, also append an image
   if (isIncoming) {
@@ -247,11 +268,49 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
 
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
+
+  // Append the message element to the chat messages container
   chatMessages.appendChild(messageElement);
 
   // Scroll to the latest message
   chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  // Show the message text after a delay for incoming messages
+  if (isIncoming && !isRebuilding) {
+    const typingIndicator = messageBubble.querySelector('.typing-indicator');
+    const typingText = messageBubble.querySelector('.typing-text');
+    const typingDots = messageBubble.querySelector('.typing-dots');
+
+    const showTypingText = () => {
+      typingText.style.opacity = "1";
+      typingDots.style.opacity = "0";
+    };
+
+    const showTypingDots = () => {
+      typingText.style.opacity = "0";
+      typingDots.style.opacity = "1";
+    };
+
+    const typingInterval = setInterval(() => {
+      showTypingText();
+      setTimeout(showTypingDots, 500);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(typingInterval);
+      messageBubble.removeChild(typingIndicator);
+
+      const messageText = document.createElement('p');
+      messageText.classList.add('message-text');
+      messageText.textContent = message;
+
+      // Append the message text to the chat message bubble
+      messageBubble.appendChild(messageText);
+    }, 2000); // Show the message text after 2 seconds (adjust the delay as needed)
+  }
 }
+
+
 
 /**
  * @description Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
