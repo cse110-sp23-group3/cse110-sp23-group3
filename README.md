@@ -1,12 +1,23 @@
 # Palm Reading
-
-by [Powell's Pride Tech](./admin/team.md)
-
 ## Overview
 
-We have created a *Lion King*-themed palm reading app. The app simulates a text message conversation between the user and a character from Disney's *The Lion King*. The user describes his or her palm lines to the character via text messages and the character responds by making predictions about the user's personality and future.
+Do you want to know what your palm lines say about you? Do you love Disney’s The Lion King? If yes, then you will enjoy our Lion King-themed palm reading app. It is a fun and interactive way to discover your destiny with the help of your favorite characters from the movie. You can chat with a Lion King character, send them a picture or a description of your palm lines and they will tell you what they mean. You will be amazed by their insights and humor. Try it now and see for yourself.
 
-Our palm reading app can be accessed [here](./source/index.html).
+You can access our palm reading app [here](./source/index.html)..
+
+## Change Log
+
+See:
+[CHANGELOG.md](./CHANGELOG.md)
+
+## Authors
+
+This project is developed by [Powell's Pride Tech](./admin/team.md) for the **CSE 110 - Fall 2023** course at UC San Diego.
+
+## Our Planning Documents
+- Design File: [Figma](https://www.figma.com/file/baHcz99UEOscS9AGL6Szx2/Palm-Reading?type=design&node-id=104%3A147&t=HR9pgTiOpjxXK0OA-1)
+- Main Planning: [Miro Board](https://miro.com/app/board/uXjVMN1qypo=/)
+- CI/CD: [Pipeline Flowchart](https://miro.com/app/board/uXjVMGkxIeA=/)
 
 ## Repo File Structure
 
@@ -129,11 +140,3 @@ Our palm reading app can be accessed [here](./source/index.html).
     └── users
         └── README.md
 ```
-
-## Documentation
-
-Main Planning Miro Board: https://miro.com/app/board/uXjVMN1qypo=/
-
-Figma: https://www.figma.com/file/baHcz99UEOscS9AGL6Szx2/Palm-Reading?type=design&node-id=104%3A147&t=HR9pgTiOpjxXK0OA-1
-
-CI/CD Pipeline Flowchart: https://miro.com/app/board/uXjVMGkxIeA=/
