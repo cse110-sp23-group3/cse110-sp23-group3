@@ -12,6 +12,7 @@ Our palm reading app can be accessed [here](./source/index.html).
 
 ```
 .
+├── CHANGELOG.md
 ├── README.md
 ├── admin
 │   ├── branding
