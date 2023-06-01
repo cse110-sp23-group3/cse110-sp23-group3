@@ -12,7 +12,7 @@ See:
 
 ## Authors
 
-This project is developed by [Powell's Pride Tech](./admin/team.md) for the [CSE 110 Spring 2021](https://sites.google.com/ucsd.edu/cse110-spring21/) course at UC San Diego.
+This project is developed by [Powell's Pride Tech](./admin/team.md) for the **CSE 110 - Fall 2023** course at UC San Diego.
 
 ## Our Planning Documents
 - Design File: [Figma](https://www.figma.com/file/baHcz99UEOscS9AGL6Szx2/Palm-Reading?type=design&node-id=104%3A147&t=HR9pgTiOpjxXK0OA-1)
