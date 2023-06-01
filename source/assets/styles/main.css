@@ -62,7 +62,7 @@ header {
 
 div.container {
   display: flex;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
 }
 
 aside {
@@ -76,7 +76,7 @@ main {
   width: 100%;
 }
 
-// SIDEBAR
+/* // SIDEBAR */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ main {
   flex-direction: column;
 }
 
-// ul
+/* // ul */
 .sidebar__menu ul {
   list-style: none;
   padding: 0;

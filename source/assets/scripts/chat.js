@@ -178,6 +178,17 @@ function addMessageToChat(message, isIncoming = false) {
   // Append the message text to the chat message bubble
   messageBubble.appendChild(messageText);
 
+  // If message is incoming, also append an image
+  if (isIncoming) {
+    const messageImage = document.createElement('img');
+    messageImage.src = "assets/styles/bg/simba.png";
+    messageImage.style.width = "50px";
+    messageImage.style.height = "50px";
+    messageImage.alt = 'Simba';
+    messageImage.classList.add('message-image');
+    messageElement.appendChild(messageImage);
+  }
+
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
   chatMessages.appendChild(messageElement);
@@ -287,10 +298,9 @@ async function main() {
 
   addMessageToChat(`Your overall palm reading is:`, true);
   addMessageToChat(
-    `${
-      overallFortune === ''
-        ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
-        : overallFortune
+    `${overallFortune === ''
+      ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
+      : overallFortune
     }`,
     true
   );
