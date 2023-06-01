@@ -245,6 +245,9 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
  * @returns {Promise} - A promise to indicate when the chat process has completed.
  */
 async function main() {
+  // Start listening to 'submit' event
+  startListening();
+
   // initialize history buttons to have functionality
   historyButtons();
 
@@ -344,10 +347,9 @@ async function main() {
 
   addMessageToChat(`Your overall palm reading is:`, true);
   addMessageToChat(
-    `${
-      overallFortune === ''
-        ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
-        : overallFortune
+    `${overallFortune === ''
+      ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
+      : overallFortune
     }`,
     true
   );
