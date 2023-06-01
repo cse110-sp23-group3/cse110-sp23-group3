@@ -6,7 +6,7 @@ let next = false; // variable to check if the user has clicked a button
 let chatMessage = ''; // variable for the currently stored chat message from the user
 let overallFortune = ''; // variable for overall fortune
 let chatNumber = 1; // variable to know, which chat we are viewing
-let totalChats = 3; // variable for total number of chats
+const totalChats = 3; // variable for total number of chats
 
 const chatForm = document.getElementById('chat-form'); // form for the chat
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
@@ -94,11 +94,11 @@ function saveToHistory(chatArr) {
  */
 function rebuildChat(localChatNumber) {
   clearChat();
-  let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   chatArr = palmReadings[String(localChatNumber)];
-  if(chatArr !== undefined) {
-    for(let i = 0; i < chatArr.length; i++) {
-      addMessageToChat(chatArr[i]['message'], chatArr[i]['isIncoming'], true);
+  if (chatArr !== undefined) {
+    for (let i = 0; i < chatArr.length; i++) {
+      addMessageToChat(chatArr[i].message, chatArr[i].isIncoming, true);
     }
   } else {
     chatArr = [];
@@ -111,9 +111,8 @@ function rebuildChat(localChatNumber) {
  * @returns {void}
  */
 function clearChat() {
-  let container = document.getElementById('chat-messages');
-  while(container.hasChildNodes())
-  {
+  const container = document.getElementById('chat-messages');
+  while (container.hasChildNodes()) {
     container.removeChild(container.firstChild);
   }
 }
@@ -124,20 +123,19 @@ function clearChat() {
  * @returns {void}
  */
 function historyButtons() {
-  let buttons = document.querySelectorAll('.history-chat');
-    // on click it will print the option chosen and disable all buttons
-    buttons.forEach((x) => {
-      x.addEventListener('click', function () {
-        let localChatNumber = x.textContent;
-        console.log(localChatNumber);
-        if(chatNumber != localChatNumber && chatNumber <= totalChats)
-        {
-          chatNumber = localChatNumber;
-          rebuildChat(localChatNumber);
-          main();
-        }
-      });
+  const buttons = document.querySelectorAll('.history-chat');
+  // on click it will print the option chosen and disable all buttons
+  buttons.forEach((x) => {
+    x.addEventListener('click', function () {
+      const localChatNumber = x.textContent;
+      console.log(localChatNumber);
+      if (chatNumber !== localChatNumber && chatNumber <= totalChats) {
+        chatNumber = localChatNumber;
+        rebuildChat(localChatNumber);
+        main();
+      }
     });
+  });
 }
 
 /**
@@ -192,9 +190,7 @@ function addButtons(message, isIncoming = true) {
   // Scroll to the latest message
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  const choicesButton = document.querySelectorAll(
-    '.choices-text'
-  );
+  const choicesButton = document.querySelectorAll('.choices-text');
 
   // on click it will print the option chosen and disable all buttons
   choicesButton.forEach((x) => {
@@ -215,7 +211,7 @@ function addButtons(message, isIncoming = true) {
  */
 function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
   // first add message to chatArr
-  if(!isRebuilding) {
+  if (!isRebuilding) {
     chatArr.push({ message, isIncoming });
   }
 
