@@ -1,7 +1,7 @@
 # Palm Reading
 ## Overview
 
-Do you want to know what your palm lines say about you? Do you love Disney’s The Lion King? If yes, then you will enjoy our Lion King-themed palm reading app. It is a fun and interactive way to discover your destiny with the help of your favorite characters from the movie. You can chat with Simba, send them a picture or a description of your palm lines and they will tell you what they mean. You will be amazed by their insights and humor. Try it now and see for yourself.
+Do you want to know what your palm lines say about you? Do you love Disney’s The Lion King? If yes, then you will enjoy our Lion King-themed palm reading app. It is a fun and interactive way to discover your destiny with the help of your favorite characters from the movie. You can chat with a Lion King character, send them a picture or a description of your palm lines and they will tell you what they mean. You will be amazed by their insights and humor. Try it now and see for yourself.
 
 You can access our palm reading app [here](./source/index.html)..
 
