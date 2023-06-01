@@ -136,6 +136,3 @@ Main Planning Miro Board: https://miro.com/app/board/uXjVMN1qypo=/
 Figma: https://www.figma.com/file/baHcz99UEOscS9AGL6Szx2/Palm-Reading?type=design&node-id=104%3A147&t=HR9pgTiOpjxXK0OA-1
 
 CI/CD Pipeline Flowchart: https://miro.com/app/board/uXjVMGkxIeA=/
-
-# Release Notes
-
