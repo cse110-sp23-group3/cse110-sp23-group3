@@ -141,6 +141,8 @@ function createHistoryButton(key) {
   newHistoryButton.addEventListener('click', async function () {
     const tempKey = newHistoryButton.value;
     if (currentSession !== tempKey) {
+      saveToHistory(currentSession);
+
       currentSession = tempKey;
       rebuildChat(tempKey);
 
