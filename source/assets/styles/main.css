@@ -44,7 +44,7 @@ html, body {
 }
 
 body {
-  font-family: 'Irish Grover', sans-serif;
+  font-family: 'Dosis', sans-serif;
   font-size: 22px;
 }
 
@@ -74,6 +74,10 @@ aside {
 
 main {
   width: 100%;
+}
+
+h1 {
+  font-family: 'Lion kinG', sans-serif;
 }
 
 /* // SIDEBAR */

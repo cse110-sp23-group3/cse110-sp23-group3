@@ -152,6 +152,40 @@ choices:last-child {
 		cursor: pointer;
 		margin-right: 10px;
 }
+.thinking-bubble {
+  position: relative;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+}
+
+.thinking-bubble::before,
+.thinking-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  animation: thinking 1s infinite;
+}
+
+.thinking-bubble::before {
+  left: -10px;
+  animation-delay: -0.32s;
+}
+
+.thinking-bubble::after {
+  left: 10px;
+  animation-delay: 0.32s;
+}
+
+@keyframes thinking {
+  0%, 80%, 100% { opacity: 0; }
+  30%, 50% { opacity: 1; }
+}
 
 #spinner {
 	display:inline-block;
