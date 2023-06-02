@@ -19,14 +19,6 @@ const basicChoices = new Set(['yes', 'no']);
 
 let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
 
-// give the new chat button its functionality
-const newChatButton = document.getElementById('new-chat');
-newChatButton.addEventListener('click', function () {
-  currentSession = Date.now();
-  currentPalmLines = palmLines;
-  createHistoryButton(String(Date.now()));
-});
-
 /**
  * @description Handles the 'submit' event by preventing the default form submission, validating the input, and adding the message to the chat.
  * @param {Event} event - The event object from the 'submit' event.
@@ -375,6 +367,14 @@ async function main() {
 
     initialHistoryLoad = true;
   }
+
+  // give the new chat button its functionality
+  const newChatButton = document.getElementById('new-chat');
+  newChatButton.addEventListener('click', function () {
+    currentSession = Date.now();
+    currentPalmLines = palmLines;
+    createHistoryButton(String(Date.now()));
+  });
 
   newChatButton.click();
 
