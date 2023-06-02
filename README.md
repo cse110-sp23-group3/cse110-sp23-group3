@@ -1,7 +1,7 @@
 # Palm Reading
 ## Overview
 
-Embark on a journey to find the secrets hidden within the lines of your palm, where ancient wisdom intertwines with the enchanting world of Disney's The Lion King. Our palm reading app will let you discover the truths that lie within your palm lines as you talk with Simba himself! Share the details of your palm or send a photo of your hand, and watch as he reveals the extraordinary meanings behind every curve and crease. Brace yourself for a journey of self-discovery that combines the magic of palmistry with the spirit of The Lion King, and allow the whispers of fate to guide you toward a future beyond your imagination!
+Embark on a journey to find the secrets hidden within the lines of your palm, where ancient wisdom intertwines with the enchanting world of Disney's The Lion King. Our palm reading app will let you chat with Simba and share the details of your palm or send a photo of your hand. Then watch as he reveals the extraordinary meanings behind every line! Brace yourself for a journey of self-discovery that combines the magic of palmistry with the spirit of The Lion King, and allow the whispers of fate to guide you toward a future beyond your imagination!
 
 You can access our palm reading app [here](./source/index.html)..
 
