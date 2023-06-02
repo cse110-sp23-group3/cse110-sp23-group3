@@ -1,13 +1,13 @@
 // When DOM content has loaded, run the main function
-window.addEventListener('DOMContentLoaded', main);
+//window.addEventListener('DOMContentLoaded', main);
+window.addEventListener('DOMContentLoaded', rebuildHistoryButtons);
 
 let buttonChoice; // variable for the button choice
 let next = false; // variable to check if the user has clicked a button
 let chatMessage = ''; // variable for the currently stored chat message from the user
 let overallFortune = ''; // variable for overall fortune
-let chatNumber = 1; // variable to know, which chat we are viewing
-const totalChats = 3; // variable for total number of chats
-
+let chatKey = 0; // variable to know, which chat we are viewing
+let totalChats = 0;
 const chatForm = document.getElementById('chat-form'); // form for the chat
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
 
@@ -22,6 +22,12 @@ const basicChoices = new Set(['yes', 'no']);
 
 let chatArr = []; // array to store the chat messages
 let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
+
+// give the new chat button its functionality
+let newChatButton = document.getElementById('new-chat');
+newChatButton.addEventListener('click', function() {
+  createHistoryButton();
+});
 
 /**
  * @description Handles the 'submit' event by preventing the default form submission, validating the input, and adding the message to the chat.
@@ -69,16 +75,16 @@ function stopListening() {
  * Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
  *
  * @param {Array} chatArr - The chat array to be saved or added.
+ * @param {integer} key - The chat key that it will be saved at
  * @returns {void}
  */
-function saveToHistory(chatArr) {
+function saveToHistory(chatArr, key) {
   try {
     let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-    console.log(palmReadings);
     if (palmReadings !== null) {
-      palmReadings[chatNumber] = chatArr;
+      palmReadings[key] = chatArr;
     } else {
-      palmReadings = { [chatNumber]: chatArr };
+      palmReadings = { [key]: chatArr };
     }
 
     window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
@@ -89,13 +95,13 @@ function saveToHistory(chatArr) {
 
 /**
  * @description Creates the old chat by going through the array stored in localStorage
- * @param {integer} localChatNumber - The chat key, which it is stored in the localStorage array
+ * @param {integer} key - The chat key, which it is stored in the localStorage array
  * @returns {void}
  */
-function rebuildChat(localChatNumber) {
+function rebuildChat(key) {
   clearChat();
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-  chatArr = palmReadings[String(localChatNumber)];
+  chatArr = palmReadings[String(key)];
   if (chatArr !== undefined) {
     for (let i = 0; i < chatArr.length; i++) {
       addMessageToChat(chatArr[i].message, chatArr[i].isIncoming, true);
@@ -118,23 +124,70 @@ function clearChat() {
 }
 
 /**
- * @description Will make the buttons clickable
+ * @description Clears all the history buttons that were previously displayed
  * @param {}
  * @returns {void}
  */
-function historyButtons() {
-  const buttons = document.querySelectorAll('.history-chat');
-  // on click it will print the option chosen and disable all buttons
-  buttons.forEach((x) => {
-    x.addEventListener('click', function () {
-      const localChatNumber = x.textContent;
-      console.log(localChatNumber);
-      if (chatNumber !== localChatNumber && chatNumber <= totalChats) {
-        chatNumber = localChatNumber;
-        rebuildChat(localChatNumber);
-        main();
+function clearHistoryButtons() {
+  const historyContainer = document.querySelector('#histories');
+  while (historyContainer.hasChildNodes()) {
+    historyContainer.removeChild(historyContainer.firstChild);
+  }
+}
+
+/**
+ * @description Creates the buttons based on what is in localStorage assigning each key to a button
+ * @param {}
+ * @returns {void}
+ */
+function rebuildHistoryButtons() {
+  let palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  if(palmReadings !== null) {
+    let iterator = Object.keys(palmReadings);
+    for (const key of iterator) {
+      createHistoryButton(key);
+    }
+  }
+}
+
+/**
+ * @description this will create the history button with the specified key attatched to it, if no key attached it will create a new one based on the time
+ * @param {integer} key - chat key that would be correlating to localStorage key, and if none is available make a new one
+ * @returns {void}
+ */
+function createHistoryButton(key = String(Date.now())) {
+  let newHistoryButton = document.createElement('button');
+  newHistoryButton.textContent = ++totalChats
+  newHistoryButton.value = key;
+  let histories = document.getElementById('histories');
+  newHistoryButton.classList.add("history-chat");
+  histories.appendChild(newHistoryButton);
+
+  // Doesn't allow for the refreshed page to override a filled chat with an empty one
+  const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  let found = false;
+  if(palmReadings !== null) {
+    let iterator = Object.keys(palmReadings);
+    for (const tempKey of iterator) {
+      if(tempKey == key) {
+        found = true;
       }
-    });
+    }
+    if(!found) {
+      let emptyArr = [];
+      saveToHistory(emptyArr, key);
+    }
+  } else {
+      let emptyArr = [];
+      saveToHistory(emptyArr, key);
+  }
+  newHistoryButton.addEventListener('click', function() {
+    let tempKey = newHistoryButton.value;
+    if (chatKey !== tempKey) {
+      chatKey = tempKey;
+      rebuildChat(tempKey);
+      main();
+    }
   });
 }
 
@@ -244,12 +297,12 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
  * @description Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
  * @returns {Promise} - A promise to indicate when the chat process has completed.
  */
-async function main() {
+async function main() { 
   // Start listening to 'submit' event
   startListening();
 
   // initialize history buttons to have functionality
-  historyButtons();
+  //historyButtons();
 
   // Start the chat with some introductory messages
   addMessageToChat("Hi, I'm Simba!", true);
@@ -355,5 +408,5 @@ async function main() {
   );
 
   // Save the chatArr to local storage
-  saveToHistory(chatArr);
+  saveToHistory(chatArr, chatKey);
 }

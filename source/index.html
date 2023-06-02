@@ -34,12 +34,9 @@
         <aside>
             <div class="sidebar">
                 <div class="sidebar__menu">
-                    <h3>Chat History</h3>
-                    <ul>
-                        <button class = "history-chat">1</button>
-                        <button class = "history-chat">2</button>
-                        <button class = "history-chat">3</button>
-                    </ul>
+                    <button id = "new-chat"> New Chat</button>
+                    <div id = "histories">
+                    </div>
                 </div>
                 <div class="sidebar__settings">
                     <ul>
@@ -52,11 +49,14 @@
         <!-- MAIN -->
         <main>
             <div id="chat-messages" class="chat-messages"></div>
+            <div id="spinner" style="display: none;">
+                <div class="loader">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
         </main>
-
-        <div id="spinner" style="display: none;">
-            <div class="loader"></div>
-        </div>
 
     </div>
 
