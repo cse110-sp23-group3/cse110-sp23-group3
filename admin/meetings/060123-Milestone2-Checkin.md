@@ -5,6 +5,8 @@
 **Type of Meeting:** check-ins
 
 **Time/Place:** Zoom, June 1, 2023 4:00 PM - 4:30 PM
+**Recording:** https://ucsd.zoom.us/rec/share/Hx1_L90D1Z52BDn3akMlT__NHIKLhVOoIgOUfNXvrHMuG6Bk0kUP5mA1IfyKKmbK.3-eZxSiPEGGdv-iz 
+Passcode: =&8qE4n0
 
 ## Attendance:
 
