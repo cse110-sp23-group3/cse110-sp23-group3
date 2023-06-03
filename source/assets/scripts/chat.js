@@ -413,6 +413,10 @@ async function main() {
 
     // Start a new chat with some introductory messages
     addMessageToChat("Hi, I'm Simba!", true);
+    addMessageToChat(
+      'DISCLAIMER: This app was written as part of a school assignment. The content of this app and the practice of palm reading are not endorsed or affirmed by the creators.',
+      true
+    );
     addMessageToChat('Would you like me to read your palm?', true);
     addButtons(basicChoices);
     await waitUserInput();
