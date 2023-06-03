@@ -181,7 +181,7 @@ function addMessageToChat(message, isIncoming = false) {
   // If message is incoming, also append an image
   if (isIncoming) {
     const messageImage = document.createElement('img');
-    messageImage.src = "assets/styles/bg/simba.png";
+    messageImage.src = "assets/images/simba.png";
     messageImage.style.width = "50px";
     messageImage.style.height = "50px";
     messageImage.alt = 'Simba';
