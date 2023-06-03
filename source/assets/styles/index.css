@@ -68,6 +68,24 @@ main {
   z-index: 1;
 }
 
+.message-button {
+  padding-left: calc(1.rem + 2.5rem);
+}
+
+.message-button button {
+  background-color: var(--bg-primary);
+  /* color: var(--text-primary); */
+  color: rgb(0, 132, 255);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font: caption;
+  border: 1px solid var(--text-primary);
+  border-radius: var(--border-radius);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
 /* .chat-input-container button[type='submit'] {
   background-color: var(--blue);
   color: var(--text-secondary);
@@ -218,20 +236,6 @@ choices:last-child {
   height: 200px;
   overflow-y: scroll;
   margin-bottom: 20px;
-}
-
-.message-button {
-  padding-left: calc(1.25rem + 2.75rem);
-}
-
-.message-button button {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  border: 1px solid var(--text-primary);
-  border-radius: var(--border-radius);
-  padding: 0.65rem 1rem;
-  cursor: pointer;
-  margin-right: 10px;
 }
 
 #spinner {

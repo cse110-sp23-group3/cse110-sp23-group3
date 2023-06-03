@@ -11,12 +11,12 @@ const chatMessages = document.getElementById('chat-messages'); // container for 
 
 // Set of palm lines and basic choices
 const palmLines = new Set([
-  'heart line',
-  'head line',
-  'life line',
-  'fate line',
+  'Heart Line',
+  'Head Line',
+  'Life Line',
+  'Fate Line',
 ]);
-const basicChoices = new Set(['yes', 'no']);
+const basicChoices = new Set(['Yes', 'No']);
 
 const chatArr = []; // array to store the chat messages
 let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
@@ -181,7 +181,7 @@ function addMessageToChat(message, isIncoming = false) {
   // If message is incoming, also append an image
   if (isIncoming) {
     const messageImage = document.createElement('img');
-    messageImage.src = "assets/images/simba.png";
+    messageImage.src = "assets/images/simbaNoBG.png";
     messageImage.style.width = "50px";
     messageImage.style.height = "50px";
     messageImage.alt = 'Simba';
