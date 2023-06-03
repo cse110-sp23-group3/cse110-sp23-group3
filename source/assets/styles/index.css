@@ -1,4 +1,6 @@
 @import 'base.css';
+@import 'components.css';
+@import 'utilities.css';
 @import 'main.css';
 @import 'sidebar.css';
 
@@ -6,13 +8,76 @@
 
 main {
   display: flex;
-  flex-direction: column;
-  height: calc(100vh - var(--header-height) - var(--footer-height)- 1px);
-
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
   padding: 1rem;
   border-radius: var(--border-radius-md);
-  background-color: var(--bg-secondary);
+
+  color: var(--text-primary-light);
 }
+
+/* CHATBOX */
+.app.container {
+  padding: var(--p-sm);
+}
+
+/* CHATBOX - INCOMING MESSAGES */
+
+/* CHAT INPUT */
+.chat-input-container {
+  display: flex;
+  height: var(--footer-height);
+  align-items: center;
+  justify-content: center;
+  padding: var(--p-sm);
+}
+
+.chat-input-container form {
+  display: flex;
+  padding: var(--p-sm);
+  border: none;
+  width: 100%;
+}
+
+.chat-input-container form input[type='text'] {
+  flex: 1;
+  align-items: center;
+  margin-right: 1rem;
+  padding-left: 2.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--text-secondary);
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+}
+
+.chat-input-container form input[type='file'] {
+  display: none;
+}
+
+.chat-input-container form label[for='image'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin: 0.13rem -2.25rem 0.13rem 0.1rem;
+  border: 1px solid var(--text-secondary);
+  background: var(--light-blue);
+  z-index: 1;
+}
+
+/* .chat-input-container button[type='submit'] {
+  background-color: var(--blue);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  border-radius: var(--border-radius);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+} */
+
+/* CHAT */
 
 /* CHAT */
 

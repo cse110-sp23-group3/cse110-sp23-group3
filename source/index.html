@@ -32,7 +32,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="app container">
         <!-- SIDEBAR -->
         <aside>
             <div class="sidebar">
@@ -53,8 +53,7 @@
         </aside>
 
         <!-- MAIN -->
-        <main>
-            <!-- <img src="./assets/styles/bg/simba.png" alt="Simba Image" class="bubble-image"> -->
+        <main class="bg-blur border-sm">
             <div id="chat-image" class="chat-image"></div>
             <div id="chat-messages" class="chat-messages"></div>
             <div id="spinner" style="display: none;">
@@ -69,13 +68,13 @@
     </div>
 
     <!-- CHAT INPUT -->
-    <section class="chat-container">
-        <form id="chat-form" action="#" method="post">
+    <section class="chat-input-container">
+        <form id="chat-form" class="border-sm" action="#" method="post">
             <label for="image">+</label>
             <input type="file" name="image" id="image">
             <label for="message"></label>
             <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
-            <button type="submit">Send</button>
+            <button type="submit" class="btn">Send</button>
         </form>
     </section>
 

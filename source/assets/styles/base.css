@@ -9,8 +9,11 @@
   --bg-primary: white;
   --bg-secondary: var(--light-blue);
 
-  --text-primary: black;
-  --text-secondary: black;
+  --text-primary-light: rgba(245, 251, 242, 1);
+  --text-primary-dark: black;
+
+  --text-secondary-light: black;
+  --text-secondary-dark: white;
 
   /* BORDER */
   --border: 1px solid var(--gray);
@@ -24,6 +27,11 @@
   --aside-width: 20rem;
 
   --border-radius: 3rem;
+
+  /* PADDING */
+  --p-sm: 0.5rem;
+  --p-md: 1rem;
+  --p-lg: 1.5rem;
 
   /* FONTS */
   --font-primary: 'Dosis', sans-serif;
