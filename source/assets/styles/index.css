@@ -182,9 +182,20 @@ button[type="submit"] {
 }
 }
 
+.history-btn-container {
+    width: var(--history-btn-container-width);
+}
 .history-chat {
-    width: 100%;
-    border-radius: 10px;
+    width: calc(var(--history-btn-container-width) - var(--delete-btn-width) - 8px);
+    border-radius: var(--history-border-radius);
+}
+.history-delete {
+    border-radius: var(--history-border-radius);
+    width: var(--delete-btn-width);
+}
+.delete-icon {
+    width: var(--delete-icon-width);
+    height: var(--delete-icon-height);
 }
 #histories {
     margin: 0px;

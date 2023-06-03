@@ -8,6 +8,7 @@ let next = false; // variable to check if the user has clicked a button
 const chatForm = document.getElementById('chat-form'); // form for the chat
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
 const sendButton = document.getElementById('send-button'); // send button for chat box
+const delIconHTML = '<img class="delete-icon" src="assets/images/trash-can.svg">'; // inner html for chat history delete button
 
 // Set of palm lines and basic choices
 const palmLines = new Set([
@@ -131,14 +132,22 @@ function clearChat() {
  */
 function createHistoryButton(key) {
   // Process of creating a new button for a chat session
+  const newHistBtnContainer = document.createElement('div');
+  newHistBtnContainer.classList.add('history-btn-container');
   const newHistoryButton = document.createElement('button');
   newHistoryButton.textContent = new Date(Number(key)).toLocaleString();
   newHistoryButton.value = key;
+  const newDeleteButton = document.createElement('button');
+  newDeleteButton.value = key;
+  newDeleteButton.innerHTML = delIconHTML;
+  newDeleteButton.classList.add('history-delete');
   const histories = document.getElementById('histories');
   newHistoryButton.classList.add('history-chat');
+  newHistBtnContainer.appendChild(newHistoryButton);
+  newHistBtnContainer.appendChild(newDeleteButton);
 
   // insert the new button at the top of the list
-  histories.insertBefore(newHistoryButton, histories.firstChild);
+  histories.insertBefore(newHistBtnContainer, histories.firstChild);
 
   // Make sure that we are rebuilding the chat whenever one of the history buttons are clicked
   newHistoryButton.addEventListener('click', async function () {
@@ -154,15 +163,44 @@ function createHistoryButton(key) {
       historyButtons.forEach((button) => {
         button.disabled = false;
       });
+      const deleteButtons = histories.querySelectorAll('.history-delete');
+      deleteButtons.forEach((button) => {
+        button.disabled = false;
+      });
 
-      // disable currently clicked on button
+      // disable currently clicked on buttons
       newHistoryButton.disabled = true;
+      newDeleteButton.disabled = true;
 
       await readPalm();
     }
   });
 
+  // Make delete button delete chat when clicked
+  newDeleteButton.addEventListener('click', async function() {
+    const tempKey = newDeleteButton.value;
+    if (currentSession !== tempKey) {
+      deleteFromHistory(tempKey);
+      saveToHistory(currentSession);
+      deleteHistoryButton(tempKey);
+    }
+  });
+
   return newHistoryButton;
+}
+
+/**
+ * @description this will delete the history button with the specified key attatched to it; if that key does not exist, the function does nothing
+ * @param {integer} key - chat key that would be correlating to localStorage key
+ * @returns {void}
+ */
+function deleteHistoryButton(key) {
+  if (!document.querySelector(`button[class="history-chat"][value="${key}"]`)) {
+    return;
+  }
+  const histButtonToDelete = document.querySelector(`button[class="history-chat"][value="${key}"]`);
+  const histButtonParentDiv = histButtonToDelete.parentElement;
+  histButtonParentDiv.remove();
 }
 
 /**
@@ -366,14 +404,20 @@ async function readPalm() {
 }
 
 function resetHistoryButtons(currentHistoryButton) {
+  const currentDeleteButton = document.querySelector(`button[value="${currentHistoryButton.value}"][class="history-delete"]`)
   const histories = document.getElementById('histories');
   const historyButtons = histories.querySelectorAll('.history-chat');
+  const deleteButtons = histories.querySelectorAll('.history-delete');
   historyButtons.forEach((button) => {
+    button.disabled = false;
+  });
+  deleteButtons.forEach((button) => {
     button.disabled = false;
   });
 
   // disable currently clicked on button
   currentHistoryButton.disabled = true;
+  currentDeleteButton.disabled = true;
 }
 
 let sessions; // object to store the palm reading sessions as a sort of state variable that you keep track of until page exit, then you save it to local storage

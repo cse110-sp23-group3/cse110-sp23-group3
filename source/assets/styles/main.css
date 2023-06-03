@@ -36,6 +36,13 @@
   --aside-width: 20rem;
 
   --border-radius: 3rem;
+
+  --delete-btn-width: 26px;
+  --history-border-radius: 10px;
+  --delete-icon-width: 10px;
+  --delete-icon-height: 10px;
+
+  --history-btn-container-width: 100%;
 }
 
 html, body {
