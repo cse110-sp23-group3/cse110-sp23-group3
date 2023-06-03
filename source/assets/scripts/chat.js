@@ -84,6 +84,16 @@ function saveToHistory(key) {
 }
 
 /**
+ * Deletes a session from the history.
+ *
+ * @param {string} key - The key of the session to delete.
+ * @returns {void}
+ */
+function deleteFromHistory(key) {
+  delete sessions[key];
+}
+
+/**
  * @description Creates the old chat by going through the array stored in localStorage
  * @param {integer} key - The chat key, which it is stored in the localStorage array
  * @returns {void}
@@ -150,6 +160,8 @@ function createHistoryButton(key) {
       await readPalm();
     }
   });
+
+  return newHistoryButton;
 }
 
 /**
@@ -345,6 +357,17 @@ async function readPalm() {
   );
 }
 
+function resetHistoryButtons(currentHistoryButton) {
+  const histories = document.getElementById('histories');
+  const historyButtons = histories.querySelectorAll('.history-chat');
+  historyButtons.forEach((button) => {
+    button.disabled = false;
+  });
+
+  // disable currently clicked on button
+  currentHistoryButton.disabled = true;
+}
+
 let sessions; // object to store the palm reading sessions as a sort of state variable that you keep track of until page exit, then you save it to local storage
 let overallFortune = ''; // variable for overall fortune
 let currentSession; // variable to know, which chat we are viewing
@@ -370,32 +393,35 @@ async function main() {
 
   // give the new chat button its functionality
   const newChatButton = document.getElementById('new-chat');
-  newChatButton.addEventListener('click', function () {
+  newChatButton.addEventListener('click', async function () {
+    saveToHistory(currentSession);
+    clearChat();
+    currentChatArr = [];
     currentSession = Date.now();
     currentPalmLines = palmLines;
-    createHistoryButton(String(Date.now()));
+    chatMessage = '';
+
+    // Start a new chat with some introductory messages
+    addMessageToChat("Hi, I'm Simba!", true);
+    addMessageToChat('Would you like me to read your palm?', true);
+    addButtons(basicChoices);
+    await waitUserInput();
+
+    // Case where buttonChoice is No, then obviously don't read the palm and do nothing.
+    if (buttonChoice === 'no') {
+      addMessageToChat(
+        "When you're ready for a palm reading, just reload!",
+        true
+      );
+      return;
+    }
+
+    const newChat = createHistoryButton(currentSession);
+
+    resetHistoryButtons(newChat);
+
+    await readPalm();
   });
 
   newChatButton.click();
-
-  // Start a new chat with some introductory messages
-  addMessageToChat("Hi, I'm Simba!", true);
-  addMessageToChat('Would you like me to read your palm?', true);
-  addButtons(basicChoices);
-  await waitUserInput();
-
-  // Case where buttonChoice is No, then obviously don't read the palm and do nothing.
-  if (buttonChoice === 'no') {
-    addMessageToChat(
-      "When you're ready for a palm reading, just reload!",
-      true
-    );
-    return;
-  }
-
-  // Start the palm reading
-  await readPalm();
-
-  // Save the currentChatArr to local storage
-  saveToHistory(currentSession);
 }
