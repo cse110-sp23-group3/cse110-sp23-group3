@@ -5,7 +5,7 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "opts": {
-    "destination": "out/",
+    "destination": "JSDocs/",
     "encoding": "utf8"
   },
   "plugins": [],
