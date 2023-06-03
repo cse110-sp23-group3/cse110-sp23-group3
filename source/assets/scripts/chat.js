@@ -269,10 +269,15 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
 async function readPalm() {
   while (true) {
     // Case where buttonChoice is Yes, then read the palm.
-    addMessageToChat(
-      'Which palm line would you like me to read? Select from the buttons below.',
-      true
-    );
+    if (
+      currentChatArr[currentChatArr.length - 1].message !==
+      'Which palm line would you like me to read? Select from the buttons below.'
+    ) {
+      addMessageToChat(
+        'Which palm line would you like me to read? Select from the buttons below.',
+        true
+      );
+    }
     addButtons(currentPalmLines);
     await waitUserInput();
 
