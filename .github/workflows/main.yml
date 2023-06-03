@@ -31,14 +31,16 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: StandardJS and Prettier
-      run: npx eslint ./source/**/*.js
+    - name: ESLint and Prettier
+      run: |
+        npx eslint --fix ./source/**/*.js
+        npx prettier --write "./source/**/*.{js,css,html}"
 
     - name: Stylelint
-      run: npx stylelint "./source/**/*.css"
+      run: npx stylelint --fix "./source/**/*.css"
 
     - name: HTMLHint
-      run: npx htmlhint "./source/**/*.html"
+      run: npx htmlhint --config .htmlhintrc "./source/**/*.html"
 
     - name: Jest (optional)
       id: jest
@@ -47,10 +49,13 @@ jobs:
     - name: JSDoc
       run: npx jsdoc -c jsdoc.config.json
 
-    - name: Commit JSDoc changes
+    - name: Check for changes
+      id: changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
+
+    - name: Commit changes
       run: |
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add -A
-        git commit -m 'Update JSDoc' || echo 'No changes to commit'
-        git push https://${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
+        git diff --quiet || (git add -A && git commit -m 'Automatically fix style issues' && git push https://${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git)
+
