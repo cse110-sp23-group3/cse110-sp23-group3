@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate Release Notes and Update README
+      - name: Generate Release Notes and Update CHANGELOG
         id: release-notes
         run: |
           # Collect all commit messages between last and second to last tags
@@ -38,14 +38,14 @@ jobs:
           RELEASE_NOTES=$(echo "$COMMIT_MESSAGES" | awk -v ver="$LAST_TAG" 'BEGIN {print "## " ver "\n"} /^feat/ {print "- **Feature:** " substr($0, 6)} /^fix/ {print "- **Bug Fix:** " substr($0, 5)} /^docs/ {print "- **Documentation:** " substr($0, 6)}')
           echo $RELEASE_NOTES
 
-          # Append release notes to README.md
-          echo -e "$RELEASE_NOTES" >> README.md
+          # Append release notes to CHANGELOG.md
+          echo -e "$RELEASE_NOTES" >> CHANGELOG.md
 
       - name: Commit changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "<>"
           git pull origin main
-          git add README.md
+          git add CHANGELOG.md
           git commit -m "Add release notes"
           git push origin HEAD:main
