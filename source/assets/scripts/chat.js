@@ -7,6 +7,7 @@ let next = false; // variable to check if the user has clicked a button
 
 const chatForm = document.getElementById('chat-form'); // form for the chat
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
+const sendButton = document.getElementById('send-button'); // send button for chat box
 
 // Set of palm lines and basic choices
 const palmLines = new Set([
@@ -302,9 +303,11 @@ async function readPalm() {
       `How would you describe your ${buttonChoice}? Use adjectives such as "wavy", "long", "curvy", and the start and end locations of the line. Be as specific as possible.`,
       true
     );
+    sendButton.disabled = false;
     startListening();
     await waitUserInput();
     stopListening();
+    sendButton.disabled = true;
 
     // Show the spinner
     document.getElementById('spinner').style.display = 'block';
@@ -384,6 +387,8 @@ let chatMessage = ''; // variable for the currently stored chat message from the
  * @returns {Promise} - A promise to indicate when the chat process has completed.
  */
 async function main() {
+  // initially disable the send button
+  sendButton.disabled = true;
   if (!initialHistoryLoad) {
     // Check if there are previous palm reading sessions in local storage and load them into the sidebar if there are
     sessions = JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
