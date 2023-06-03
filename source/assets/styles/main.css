@@ -44,10 +44,13 @@ html, body {
 }
 
 body {
-  font-family: 'Irish Grover', sans-serif;
+  font-family: 'Dosis', sans-serif;
   font-size: 22px;
 }
 
+h1 {
+  font-family: 'Lion kinG', sans-serif;
+}
 
 header {
   display: flex;
