@@ -1,0 +1,12 @@
+.bg-blur {
+  background: linear-gradient(
+    102.17deg,
+    rgba(32, 80, 115, 0.64) 0.47%,
+    rgba(32, 80, 115, 0) 121.14%
+  );
+  backdrop-filter: blur(10px);
+}
+
+.border-sm {
+  border: 1px solid rgba(99, 235, 235, 1);
+}
