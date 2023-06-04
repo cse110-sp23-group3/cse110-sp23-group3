@@ -33,7 +33,7 @@
 
   --header-height: 3rem;
   --footer-height: 4rem;
-  --aside-width: 20rem;
+  --aside-width: 5rem;
 
   --border-radius: 3rem;
 }
@@ -65,31 +65,30 @@ div.container {
   height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
-aside {
-  width: var(--aside-width);
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 1rem;
-}
 
 main {
   width: 100%;
 }
 
-// SIDEBAR
+/* SIDEBAR */
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  width: var(--aside-width);
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 1rem;
+  transition: width 0.5s;
 }
 
 .sidebar__menu {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-// ul
+/* ul */
 .sidebar__menu ul {
   list-style: none;
   padding: 0;
@@ -98,8 +97,15 @@ main {
 
 .sidebar__menu ul li {
   padding: 0.5rem 0;
+  margin: 0;
+  display: flex;
+  cursor: pointer;
 }
 
 .sidebar__menu ul li a {
   text-decoration: none;
+}
+
+.sidebar:hover {
+  width: 15rem;
 }
