@@ -1,112 +1,44 @@
-/* <div class="container">
-        <!-- SIDEBAR -->
-        <aside>
-            <div class="sidebar">
-                <div class="sidebar__menu">
-                    <h3>Chat History</h3>
-                    <ul>
-                        <li><a href="#">History #1</a></li>
-                        <li><a href="#">History #2</a></li>
-                        <li><a href="#">History #3</a></li>
-                    </ul>
-                </div>
-                <div class="sidebar__settings">
-                    <ul>
-                        <li><a href="#">Settings</a></li>
-                    </ul>
-                </div>
-            </div>
-        </aside> */
+@import '_buttons.css';
+@import '_utilities.css';
 
-:root {
-  --light-gray: #f9f9f9;
-  --gray: #d9d9d9;
+@import '_sidebar.css';
 
-  --light-blue: #d8e4fc;
-  --blue: #bcdcfd;
-  
-  --bg-primary: white;
-  --bg-secondary: var(--light-blue);
-
-  --text-primary: black;
-  --text-secondary: black;
-
-  --header-height: 3rem;
-  --footer-height: 4rem;
-  --aside-width: 20rem;
-
-  --border-radius: 3rem;
-
-  --delete-btn-width: 26px;
-  --history-border-radius: 10px;
-  --delete-icon-width: 10px;
-  --delete-icon-height: 10px;
-
-  --history-btn-container-width: 100%;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Irish Grover', sans-serif;
-  font-size: 22px;
-}
-
+/* HEADER */
 
 header {
   display: flex;
-  height: var(--header-height);
-  justify-content: space-between;
   align-items: center;
+  height: var(--header-height);
   padding: 0 1rem;
-  background-image: url('bg/cosmic.jpg');
-  background-size: cover;
-  color: white;
+  color: var(--text-primary-light);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
-div.container {
+header h1 {
+  font-family: var(--font-secondary);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* MAIN */
+body > div.container {
   display: flex;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
-}
-
-aside {
-  width: var(--aside-width);
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 1rem;
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
 }
 
 main {
   width: 100%;
-}
-
-// SIDEBAR
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.sidebar__menu {
-  display: flex;
-  flex-direction: column;
-}
-
-// ul
-.sidebar__menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar__menu ul li {
-  padding: 0.5rem 0;
-}
-
-.sidebar__menu ul li a {
-  text-decoration: none;
 }

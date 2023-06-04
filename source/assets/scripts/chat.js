@@ -12,12 +12,12 @@ const delIconHTML = '<img class="delete-icon" src="assets/images/trash-can.svg">
 
 // Set of palm lines and basic choices
 const palmLines = new Set([
-  'heart line',
-  'head line',
-  'life line',
-  'fate line',
+  'Heart Line',
+  'Head Line',
+  'Life Line',
+  'Fate Line',
 ]);
-const basicChoices = new Set(['yes', 'no']);
+const basicChoices = new Set(['Yes', 'No']);
 
 let isListening = false; // boolean to check if the chat form is listening for a 'submit' event
 
@@ -236,12 +236,12 @@ function addButtons(message, isIncoming = true) {
   );
 
   const messageBubble = document.createElement('div');
-  messageBubble.classList.add('message-button');
+  messageBubble.classList.add('message-button', 'btn-group');
 
   // Making a button for each option
   for (const choice of message) {
     const messageText = document.createElement('button');
-    messageText.classList.add('choices-text');
+    messageText.classList.add('choices-text', 'btn', 'outline');
     messageText.textContent = choice;
 
     // Append the message text to the chat message bubble
@@ -291,11 +291,30 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
   messageBubble.classList.add('message-bubble');
 
   const messageText = document.createElement('p');
-  messageText.classList.add('message-text');
+  messageText.classList.add('message-text', 'text-md');
   messageText.textContent = message;
 
   // Append the message text to the chat message bubble
   messageBubble.appendChild(messageText);
+
+  // If message is incoming, also append an image
+  if (isIncoming) {
+    // Create a new chat message element
+    const messageImage = document.createElement('img');
+    messageImage.src = 'assets/images/simba.png';
+    messageImage.style.width = '3rem';
+    messageImage.style.height = '3rem';
+
+    // Do not display the image
+    // if the last message was also incoming
+    if (chatArr[chatArr.length - 2]?.isIncoming) {
+      messageImage.style.visibility = 'hidden';
+    }
+
+    messageImage.alt = 'Simba';
+    messageImage.classList.add('message-image');
+    messageElement.appendChild(messageImage);
+  }
 
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
@@ -305,7 +324,29 @@ function addMessageToChat(message, isIncoming = false, isRebuilding = false) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-async function readPalm() {
+/**
+ * @description Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
+ * @returns {Promise} - A promise to indicate when the chat process has completed.
+ */
+async function main() {
+  // Start listening to 'submit' event
+  startListening();
+
+  // Start the chat with some introductory messages
+  addMessageToChat("Hi, I'm Simba!", true);
+  addMessageToChat('Would you like me to read your palm?', true);
+  addButtons(basicChoices);
+  await waitUserInput();
+
+  // Case where buttonChoice is No, then obviously don't read the palm and do nothing.
+  if (buttonChoice === 'No') {
+    addMessageToChat(
+      "When you're ready for a palm reading, just reload!",
+      true
+    );
+    return;
+  }
+
   while (true) {
     // Case where buttonChoice is Yes, then read the palm.
     if (
@@ -325,13 +366,13 @@ async function readPalm() {
 
     // description of each palm line
     const palmLineDesc = {
-      'heart line':
+      'Heart Line':
         "runs horizontally across your palm and is the topmost line you'll see. It begins at the edge of your palm on the pinkie side, and runs to just underneath your index or middle finger.",
-      'head line':
+      'Head Line':
         'begins under your index finger along the edge of your palm and extends part-way across your palm in a graceful curve flowing in a slightly downward direction.',
-      'life line':
+      'Life Line':
         'begins between your thumb and index finger and travels down your palm through the middle.',
-      'fate line':
+      'Fate Line':
         'is a vertical line running up the palm towards the base of the middle finger.',
     };
 
@@ -387,7 +428,7 @@ async function readPalm() {
     addMessageToChat('Would you like me to continue reading your palm?', true);
     addButtons(basicChoices);
     await waitUserInput();
-    if (buttonChoice === 'no') {
+    if (buttonChoice === 'No') {
       break;
     }
   }

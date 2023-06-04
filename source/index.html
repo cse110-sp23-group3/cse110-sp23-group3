@@ -11,36 +11,45 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/styles/main.css">
     <link rel="stylesheet" href="assets/styles/index.css">
-    <link href="https://fonts.googleapis.com/css?family=Irish Grover" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lion-king" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=erode@700,500,600,400&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 
 <body>
-
     <!-- HEADING -->
     <header>
+        <img type="image/svg+xml" src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
+        <!-- <img src="./assets/images/menu.svg" alt="menu" class="orange"> -->
         <div class="banner">
-            <h1>Powell's Pride Palm Reading</h1>
-        </div>
-        <div class="heading">
-            <h3>Chat History #1</h3>
+            <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
         </div>
     </header>
-
-    <div class="container">
+    <div class="app container">
         <!-- SIDEBAR -->
         <aside>
-            <div class="sidebar">
-                <div class="sidebar__menu">
-                    <button id = "new-chat"> New Chat</button>
-                    <div id = "histories">
-                    </div>
+            <div class="sidebar bg-blur-darker border rounded-md">
+                <div class="sidebar__history scrollbar">
+                    <button id="new-chat" class="btn outline">+ New Chat</button>
+                    <h3 class="text text-lg">Chat History</h3>
+                    <ul>
+                        <li><a class="text-md" href="#">History #1</a></li>
+                        <li><a class="text-md" href="#">History #2</a></li>
+                        <li><a class="text-md" href="#">History #3</a></li>
+                    </ul>
                 </div>
                 <div class="sidebar__settings">
                     <ul>
-                        <li><a href="#">Settings</a></li>
+                        <li>
+                            <a class="text-md" href="#">
+                                <img src="./assets/images/ic_setting.svg" alt="settings" class="sidebar__icons white">
+                                Settings
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +57,8 @@
 
         <!-- MAIN -->
         <main>
-            <div id="chat-messages" class="chat-messages"></div>
+            <div id="chat-image" class="chat-image"></div>
+            <div id="chat-messages" class="chat-messages bg-blur border rounded-md scrollbar"></div>
             <div id="spinner" style="display: none;">
                 <div class="loader">
                     <div class="dot"></div>
@@ -61,17 +71,18 @@
     </div>
 
     <!-- CHAT INPUT -->
-    <section class="chat-container">
-        <form id="chat-form" action="#" method="post">
-            <label for="image">+</label>
-            <input type="file" name="image" id="image">
+    <section class="chat-input-container">
+        <form id="chat-form" class="border-sm" action="#" method="post">
+            <label for="image" class="btn">+</label>
+            <input type="file" name="image" id="image" class="btn">
             <label for="message"></label>
             <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
-            <button type="submit" id="send-button">Send</button>
+            <button type="submit" class="btn">Send</button>
         </form>
     </section>
 
     <!-- JavaScript -->
+    <script src="assets/scripts/main.js"></script>
     <script src="assets/scripts/chat.js"></script>
 </body>
 
