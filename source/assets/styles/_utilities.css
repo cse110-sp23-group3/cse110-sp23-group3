@@ -1,0 +1,170 @@
+:root {
+  /* COLORS */
+  --light-gray: #f9f9f9;
+  --gray: #d9d9d9;
+
+  --light-blue: #d8e4fc;
+  --blue: #bcdcfd;
+
+  --light-yellow: #fef102;
+
+  --orange: #ffa108;
+
+  --bg-primary: white;
+  --bg-secondary: var(--light-blue);
+
+  --text-primary-light: rgba(245, 251, 242, 1);
+  --text-primary-dark: black;
+
+  --text-secondary-light: black;
+  --text-secondary-dark: white;
+
+  /* BORDER */
+  --border: 1px solid var(--gray);
+
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 1.5rem;
+
+  --header-height: 3rem;
+  --footer-height: 4rem;
+  --aside-width: 20rem;
+
+  --border-radius: 3rem;
+
+  /* PADDING */
+  --p-sm: 0.5rem;
+  --p-md: 1rem;
+  --p-lg: 1.5rem;
+
+  /* FONTS */
+  --font-primary: 'Dosis', sans-serif;
+  --font-secondary: 'Lion kinG', sans-serif;
+
+  /* FONT SIZES */
+  --font-size-xxs: 1rem;
+  --font-size-xs: 1.2rem;
+  --font-size-sm: 1.4rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 1.8rem;
+  --font-size-xl: 2rem;
+}
+
+/* BACKGROUND */
+.bg-blur {
+  background: linear-gradient(
+    102.17deg,
+    rgba(32, 80, 115, 0.64) 0.47%,
+    rgba(32, 80, 115, 0) 121.14%
+  );
+  backdrop-filter: blur(1rem);
+}
+
+/* BORDER */
+.border {
+  border: 1px solid rgba(99, 235, 235, 0.5);
+}
+
+.border.rounded-sm {
+  border-radius: var(--border-radius-sm);
+}
+
+.border.rounded-md {
+  border-radius: var(--border-radius-md);
+}
+
+.border.rounded-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+/* SHADOW */
+
+/* TEXT - SIZE */
+
+.text-sm {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.text-base {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-2xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .text-sm {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .text-base {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .text-lg {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .text-xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-2xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* TEXT - COLOR */
+
+.text-primary-light {
+  color: var(--text-primary-light);
+}
+
+.text-primary-dark {
+  color: var(--text-primary-dark);
+}
+
+.text-secondary-light {
+  color: var(--text-secondary-light);
+}
+
+.text-secondary-dark {
+  color: var(--text-secondary-dark);
+}
+
+.text.orange {
+  background: -webkit-linear-gradient(var(--light-yellow), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* SVG */
+
+img.orange {
+  filter: invert(76%) sepia(91%) saturate(513%) hue-rotate(346deg)
+    brightness(102%) contrast(105%);
+  --moz-filter: invert(76%) sepia(91%) saturate(513%) hue-rotate(346deg)
+    brightness(102%) contrast(105%);
+  --webkit-filter: invert(76%) sepia(91%) saturate(513%) hue-rotate(346deg)
+    brightness(102%) contrast(105%);
+}

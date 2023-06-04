@@ -1,7 +1,44 @@
-aside {
-  width: var(--aside-width);
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  padding: 1rem;
-  display: none;
+@import '_buttons.css';
+@import '_utilities.css';
+
+@import '_sidebar.css';
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 1rem;
+  color: var(--text-primary-light);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  font-family: var(--font-secondary);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* MAIN */
+body > div.container {
+  display: flex;
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
+}
+
+main {
+  width: 100%;
 }

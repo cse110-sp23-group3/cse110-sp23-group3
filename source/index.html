@@ -21,23 +21,21 @@
 </head>
 
 <body>
-
     <!-- HEADING -->
     <header>
+        <img type="image/svg+xml" src="./assets/images/menu.svg" alt="menu" class="sidebar__toggle orange">
+        <!-- <img src="./assets/images/menu.svg" alt="menu" class="orange"> -->
         <div class="banner">
-            <h1>Powell's Pride Palm Reading</h1>
-        </div>
-        <div class="heading">
-            <h3>Chat History #1</h3>
+            <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
         </div>
     </header>
-
     <div class="app container">
         <!-- SIDEBAR -->
         <aside>
-            <div class="sidebar">
-                <div class="sidebar__menu">
-                    <h3>Chat History</h3>
+            <div class="sidebar bg-blur border rounded-md">
+                <div class="sidebar__history">
+                    <button id="new-chat" class="btn outline">+ New Chat</button>
+                    <h3 class="text text-lg">Chat History</h3>
                     <ul>
                         <li><a href="#">History #1</a></li>
                         <li><a href="#">History #2</a></li>
@@ -53,9 +51,9 @@
         </aside>
 
         <!-- MAIN -->
-        <main class="bg-blur border-sm">
+        <main>
             <div id="chat-image" class="chat-image"></div>
-            <div id="chat-messages" class="chat-messages"></div>
+            <div id="chat-messages" class="chat-messages bg-blur border rounded-md"></div>
             <div id="spinner" style="display: none;">
                 <div class="loader">
                     <div class="dot"></div>
@@ -70,8 +68,8 @@
     <!-- CHAT INPUT -->
     <section class="chat-input-container">
         <form id="chat-form" class="border-sm" action="#" method="post">
-            <label for="image">+</label>
-            <input type="file" name="image" id="image">
+            <label for="image" class="btn">+</label>
+            <input type="file" name="image" id="image" class="btn">
             <label for="message"></label>
             <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
             <button type="submit" class="btn">Send</button>
@@ -79,6 +77,7 @@
     </section>
 
     <!-- JavaScript -->
+    <script src="assets/scripts/main.js"></script>
     <script src="assets/scripts/chat.js"></script>
 </body>
 

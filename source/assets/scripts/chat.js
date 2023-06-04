@@ -117,12 +117,12 @@ function addButtons(message, isIncoming = true) {
   );
 
   const messageBubble = document.createElement('div');
-  messageBubble.classList.add('message-button');
+  messageBubble.classList.add('message-button', 'btn-group');
 
   // Making a button for each option
   for (const choice of message) {
     const messageText = document.createElement('button');
-    messageText.classList.add('choices-text');
+    messageText.classList.add('choices-text', 'btn', 'outline');
     messageText.textContent = choice;
 
     // Append the message text to the chat message bubble
@@ -172,7 +172,7 @@ function addMessageToChat(message, isIncoming = false) {
   messageBubble.classList.add('message-bubble');
 
   const messageText = document.createElement('p');
-  messageText.classList.add('message-text');
+  messageText.classList.add('message-text', 'text-md');
   messageText.textContent = message;
 
   // Append the message text to the chat message bubble
@@ -180,10 +180,18 @@ function addMessageToChat(message, isIncoming = false) {
 
   // If message is incoming, also append an image
   if (isIncoming) {
+    // Create a new chat message element
     const messageImage = document.createElement('img');
-    messageImage.src = "assets/images/simbaNoBG.png";
-    messageImage.style.width = "50px";
-    messageImage.style.height = "50px";
+    messageImage.src = 'assets/images/simba.png';
+    messageImage.style.width = '3rem';
+    messageImage.style.height = '3rem';
+
+    // Do not display the image
+    // if the last message was also incoming
+    if (chatArr[chatArr.length - 2]?.isIncoming) {
+      messageImage.style.visibility = 'hidden';
+    }
+
     messageImage.alt = 'Simba';
     messageImage.classList.add('message-image');
     messageElement.appendChild(messageImage);
@@ -301,9 +309,10 @@ async function main() {
 
   addMessageToChat(`Your overall palm reading is:`, true);
   addMessageToChat(
-    `${overallFortune === ''
-      ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
-      : overallFortune
+    `${
+      overallFortune === ''
+        ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
+        : overallFortune
     }`,
     true
   );

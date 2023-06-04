@@ -6,6 +6,10 @@
   --light-blue: #d8e4fc;
   --blue: #bcdcfd;
 
+  --light-yellow: #fef102;
+
+  --orange: #ffa108;
+
   --bg-primary: white;
   --bg-secondary: var(--light-blue);
 
@@ -56,27 +60,6 @@
 
 body {
   font-family: var(--font-primary);
-  background-image: url('../images/bg-dark.png');
+  background-image: url('../images/bg-light.jpg');
   background-size: cover;
-}
-
-h1 {
-  font-family: var(--font-secondary);
-}
-
-header {
-  display: flex;
-  height: var(--header-height);
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-div.container {
-  display: flex;
-  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
-}
-
-main {
-  width: 100%;
 }

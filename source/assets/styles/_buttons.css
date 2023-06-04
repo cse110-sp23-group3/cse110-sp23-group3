@@ -1,0 +1,89 @@
+:root {
+  --btn-color-primary-light: #fef102;
+  --btn-color-primary-dark: #ffa108;
+}
+
+/* BUTTONS */
+
+.btn {
+  background: linear-gradient(
+    120deg,
+    var(--btn-color-primary-light),
+    var(--btn-color-primary-dark)
+  );
+  background-position: 100% 0;
+  background-size: 130% 100%;
+  transition: background-position 0.5s;
+
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--btn-color-primary-light);
+  color: black;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-position: 0 0;
+  cursor: pointer;
+  outline: 3px solid rgba(254, 241, 2, 0.8);
+  outline-image: linear-gradient(
+    120deg,
+    var(--btn-color-primary-light),
+    var(--btn-color-primary-dark)
+  );
+  outline-offset: 3px;
+
+  shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+.btn.outline {
+  background: none;
+  font-weight: 600;
+  background: -webkit-linear-gradient(#fef102, #ffa108);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  /* color: #fef102; */
+}
+
+// disabled
+.btn:disabled {
+  background: #ccc;
+  color: #333;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background: #ccc;
+  color: #333;
+  cursor: not-allowed;
+  outline: none;
+}
+
+.btn.outline:disabled {
+  background: none;
+  font-weight: 600;
+  background: -webkit-linear-gradient(#ccc, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid #ccc;
+  /* color: #fef102; */
+}
+
+/* GROUP BUTTONS */
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+}
