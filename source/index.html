@@ -14,7 +14,7 @@
     <link href="https://fonts.cdnfonts.com/css/lion-king" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=erode@700,500,600,400&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -23,7 +23,7 @@
 <body>
     <!-- HEADING -->
     <header>
-        <img type="image/svg+xml" src="./assets/images/menu.svg" alt="menu" class="sidebar__toggle orange">
+        <img type="image/svg+xml" src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
         <!-- <img src="./assets/images/menu.svg" alt="menu" class="orange"> -->
         <div class="banner">
             <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
@@ -32,19 +32,24 @@
     <div class="app container">
         <!-- SIDEBAR -->
         <aside>
-            <div class="sidebar bg-blur border rounded-md">
+            <div class="sidebar bg-blur-darker border rounded-md">
                 <div class="sidebar__history scrollbar">
                     <button id="new-chat" class="btn outline">+ New Chat</button>
                     <h3 class="text text-lg">Chat History</h3>
                     <ul>
-                        <li><a href="#">History #1</a></li>
-                        <li><a href="#">History #2</a></li>
-                        <li><a href="#">History #3</a></li>
+                        <li><a class="text-md" href="#">History #1</a></li>
+                        <li><a class="text-md" href="#">History #2</a></li>
+                        <li><a class="text-md" href="#">History #3</a></li>
                     </ul>
                 </div>
                 <div class="sidebar__settings">
                     <ul>
-                        <li><a href="#">Settings</a></li>
+                        <li>
+                            <a class="text-md" href="#">
+                                <img src="./assets/images/ic_setting.svg" alt="settings" class="sidebar__icons white">
+                                Settings
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
