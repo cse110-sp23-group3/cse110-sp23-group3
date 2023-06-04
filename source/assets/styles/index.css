@@ -68,23 +68,6 @@ main {
   z-index: 1;
 }
 
-.message-button {
-  padding-left: calc(1.rem + 2.5rem);
-}
-
-.message-button button {
-  background-color: var(--bg-primary);
-  /* color: var(--text-primary); */
-  color: rgb(0, 132, 255);
-  font-family: var(--font-primary);
-  font-weight: 800;
-  font: caption;
-  border: 1px solid var(--text-primary);
-  border-radius: var(--border-radius);
-  padding: 0.65rem 1rem;
-  cursor: pointer;
-  margin-right: 10px;
-}
 
 /* .chat-input-container button[type='submit'] {
   background-color: var(--blue);
@@ -159,8 +142,26 @@ button[type='submit'] {
   border-radius: var(--border-radius);
   padding: 0.65rem 1rem;
   cursor: pointer;
+}*/
+.message-button {
+  padding-left: calc(1.rem + 2.5rem);
 }
 
+.message-button button {
+  background-color: var(--bg-primary);
+  /* color: var(--text-primary); */
+  color: rgb(0, 132, 255);
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font: caption;
+  border: 1px solid var(--text-primary);
+  border-radius: var(--border-radius);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/*
 .chat-messages {
   display: flex;
   flex-direction: column;
@@ -230,6 +231,7 @@ choices:last-child {
   margin-right: 10px;
 }
 
+
 #hist-container {
   border: 1px solid #ccc;
   padding: 10px;
@@ -237,6 +239,7 @@ choices:last-child {
   overflow-y: scroll;
   margin-bottom: 20px;
 }
+
 
 #spinner {
   display: inline-block;
