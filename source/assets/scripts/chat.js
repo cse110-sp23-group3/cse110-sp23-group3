@@ -220,7 +220,7 @@ async function main() {
   await waitUserInput();
 
   // Case where buttonChoice is No, then obviously don't read the palm and do nothing.
-  if (buttonChoice === 'no') {
+  if (buttonChoice === 'No') {
     addMessageToChat(
       "When you're ready for a palm reading, just reload!",
       true
@@ -242,13 +242,13 @@ async function main() {
 
     // description of each palm line
     const palmLineDesc = {
-      'heart line':
+      'Heart Line':
         "runs horizontally across your palm and is the topmost line you'll see. It begins at the edge of your palm on the pinkie side, and runs to just underneath your index or middle finger.",
-      'head line':
+      'Head Line':
         'begins under your index finger along the edge of your palm and extends part-way across your palm in a graceful curve flowing in a slightly downward direction.',
-      'life line':
+      'Life Line':
         'begins between your thumb and index finger and travels down your palm through the middle.',
-      'fate line':
+      'Fate Line':
         'is a vertical line running up the palm towards the base of the middle finger.',
     };
 
@@ -302,7 +302,7 @@ async function main() {
     addMessageToChat('Would you like me to continue reading your palm?', true);
     addButtons(basicChoices);
     await waitUserInput();
-    if (buttonChoice === 'no') {
+    if (buttonChoice === 'No') {
       break;
     }
   }
