@@ -1,0 +1,57 @@
+[
+  {
+    "profileSrc": "./assets/images/profile_images/faith.jpg",
+    "name": "Faith Rivera",
+    "role": "Team Lead",
+    "description": "Faith is a second year undergraduate studying computer science in Sixth College. Her favorite animals are cheetahs or dogs. She loves to dance and also has a twin sister at UCSD!",
+    "profilePos": "left"
+  },
+  {
+    "name": "Henry",
+    "role": "Team Lead",
+    "description": "Henry is a 2nd year studying CS in Sixth College. His favorite animal is the lion and a fun fact is that his middle name is his favorite animal.",
+    "profilePos": "right"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/chay.png",
+    "name": "Chay",
+    "role": "Designer",
+    "description": "Chay is a designer with a keen interest in exploring the worlds of Virtual Reality, Augmented Reality, and web design. Currently in her 4th year of studying Computer Science, she is excited about merging technology and creativity to craft engaging experiences across various platforms, including the web.",
+    "profilePos": "left"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/jiaen.jpg",
+    "name": "Jiaen",
+    "role": "Planner",
+    "description": "Jiaen Yu, second year graduate student of CSE department. Cat person, Coconut water lover, Soccer fan and amateur football player.",
+    "profilePos": "right"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/chris.jpg",
+    "name": "Chris",
+    "role": "Developer",
+    "description": "Chris Tian is a second-year CS major. His favorite animal is the cheetah because it is the fastest animal on earth and he is impressed by its hunting ability. He's a pretty adventurous guy but afraid of the feeling of weightlessness such as bungee jumping and riding roller coasters.",
+    "profilePos": "left"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/mico.jpg",
+    "name": "Mico",
+    "role": "Developer",
+    "description": "Mico Guinto; Computer Engineering; Emperor Penguin; His go to In-N-Out order is 2 4x4s Animal Style, extra tomatoes, no pickles, cut in half, banana peppers",
+    "profilePos": "right"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/nick.JPG",
+    "name": "Nick",
+    "role": "Developer",
+    "description": "Nick is a fourth year bioinformatics major at UCSD. His favorite animal is the peacock. He enjoys being out in nature and playing board games with his friends from church. Although he does not endorse the practice of palm reading, he has enjoyed learning about software engineering in CSE 110.",
+    "profilePos": "left"
+  },
+  {
+    "profileSrc": "./assets/images/profile_images/michael.jpg",
+    "name": "Michael",
+    "role": "Developer",
+    "description": "Michael is a second year Computer Science major from ERC. His favorite animal is the brown bear and he has visited over 20 countries so far.",
+    "profilePos": "right"
+  }
+]

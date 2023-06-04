@@ -10,7 +10,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/styles/main.css">
-    <link rel="stylesheet" href="assets/styles/index.css">
+    <link rel="stylesheet" href="assets/styles/aboutus.css">
     <link href="https://fonts.cdnfonts.com/css/lion-king" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
     </header>
     <div class="app container">
         <!-- SIDEBAR -->
-        <aside>
+        <!-- <aside>
             <div class="sidebar bg-blur border rounded-md">
                 <div class="sidebar__history scrollbar">
                     <button id="new-chat" class="btn outline">+ New Chat</button>
@@ -45,29 +45,35 @@
                 <div class="sidebar__settings">
                     <ul>
                         <li><a href="#">Settings</a></li>
-                        <li><a href="aboutus.html">About Us</a></li>
                     </ul>
                 </div>
             </div>
-        </aside>
+        </aside> -->
 
         <!-- MAIN -->
         <main>
-            <div id="chat-image" class="chat-image"></div>
-            <div id="chat-messages" class="chat-messages bg-blur border rounded-md scrollbar"></div>
-            <div id="spinner" style="display: none;">
+            <!--<div id="chat-image" class="chat-image"></div>-->
+            <div id="chat-messages" class="chat-messages bg-blur border rounded-md scrollbar">
+              <div id="about-column">
+                <div id="about-title">
+                    <a id="back-to-chat" href="index.html">< Back to Chats</a>
+                    <h1>About Us</h1>
+                </div>
+              </div>
+            </div>
+            <!--<div id="spinner" style="display: none;">
                 <div class="loader">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>
                 </div>
-            </div>
+            </div>-->
         </main>
 
     </div>
 
     <!-- CHAT INPUT -->
-    <section class="chat-input-container">
+    <!-- <section class="chat-input-container">
         <form id="chat-form" class="border-sm" action="#" method="post">
             <label for="image" class="btn">+</label>
             <input type="file" name="image" id="image" class="btn">
@@ -75,11 +81,11 @@
             <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
             <button type="submit" class="btn">Send</button>
         </form>
-    </section>
+    </section> -->
 
     <!-- JavaScript -->
-    <script src="assets/scripts/main.js"></script>
-    <script src="assets/scripts/chat.js"></script>
+    <script src="assets/scripts/aboutcard.js"></script>
+    <script src="assets/scripts/aboutus.js"></script>
 </body>
 
 </html>
