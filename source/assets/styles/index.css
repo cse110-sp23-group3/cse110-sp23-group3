@@ -32,29 +32,6 @@ main .chat-messages {
   padding-top: 1rem;
 }
 
-main .chat-messages::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-main .chat-messages::-webkit-scrollbar-track {
-  background: linear-gradient(
-    102.17deg,
-    rgba(32, 80, 115, 0.64) 0.47%,
-    rgba(32, 80, 115, 0) 121.14%
-  );
-  backdrop-filter: blur(1rem);
-  border-radius: var(--border-radius);
-}
-
-main .chat-messages::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 161, 8, 0.9) 0%,
-    rgba(254, 241, 2, 0.9) 100%
-  );
-  border-radius: var(--border-radius);
-}
-
 .app.container {
   padding: var(--p-sm);
 }
@@ -232,7 +209,6 @@ main .chat-messages::-webkit-scrollbar-thumb {
   z-index: 1;
 }
 
-
 /* .chat-input-container button[type='submit'] {
   background-color: var(--blue);
   color: var(--text-secondary);
@@ -307,23 +283,6 @@ button[type='submit'] {
   padding: 0.65rem 1rem;
   cursor: pointer;
 }*/
-.message-button {
-  padding-left: calc(1.rem + 2.5rem);
-}
-
-.message-button button {
-  background-color: var(--bg-primary);
-  /* color: var(--text-primary); */
-  color: rgb(0, 132, 255);
-  font-family: var(--font-primary);
-  font-weight: 800;
-  font: caption;
-  border: 1px solid var(--text-primary);
-  border-radius: var(--border-radius);
-  padding: 0.65rem 1rem;
-  cursor: pointer;
-  margin-right: 10px;
-}
 
 /*
 .chat-messages {
