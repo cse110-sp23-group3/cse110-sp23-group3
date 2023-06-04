@@ -162,7 +162,9 @@ main .chat-messages {
   cursor: pointer;
   margin: 0.25rem 0;
 } */
-
+aside {
+  height: 92vh; 
+}
 /* CHAT INPUT */
 .chat-input-container {
   display: flex;
@@ -170,6 +172,7 @@ main .chat-messages {
   align-items: center;
   justify-content: center;
   padding: var(--p-sm);
+  padding-left: 265px;
 }
 
 .chat-input-container form {
@@ -208,6 +211,8 @@ main .chat-messages {
   /* background: var(--light-blue); */
   z-index: 1;
 }
+
+
 
 /* .chat-input-container button[type='submit'] {
   background-color: var(--blue);
