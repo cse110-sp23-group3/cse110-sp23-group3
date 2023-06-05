@@ -10,12 +10,7 @@ let numberOfSessions = 1; // variable to keep track of the number of sessions
 let sessions; // object to store the palm reading sessions as a sort of state variable that you keep track of until page exit, then you save it to local storage
 let next = false; // variable to check if the user has clicked a button
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
-const overallFortune = {
-  'Heart Line': '',
-  'Head Line': '',
-  'Life Line': '',
-  'Fate Line': '',
-}; // variable for overall fortune
+
 let currentSession; // variable to know, which chat we are viewing
 let chatArr = []; // array to store the current set of chat messages
 const basicChoices = new Set(['Yes', 'No']);
@@ -25,8 +20,7 @@ const palmLines = new Set([
   'Life Line',
   'Fate Line',
 ]);
-const wavyOrStraight = new Set(['wavy', 'straight']);
-const shortOrLong = new Set(['long', 'short']);
+
 // description of each palm line
 const palmLineDesc = {
   'Heart Line':
@@ -39,42 +33,94 @@ const palmLineDesc = {
     'is a vertical line running up the palm towards the base of the middle finger.',
 };
 
+// variable for overall fortune
+const overallFortune = {
+  'Heart Line': '',
+  'Head Line': '',
+  'Life Line': '',
+  'Fate Line': '',
+};
+
 // Map to store the fortunes for each palm line
 const fortuneMap = new Map([]);
 
 const heartMap = new Map([]);
-heartMap.set('wavy', 'In heart, You are a very emotional person.');
-heartMap.set('straight', 'In heart, You are a very logical person.');
-heartMap.set('long', 'long heart line');
-heartMap.set('short', 'short heart line');
+heartMap.set('wavy', 'many relationships and lovers, absence of serious');
+heartMap.set('long and curvy', 'freely expresses emotions and feelings');
+heartMap.set('straight and parallel to the head line', 'good handle on emotions');
+heartMap.set('begins below the index finger', 'content with love life');
+heartMap.set('begins below the middle finger', 'selfish when it comes to love');
+heartMap.set('begins in the middle', 'falls in love easily');
+heartMap.set('brocken line', 'emotional trauma');
+heartMap.set('circles on the line', 'sadness or depression');
+heartMap.set('smaller lines crossing through heart line', 'emotional trauma');
+heartMap.set('no abnormal patterms', 'emotionally stable');
+
+// specify the button choices for heart line
+heartMap.set('shapeChoices', new Set(['wavy', 'long and curvy', 'straight and parallel to the head line']));
+heartMap.set('positionChoices', new Set(['begins below the index finger', 'begins below the middle finger', 'begins in the middle']));
+heartMap.set('abnormalChoices', new Set(['brocken line', 'circles on the line', 'smaller lines crossing through heart line', 'no abnormal patterms']));
 
 // fortune for head line
 const headMap = new Map([]);
-headMap.set('wavy', 'In head, You are a very emotional person.');
-headMap.set('straight', 'In head, You are a very logical person.');
-headMap.set('long', 'long head line');
-headMap.set('short', 'short head line');
+headMap.set('wavy', 'short attention span');
+headMap.set('short', 'prefers physical achievements over mental ones');
+headMap.set('long and straight', 'thinkings are clear and focused with realistic mindset');
+headMap.set('curved and sloping', 'full of creavitiy and spontaneity');
+headMap.set('separated from life line', 'independence and self-reliance in thinking and decision-making');
+headMap.set('overlap with life line', 'strong connection between the intellectual and physical aspects');
+headMap.set('crossed with life line', 'conflict or tension between rationality and physical well-being or vitality');
+headMap.set('donuts on the line', 'emotional crisis');
+headMap.set('brocken', 'inconsistencies in thought');
+headMap.set('multiple crosses through the line', 'fragmented focus and interruptions in thinking');
+headMap.set('no abnormal patterns', 'clear and focused thinking');
+
+// specify the button choices for head line
+headMap.set('shapeChoices', new Set(['wavy', 'short', 'long and straight', 'curved and sloping']));
+headMap.set('positionChoices', new Set(['separated from life line', 'overlap with life line', 'crossed with life line']));
+headMap.set('abnormalChoices', new Set(['donuts on the line', 'brocken', 'multiple crosses through the line', 'no abnormal patterns']));
 
 // fortune for life line
 const lifeMap = new Map([]);
-lifeMap.set('wavy', 'In life, You are a very emotional person.');
-lifeMap.set('straight', 'In life, You are a very logical person.');
-lifeMap.set('long', 'long life line');
-lifeMap.set('short', 'short life line');
+lifeMap.set('long and deep', 'vitality and strength');
+lifeMap.set('short and shallow', 'live to the fullest and willing to take risks');
+lifeMap.set('curvy', 'well-balanced life and adaptability');
+lifeMap.set('runs close to thumb', 'get tired easily');
+lifeMap.set('crossing or overlap with head line', 'strong connection between thoughts and actions');
+lifeMap.set('connecting to heart line', 'emotional well-being and physical vitality');
+lifeMap.set('multiple parallel lines', 'extra vitality and resilience');
+lifeMap.set('islands or breaks', 'health issues, setbacks, or disruptions in life');
+lifeMap.set('forked into branches', 'versatility and the potential for significant life changes');
+lifeMap.set('no abnormal patterns', 'stable and balanced life');
+
+// specify the button choices for life line
+lifeMap.set('shapeChoices', new Set(['long and deep', 'short and shallow', 'curvy']));
+lifeMap.set('positionChoices', new Set(['runs close to thumb', 'crossing or overlap with head line', 'connecting to heart line']));
+lifeMap.set('abnormalChoices', new Set(['multiple parallel lines', 'islands or breaks', 'forked into branches', 'no abnormal patterns']));
 
 // fortune for fate line
 const fateMap = new Map([]);
-fateMap.set('wavy', 'In fate, You are a very emotional person.');
-fateMap.set('straight', 'In fate, You are a very logical person.');
-fateMap.set('long', 'long fate line');
-fateMap.set('short', 'short fate line');
+fateMap.set('long and straight', 'clear career path and a focused approach to achieving goals');
+fateMap.set('curvy or wavy', 'less predictable or more flexible career path');
+fateMap.set('shallow or fainted', 'less prominent influence of caree');
+fateMap.set('starts from the base of the palm', 'has a clear sense of ambition and aspirations');
+fateMap.set('connecting to life line', 'strives to maintain a healthy equilibrium between work and life');
+fateMap.set('terminates in the middle of the palm', 'significant career transition or change of direction');
+fateMap.set('brocken or fragmented', 'significant setbacks or obstacles that impact professional journey');
+fateMap.set('branches and changes of directions', 'significant events or opportunities that impact the career path');
+fateMap.set('absent or fainted', 'prioritizes other aspects of life over their career');
+fateMap.set('no abnormal patterns', '');
 
+// specify the button choices for fate line
+fateMap.set('shapeChoices', new Set(['long and straight', 'curvy or wavy', 'shallow or fainted']));
+fateMap.set('positionChoices', new Set(['starts from the base of the palm', 'connecting to life line', 'terminates in the middle of the palm']));
+fateMap.set('abnormalChoices', new Set(['brocken or fragmented', 'branches and changes of directions', 'absent or fainted', 'no abnormal patterns']));
+
+// form the fortune map
 fortuneMap.set('Heart Line', heartMap);
 fortuneMap.set('Head Line', headMap);
 fortuneMap.set('Life Line', lifeMap);
 fortuneMap.set('Fate Line', fateMap);
-
-console.log(fortuneMap.get('Heart Line').get('wavy'));
 
 let buttonChoice; // variable for the button choice
 
@@ -91,30 +137,39 @@ async function readPalm() {
 
     // First describe the location of the chosen line
     const chosenLine = buttonChoice;
+    const chosenLineMap = fortuneMap.get(chosenLine);
     addMessageToChat(`The ${chosenLine} ${palmLineDesc[chosenLine]}`, true);
 
-    // Ask if it is straight or wavy
+    // Ask about the shape of the palm
     addMessageToChat(
-      `Do you have a wavy or straight ${chosenLine}? Select from the buttons below.`,
+      `What is the shape of your ${chosenLine}? Select from the buttons below.`,
       true
     );
-    addButtons(wavyOrStraight);
+    addButtons(chosenLineMap.get('shapeChoices'));
     await waitUserInput();
-    const wavyOrStraightChoice = buttonChoice;
+    const shapeChoice = buttonChoice;
 
-    // Ask if it is short or long
+    // Ask about the position of the palm
     addMessageToChat(
-      `Do you have a short or long ${chosenLine}? Select from the buttons below.`,
+      `Where is the position of your ${chosenLine} and its connections with other parts of the palm? Select from the buttons below.`,
       true
     );
-    addButtons(shortOrLong);
+    addButtons(chosenLineMap.get('positionChoices'));
     await waitUserInput();
-    const longOrShortChoice = buttonChoice;
+    const positionChoice = buttonChoice;
+
+    // Ask about the abnormal patterns of the palm
+    addMessageToChat(
+      `Are there any abnormal patterns on of your ${chosenLine}? Select from the buttons below.`,
+      true
+    );
+    addButtons(chosenLineMap.get('abnormalChoices'));
+    await waitUserInput();
+    const abnormalChoice = buttonChoice;
 
     // Show fortune for the chosen line
-    const fortune = `Your ${chosenLine} is ${wavyOrStraightChoice} and ${longOrShortChoice}, 
-                    so this means: ${fortuneMap.get(chosenLine).get(wavyOrStraightChoice)} and 
-                    ${fortuneMap.get(chosenLine).get(longOrShortChoice)}.`;
+    const fortune = `Your ${chosenLine} ${positionChoice}, is ${shapeChoice}, and has ${abnormalChoice}. Your characteristics are:
+                    ${chosenLineMap.get(positionChoice)}; ${chosenLineMap.get(shapeChoice)}; ${chosenLineMap.get(abnormalChoice)}.`;
     overallFortune.chosenLine = fortune;
     addMessageToChat(fortune, true);
 
@@ -136,7 +191,7 @@ async function readPalm() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            prompt: `Act as a fortune teller for palm reading. I describe my ${chosenLine} as ${wavyOrStraightChoice} and ${longOrShortChoice}, what does this mean? Limit your response to 2 sentences.`,
+            prompt: `Act as a fortune teller for palm reading. I describe my ${chosenLine}as: ${positionChoice}, ${shapeChoice}, and ${abnormalChoice}. What does this indicates? Limit your response to 4 sentences.`,
           }),
         }
       );
