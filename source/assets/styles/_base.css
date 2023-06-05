@@ -36,18 +36,6 @@
   --p-sm: 0.5rem;
   --p-md: 1rem;
   --p-lg: 1.5rem;
-
-  /* FONTS */
-  --font-primary: 'Dosis', sans-serif;
-  --font-secondary: 'Lion kinG', sans-serif;
-
-  /* FONT SIZES */
-  --font-size-xxs: 1rem;
-  --font-size-xs: 1.2rem;
-  --font-size-sm: 1.4rem;
-  --font-size-md: 1.6rem;
-  --font-size-lg: 1.8rem;
-  --font-size-xl: 2rem;
 }
 
 *,
