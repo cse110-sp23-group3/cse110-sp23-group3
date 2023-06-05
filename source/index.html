@@ -23,7 +23,7 @@
 <body>
     <!-- HEADING -->
     <header>
-        <img type="image/svg+xml" src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
+        <img src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
         <!-- <img src="./assets/images/menu.svg" alt="menu" class="orange"> -->
         <div class="banner">
             <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
@@ -73,10 +73,11 @@
     <!-- CHAT INPUT -->
     <section class="chat-input-container">
         <form id="chat-form" class="border-sm" action="#" method="post">
-            <label for="image" class="btn">+</label>
-            <input type="file" name="image" id="image" class="btn">
+            <!-- <label for="image" class="btn">+</label> -->
+            <!-- <input type="file" name="image" id="image" class="btn"> -->
             <label for="message"></label>
-            <input type="text" name="message" id="message" placeholder="Type your message here..." autocomplete="off">
+            <input type="text" name="message" id="message" class="text-sm" placeholder="Type your message here..."
+                autocomplete="off">
             <button type="submit" class="btn">Send</button>
         </form>
     </section>
