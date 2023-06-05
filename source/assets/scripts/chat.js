@@ -39,7 +39,42 @@ const palmLineDesc = {
     'is a vertical line running up the palm towards the base of the middle finger.',
 };
 
-const hardCodedFortune = new Map([]);
+// Map to store the fortunes for each palm line
+const fortuneMap = new Map([]);
+
+const heartMap = new Map([]);
+heartMap.set('wavy', 'In heart, You are a very emotional person.');
+heartMap.set('straight', 'In heart, You are a very logical person.');
+heartMap.set('long', 'long heart line');
+heartMap.set('short', 'short heart line');
+
+// fortune for head line
+const headMap = new Map([]);
+headMap.set('wavy', 'In head, You are a very emotional person.');
+headMap.set('straight', 'In head, You are a very logical person.');
+headMap.set('long', 'long head line');
+headMap.set('short', 'short head line');
+
+// fortune for life line
+const lifeMap = new Map([]);
+lifeMap.set('wavy', 'In life, You are a very emotional person.');
+lifeMap.set('straight', 'In life, You are a very logical person.');
+lifeMap.set('long', 'long life line');
+lifeMap.set('short', 'short life line');
+
+// fortune for fate line
+const fateMap = new Map([]);
+fateMap.set('wavy', 'In fate, You are a very emotional person.');
+fateMap.set('straight', 'In fate, You are a very logical person.');
+fateMap.set('long', 'long fate line');
+fateMap.set('short', 'short fate line');
+
+fortuneMap.set('Heart Line', heartMap);
+fortuneMap.set('Head Line', headMap);
+fortuneMap.set('Life Line', lifeMap);
+fortuneMap.set('Fate Line', fateMap);
+
+console.log(fortuneMap.get('Heart Line').get('wavy'));
 
 let buttonChoice; // variable for the button choice
 
@@ -77,7 +112,9 @@ async function readPalm() {
     const longOrShortChoice = buttonChoice;
 
     // Show fortune for the chosen line
-    const fortune = `Your ${chosenLine} is ${wavyOrStraightChoice} and ${longOrShortChoice}, so this means: ${null}.`;
+    const fortune = `Your ${chosenLine} is ${wavyOrStraightChoice} and ${longOrShortChoice}, 
+                    so this means: ${fortuneMap.get(chosenLine).get(wavyOrStraightChoice)} and 
+                    ${fortuneMap.get(chosenLine).get(longOrShortChoice)}.`;
     overallFortune.chosenLine = fortune;
     addMessageToChat(fortune, true);
 
