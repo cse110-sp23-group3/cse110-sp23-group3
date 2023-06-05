@@ -1,8 +1,5 @@
 @import '_base.css';
-
-@import 'main.css';
-
-@import '_buttons.css';
+/* @import 'main.css'; */
 
 /* VARIABLES */
 :root {
@@ -26,7 +23,6 @@ main .chat-messages {
   align-items: center;
 }
 
-
 .app.container {
   padding: var(--p-sm);
 }
@@ -47,6 +43,7 @@ div#about-title {
   display: grid;
   grid-template-columns: 25% 50% 25%;
   text-align: center;
+  margin-bottom: var(--p-lg);
 }
 
 /* TEXT AND LINK FORMATTING*/
@@ -56,14 +53,18 @@ h1 {
 }
 
 a#back-to-chat {
-  justify-self: center;
+  justify-self: start;
   align-self: center;
-  color: var(--btn-color-primary-light);
-  margin-bottom: var(--p-sm);
-  padding: 0.2rem var(--p-sm);
-  text-decoration: none;
 }
 
 a#back-to-chat:hover {
   text-decoration: underline;
+}
+
+img.profile-left {
+  justify-content: flex-start;
+}
+
+img.profile-right {
+  justify-content: flex-end;
 }

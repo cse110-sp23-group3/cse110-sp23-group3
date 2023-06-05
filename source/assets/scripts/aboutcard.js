@@ -6,6 +6,7 @@ article.about-card-left {
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 100%;
+  margin-bottom: 1rem;
 }
 
 article.about-card-right {
@@ -13,6 +14,7 @@ article.about-card-right {
   display: grid;
   grid-template-columns: 75% 25%;
   grid-template-rows: 100%;
+  margin-bottom: 1rem;
 }
 
 div.about-card-inner-holder-right {
@@ -38,7 +40,7 @@ img.profile-left {
   grid-column-start: 1;
   grid-column-end: 1;
   align-self: center;
-  justify-self: center;
+  justify-self: start;
   object-fit: cover;
   z-index: 1;
 }
@@ -50,7 +52,7 @@ img.profile-right {
   grid-column-start: 2;
   grid-column-end: 2;
   align-self: center;
-  justify-self: center;
+  justify-self: end;
   object-fit: cover;
   z-index: 1;
 }
@@ -74,24 +76,24 @@ p {
   z-index: 2;
   position: relative;
 }
-`
+`;
 
 // the file path to the default profile image
-const DEFAULT_PROFILE = "./assets/images/profile_images/profile.webp";
+const DEFAULT_PROFILE = './assets/images/profile_images/profile.webp';
 
 /**
  * @classdesc A custom AboutCard element for the About page that contains information about one person. Includes a person's name, role, and description. Optionally includes a profile picture. The profile picture can be either on the right or the left.
+ * @extends HTMLElement
  */
 class AboutCard extends HTMLElement {
-
   /**
    * @constructor The constructor for the AboutCard custom HTML element.
    */
   constructor() {
     super();
-    let shadowDOM = this.attachShadow({mode: 'open'});
-    let article = document.createElement("article");
-    let style = document.createElement("style");
+    const shadowDOM = this.attachShadow({ mode: 'open' });
+    const article = document.createElement('article');
+    const style = document.createElement('style');
     style.textContent = CARD_STYLE;
     shadowDOM.append(style, article);
   }
@@ -114,32 +116,40 @@ class AboutCard extends HTMLElement {
       return;
     }
 
-    let shadowDOM = this.shadowRoot;
-    let article = shadowDOM.lastChild;
-    
+    const shadowDOM = this.shadowRoot;
+    const article = shadowDOM.lastChild;
+
     // the class name of the article determines whether the profile picture is on the right or left
-    if (data['profilePos'] === "left") {
-      article.classList.add("about-card-left");
-    } else if (data['profilePos'] === "right") {
-      article.classList.add("about-card-right");
+    if (data.profilePos === 'left') {
+      article.classList.add('about-card-left');
+    } else if (data.profilePos === 'right') {
+      article.classList.add('about-card-right');
     }
-    if (article.classList[0] === "about-card-left") {
+    if (article.classList[0] === 'about-card-left') {
       article.innerHTML = `
-      <img class="profile-left" src="${data['profileSrc'] ? data['profileSrc'] : DEFAULT_PROFILE}">
+      <img class="profile-left" src="${
+        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
+      }">
       <div class="about-card-inner-holder-right">
-        <h1 class="name text-xl">${data['name']} | ${data['role']}</h1>
-        <p class="description text-base">${data['description']}</p>
+        <h1 class="name text-xl">${data.name} | ${data.role}</h1>
+        <p class="description text-base">${data.description}</p>
       </div>
       `;
-    } else if (article.classList[0] === "about-card-right") {
+    } else if (article.classList[0] === 'about-card-right') {
       article.innerHTML = `
-      <img class="profile-right" src="${data['profileSrc'] ? data['profileSrc'] : DEFAULT_PROFILE}">
+      <img class="profile-right" src="${
+        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
+      }">
       <div class="about-card-inner-holder-left">
-        <h1 class="name text-xl">${data['name']} | ${data['role']}</h1>
-        <p class="description text-base">${data['description']}</p>
+        <h1 class="name text-xl">${data.name} | ${data.role}</h1>
+        <p class="description text-base">${data.description}</p>
       </div>
       `;
     }
+  }
+
+  get data() {
+    return this.getAttribute('data');
   }
 }
 

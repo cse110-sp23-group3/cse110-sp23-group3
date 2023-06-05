@@ -18,7 +18,7 @@
    ]
    Note: "profileSrc" is optional; the other keys are not.
  */
-const TEAM_PROFILE_PATH = "./assets/json/aboutprofiles.json";
+const TEAM_PROFILE_PATH = './assets/json/aboutprofiles.json';
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', init);
  * The main function that runs on this page, after the page has loaded.
  */
 async function init() {
-  let teamProfiles = await loadProfiles(TEAM_PROFILE_PATH)
+  const teamProfiles = await loadProfiles(TEAM_PROFILE_PATH);
   addProfilesToPage(teamProfiles);
 }
 
@@ -35,10 +35,9 @@ async function init() {
  * @param {string} filepath - the path to the JSON file that stores the profile data
  * @returns {Promise<Array<Object>>} The data from the JSON file
  */
-function loadProfiles(filepath) {
-  return fetch(filepath).then(function(response) {
-    return response.json();
-  });
+async function loadProfiles(filepath) {
+  const response = await fetch(filepath);
+  return await response.json();
 }
 
 /**
@@ -47,9 +46,9 @@ function loadProfiles(filepath) {
  * @see {@link AboutCard}
  */
 function addProfilesToPage(teamProfiles) {
-  const aboutHolder = document.getElementById("about-column");
+  const aboutHolder = document.getElementById('about-column');
   for (let i = 0; i < teamProfiles.length; i++) {
-    let card = document.createElement('about-card');
+    const card = document.createElement('about-card');
     card.data = teamProfiles[i];
     aboutHolder.append(card);
   }
