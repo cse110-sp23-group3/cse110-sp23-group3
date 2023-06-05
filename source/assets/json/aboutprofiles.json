@@ -55,9 +55,10 @@
     "profilePos": "right"
   },
   {
+    "profileSrc": "./assets/images/profile_images/anh.png",
     "name": "Anh",
     "role": "Developer",
-    "description": "Anh is majoring in CS at Revelle College at UCSD. A fun fact about him is that he hates math.",
+    "description": "Greetings, Anh from Revelle College at UCSD. He is a Computer Science major student who hates math (not your typical Asian 😬...) but loves coding and creating amazing things with technology. Probably he can rap in three languages.🎤",
     "profilePos": "left"
   },
   {
