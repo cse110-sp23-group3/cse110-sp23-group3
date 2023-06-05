@@ -36,7 +36,7 @@ header h1 {
 /* MAIN */
 body > div.container {
   display: flex;
-  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
+  height: calc(100vh - var(--header-height) - 1px);
 }
 
 main {

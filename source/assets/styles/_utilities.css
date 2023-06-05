@@ -58,6 +58,11 @@
 
 /* TEXT - SIZE */
 
+.text-xs {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+}
+
 .text-sm {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-sm);
@@ -84,6 +89,11 @@
 }
 
 @media (min-width: 768px) {
+  .text-xs {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+  }
+
   .text-sm {
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
