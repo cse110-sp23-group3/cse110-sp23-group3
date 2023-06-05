@@ -81,7 +81,10 @@ async function readPalm() {
     overallFortune.chosenLine = fortune;
     addMessageToChat(fortune, true);
 
-    addMessageToChat('Would you like a more detailed reading?', true);
+    addMessageToChat(
+      `Would you like a more detailed reading for your ${chosenLine}?`,
+      true
+    );
     addButtons(basicChoices);
     await waitUserInput();
 
@@ -135,7 +138,7 @@ async function readPalm() {
   }
 
   addMessageToChat(
-    'That concludes your palm reading! As a recap, your overall fortune is below',
+    'That concludes your palm reading! As a recap, your overall fortune is below.',
     true
   );
   let overallFortuneString = '';
@@ -266,11 +269,11 @@ function createHistoryButton(key) {
   // create a new a tag for a session
   const chatLink = document.createElement('a');
   chatLink.textContent = `Chat Session ${numberOfSessions++}`;
-  chatLink.value = key;
   chatLink.classList.add('text-md');
 
   // Make list item and append the a tag to it then append it to the history list
   const newItem = document.createElement('li');
+  newItem.setAttribute('data-value', key);
   newItem.appendChild(chatLink);
   historyList.insertBefore(newItem, historyList.firstChild);
 
@@ -282,7 +285,16 @@ function createHistoryButton(key) {
     }
 
     // save it to local storage
-    saveToHistory(chatArr, currentSession);
+    if (chatArr.length === 3) {
+      delete sessions[currentSession];
+      const childNodes = historyList.childNodes;
+      childNodes.forEach(function (childNode) {
+        if (childNode.dataset.value === currentSession) {
+          childNode.remove();
+          numberOfSessions--;
+        }
+      });
+    }
 
     // Rebuild the chat from the session
     rebuildChat(key);
