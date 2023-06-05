@@ -175,6 +175,10 @@ async function main() {
   // give the new chat button its functionality
   const newChatButton = document.getElementById('new-chat');
   newChatButton.addEventListener('click', async function () {
+    if (chatArr.length === 3) {
+      return;
+    }
+
     // Only save to localstorage if there is an existing session that is being looked at
     if (currentSession && !(currentSession in sessions)) {
       saveToHistory(chatArr, currentSession);
@@ -201,7 +205,13 @@ async function main() {
   newChatButton.click();
 }
 
-// Set of palm lines and basic choices
+function saveToLocal() {
+  try {
+    window.localStorage.setItem('palmReadings', JSON.stringify(sessions));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 /**
  * Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
@@ -287,6 +297,7 @@ function createHistoryButton(key) {
     // save it to local storage
     if (chatArr.length === 3) {
       delete sessions[currentSession];
+      saveToLocal();
       const childNodes = historyList.childNodes;
       childNodes.forEach(function (childNode) {
         if (childNode.dataset.value === currentSession) {
@@ -294,14 +305,17 @@ function createHistoryButton(key) {
           numberOfSessions--;
         }
       });
+    } else {
+      saveToHistory(chatArr, currentSession);
+      saveToLocal();
     }
-
-    // Rebuild the chat from the session
-    rebuildChat(key);
 
     // Set the current session to the clicked session and save the old one again
     currentSession = key;
-    sessions[key] = chatArr;
+    chatArr = [];
+
+    // Rebuild the chat from the session
+    rebuildChat(key);
 
     // Set the clicked session to active
     chatLink.classList.add('active');
