@@ -1,5 +1,6 @@
 // the CSS for each about-card
 const CARD_STYLE = `
+/* CARD LAYOUT */
 article.about-card-left {
   width: 100%;
   display: grid;
@@ -12,32 +13,6 @@ article.about-card-right {
   display: grid;
   grid-template-columns: 75% 25%;
   grid-template-rows: 100%;
-}
-
-img.profile-left {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  align-self: center;
-  justify-self: center;
-  object-fit: cover;
-}
-
-img.profile-right {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  grid-column-start: 2;
-  grid-column-end: 2;
-  align-self: center;
-  justify-self: center;
-  object-fit: cover;
-}
-
-h1 {
-  justify-self: center;
 }
 
 div.about-card-inner-holder-right {
@@ -54,9 +29,50 @@ div.about-card-inner-holder-left {
   grid-row-end: 1;
 }
 
-h2 {
+/* PROFILE PICTURE */
+
+img.profile-left {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  align-self: center;
+  justify-self: center;
+  object-fit: cover;
+  z-index: 1;
+}
+
+img.profile-right {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  align-self: center;
+  justify-self: center;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* DARKEN PROFILE IF ON MOBILE */
+@media (max-width: 767px) {
+  img {
+    filter: brightness(50%);
+  }
+}
+
+/* NAME, ROLE, AND DESCRIPTION TEXT */
+h1 {
   font-size: 16pt;
   font-weight: bolder;
+  z-index: 2;
+  position: relative;
+}
+
+p {
+  z-index: 2;
+  position: relative;
 }
 `
 
@@ -111,16 +127,16 @@ class AboutCard extends HTMLElement {
       article.innerHTML = `
       <img class="profile-left" src="${data['profileSrc'] ? data['profileSrc'] : DEFAULT_PROFILE}">
       <div class="about-card-inner-holder-right">
-        <h2 class="name">${data['name']} | ${data['role']}</h2>
-        <p class="description">${data['description']}</p>
+        <h1 class="name text-xl">${data['name']} | ${data['role']}</h1>
+        <p class="description text-base">${data['description']}</p>
       </div>
       `;
     } else if (article.classList[0] === "about-card-right") {
       article.innerHTML = `
       <img class="profile-right" src="${data['profileSrc'] ? data['profileSrc'] : DEFAULT_PROFILE}">
       <div class="about-card-inner-holder-left">
-        <h2 class="name">${data['name']} | ${data['role']}</h2>
-        <p class="description">${data['description']}</p>
+        <h1 class="name text-xl">${data['name']} | ${data['role']}</h1>
+        <p class="description text-base">${data['description']}</p>
       </div>
       `;
     }

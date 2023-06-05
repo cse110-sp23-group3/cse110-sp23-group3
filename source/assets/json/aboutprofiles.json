@@ -53,5 +53,17 @@
     "role": "Developer",
     "description": "Michael is a second year Computer Science major from ERC. His favorite animal is the brown bear and he has visited over 20 countries so far.",
     "profilePos": "right"
+  },
+  {
+    "name": "Anh",
+    "role": "Developer",
+    "description": "Anh is majoring in CS at Revelle College at UCSD. A fun fact about him is that he hates math.",
+    "profilePos": "left"
+  },
+  {
+    "name": "Dylan",
+    "role": "Developer",
+    "description": "Dylan is a third-year CS major in muir college. His favorite animal is a dog because they are man's best friend. His hobbies outside of school related things are playing volleyball and going to the gym.",
+    "profilePos": "right"
   }
 ]
