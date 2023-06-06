@@ -197,10 +197,10 @@ export const fortuneDescMap = new Map([
 ]);
 
 export const lineChoicesMap = new Map([
-  ['heart', heartChoicesMap],
-  ['head', headChoicesMap],
-  ['life', lifeChoicesMap],
-  ['fate', fateChoicesMap],
+  ['Heart Line', heartChoicesMap],
+  ['Head Line', headChoicesMap],
+  ['Life Line', lifeChoicesMap],
+  ['Fate Line', fateChoicesMap],
 ]);
 
 export const palmLines = new Set([
