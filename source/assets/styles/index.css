@@ -132,6 +132,11 @@ main .chat-messages {
   margin-bottom: 1rem;
 }
 
+.edit {
+  width: 1rem;
+  height: 1rem;
+}
+
 /* .choices {
   display: flex;
   flex-direction: column;
