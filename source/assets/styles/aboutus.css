@@ -46,6 +46,15 @@ div#about-title {
   margin-bottom: var(--p-lg);
 }
 
+div#about-profile-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--p-lg);
+}
+
 /* TEXT AND LINK FORMATTING*/
 
 h1 {

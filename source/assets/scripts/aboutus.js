@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', init);
 async function init() {
   const teamProfiles = await loadProfiles(TEAM_PROFILE_PATH);
   addProfilesToPage(teamProfiles);
+  addCardsToPage(teamProfiles);
 }
 
 /**
@@ -41,11 +42,25 @@ async function loadProfiles(filepath) {
 }
 
 /**
- * @description Adds the profiles to the About Us page
+ * @description Adds the about-profiles to the About Us page
+ * @param {Array<Object>>} teamProfiles - An array of Objects containing the profile data.
+ * @see {@link AboutProfile}
+ */
+function addProfilesToPage(teamProfiles) {
+  const profileHolder = document.getElementById('about-profile-grid');
+  for (let i = 0; i < teamProfiles.length; i++) {
+    const profile = document.createElement('about-profile');
+    profile.data = teamProfiles[i];
+    profileHolder.append(profile);
+  }
+}
+
+/**
+ * @description Adds the about-cards to the About Us page
  * @param {Array<Object>>} teamProfiles - An array of Objects containing the profile data.
  * @see {@link AboutCard}
  */
-function addProfilesToPage(teamProfiles) {
+function addCardsToPage(teamProfiles) {
   const aboutHolder = document.getElementById('about-column');
   for (let i = 0; i < teamProfiles.length; i++) {
     const card = document.createElement('about-card');
