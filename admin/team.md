@@ -44,7 +44,7 @@ Mico is a developer.
 
 ### [Michael Ye](https://github.com/MichaelYe48)
 
-Michael is a developer.
+Michael is a developer currently in his second year as a CS major from ERC. Outside of his courses, he likes baseball, traveling, and skatingboarding with his friends.
 
 ### [Nick Yousefi](https://github.com/nsyousef)
 
