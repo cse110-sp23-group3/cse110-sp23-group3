@@ -78,11 +78,9 @@ async function readPalm() {
 
     // Show fortune for the chosen line
     const fortune = `Your ${chosenLine} ${positionChoice}, is ${shapeChoice}, and has ${abnormalChoice}. Your characteristics are:
-                    ${chosenLineFortuneMap.get(
-      positionChoice
-    )}, ${chosenLineFortuneMap.get(
-      shapeChoice
-    )}, ${chosenLineFortuneMap.get(abnormalChoice)}.`;
+                    ${chosenLineFortuneMap.get(positionChoice)}, 
+                    ${chosenLineFortuneMap.get(shapeChoice)}, 
+                    ${chosenLineFortuneMap.get(abnormalChoice)}.`;
 
     // Update the overall fortune
     overallFortune[chosenLine] = fortune;
@@ -155,9 +153,10 @@ async function readPalm() {
 
   for (const line in overallFortune) {
     addMessageToChat(
-      `${overallFortune[line] === ''
-        ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
-        : `${line}: ${overallFortune[line]}`
+      `${
+        overallFortune[line] === ''
+          ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
+          : `${line}: ${overallFortune[line]}`
       }`,
       true
     );
