@@ -48,9 +48,6 @@ main .chat-messages {
   padding-left: 0.75rem;
   justify-content: flex-start;
   transform-origin: 100% 50%;
-  /* visibility: hidden; */
-  transform-origin: 100% 50%;
-  animation: showChatBubbleAC 0.05s linear 0.25s forwards;
 }
 
 .incoming-message .message-bubble {
@@ -60,6 +57,11 @@ main .chat-messages {
     rgba(255, 255, 255, 1) 100%
   );
   color: var(--text-primary-dark);
+
+  transform-origin: 100% 50%;
+  visibility: hidden;
+  transform-origin: 100% 50%;
+  animation: showChatBubbleIncoming 0.1s linear 0.15s forwards;
 }
 
 .incoming-message img {
@@ -80,6 +82,17 @@ main .chat-messages {
 
 .chat-message:first-child {
   padding-top: 0.5rem;
+}
+
+@keyframes showChatBubbleIncoming {
+  from {
+    visibility: hidden;
+    transform: translate(-100%, 40px) scale(0);
+  }
+  to {
+    visibility: visible;
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 /* .choices:last-child {
@@ -123,6 +136,67 @@ main .chat-messages {
   max-width: 80%;
   width: fit-content;
   word-break: break-word;
+}
+
+/* CHATBOX - LOADING */
+
+#spinner {
+  display: inline-block;
+  padding: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  margin-top: 1rem;
+  margin-left: calc(var(--profile-img-size) + 0.5rem + 1rem);
+}
+
+.loader {
+  align-items: center;
+  display: flex;
+}
+
+.loader .dot {
+  animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+  background-color: #6cad96; //rgba(20,105,69,.7);
+  border-radius: 50%;
+  height: 7px;
+  margin-right: 4px;
+  vertical-align: middle;
+  width: 7px;
+  display: inline-block;
+}
+
+.loader .dot:nth-child(1) {
+  animation-delay: 200ms;
+}
+
+.loader .dot:nth-child(2) {
+  animation-delay: 300ms;
+}
+
+.loader .dot:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+.loader .dot:last-child {
+  margin-right: 0;
+}
+
+@keyframes mercuryTypingAnimation {
+  0% {
+    transform: translateY(0);
+    background-color: #6cad96;
+  }
+  28% {
+    transform: translateY(-7px);
+    background-color: #9ecab9;
+  }
+  44% {
+    transform: translateY(0px);
+    background-color: #b5d9cb;
+  }
 }
 
 /* CHATBOX - CHOICES */

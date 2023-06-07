@@ -58,12 +58,17 @@
         <!-- MAIN -->
         <main>
             <div id="chat-image" class="chat-image"></div>
-            <div id="chat-messages" class="chat-messages bg-blur border rounded-md scrollbar"></div>
-            <div id="spinner" style="display: none;">
-                <div class="loader">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+            <div class="chat-messages bg-blur border rounded-md scrollbar">
+                <!-- CHAT CONTENT -->
+                <div id="chat-messages"></div>
+
+                <!-- LOADER -->
+                <div id="spinner" class="incoming-message message-bubble" style="display: none;">
+                    <div class="loader">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
                 </div>
             </div>
 
