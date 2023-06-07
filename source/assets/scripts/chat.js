@@ -153,26 +153,16 @@ async function readPalm() {
     true
   );
 
-  //console.log(overallFortune);
-
   for (const line in overallFortune) {
     addMessageToChat(
       `${
         overallFortune[line] === ''
           ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
           : `${line}: ${overallFortune[line]}`
-      }`, 
+      }`,
       true
     );
   }
-  // addMessageToChat(
-  //   `${
-  //     overallFortuneString === ''
-  //       ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
-  //       : overallFortuneString
-  //   }`,
-  //   true
-  // );
 }
 
 /**
