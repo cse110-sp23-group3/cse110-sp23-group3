@@ -6,13 +6,15 @@ import {
   basicChoices,
 } from './constants.js';
 
+import { saveToHistory, deleteFromHistory } from './historyHelpers.js';
+
 // When DOM content has loaded, run the main function
 window.addEventListener('DOMContentLoaded', main);
 
 // Ensures that the last chat before leaving the page gets saved
 window.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'hidden') {
-    saveToHistory();
+    saveToHistory(chatArr, currentSession);
   }
 });
 
@@ -188,7 +190,7 @@ async function main() {
 
     // Only save to localstorage if there is an existing session that is being looked at
     if (currentSession) {
-      saveToHistory();
+      saveToHistory(chatArr, currentSession);
     }
 
     // Modify current session to be right now
@@ -218,45 +220,7 @@ async function main() {
   newChatButton.click();
 }
 
-/**
- * Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
- *
- * @param {Array} chatArr - The current chat array to be saved or added.
- * @param {integer} key - The chat key that it will be saved at
- * @returns {void}
- */
-function saveToHistory() {
-  try {
-    // Don't save if it is the default chat
-    if (chatArr.length <= 3) {
-      return;
-    }
 
-    const palmReadings =
-      JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
-    palmReadings[currentSession] = chatArr;
-    window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-/**
- * Deletes a session from the history.
- *
- * @param {string} key - The key of the session to delete.
- * @returns {void}
- */
-function deleteFromHistory(key) {
-  try {
-    const palmReadings =
-      JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
-    delete palmReadings[key];
-    window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 /**
  * @description Creates the old chat by going through the array stored in localStorage
@@ -338,7 +302,7 @@ function createHistoryButton(key) {
       });
     } else {
       // save otherwise because it actually contains content
-      saveToHistory();
+      saveToHistory(chatArr, currentSession);
     }
 
     // Set the current session to the clicked session
