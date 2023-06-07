@@ -40,7 +40,7 @@ Dylan is a developer.
 
 ### [Mico Guinto](https://github.com/lemangomeister)
 
-Mico is a developer.
+Mico is a developer currently in his fourth year (second year as transfer) as a Computer Engineering major in the ECE Department. Outside of academics, he likes basketball and ice hockey as sports, and practices martial arts in his free time.
 
 ### [Michael Ye](https://github.com/MichaelYe48)
 
