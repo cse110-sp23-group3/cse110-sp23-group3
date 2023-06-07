@@ -368,35 +368,32 @@ function addButtons(message, isIncoming = true) {
   messageBubble.classList.add('message-button', 'btn-group');
 
   // Making a button for each option
-  for (const choice of message) {
+  message.forEach((choice) => {
     const messageText = document.createElement('button');
     messageText.classList.add('choices-text', 'btn', 'outline');
     messageText.textContent = choice;
 
+    // on click it will print the option chosen and disable all buttons
+    messageText.addEventListener('click', function () {
+      buttonChoice = this.textContent;
+      addMessageToChat(buttonChoice, false);
+      const choiceButtons = document.querySelectorAll('.choices-text');
+      choiceButtons.forEach((choiceButton) => {
+        choiceButton.disabled = true;
+      });
+      next = true;
+    });
+
     // Append the message text to the chat message bubble
     messageBubble.appendChild(messageText);
+  });
 
-    // Append the chat message bubble to the chat messages container
-    messageElement.appendChild(messageBubble);
-    chatMessages.appendChild(messageElement);
-  }
+  // Append the chat message bubble to the chat messages container
+  messageElement.appendChild(messageBubble);
+  chatMessages.appendChild(messageElement);
 
   // Scroll to the latest message
   chatMessages.scrollTop = chatMessages.scrollHeight;
-
-  const choicesButton = document.querySelectorAll('.choices-text');
-
-  // on click it will print the option chosen and disable all buttons
-  choicesButton.forEach((button) => {
-    button.addEventListener('click', function () {
-      buttonChoice = button.textContent;
-      addMessageToChat(buttonChoice, false);
-      for (const choiceButton of choicesButton) {
-        choiceButton.disabled = true;
-      }
-      next = true;
-    });
-  });
 }
 
 /**
