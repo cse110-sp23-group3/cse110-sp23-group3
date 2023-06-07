@@ -7,6 +7,11 @@
   --profile-img-size: 3rem;
 }
 
+/* OVERWRITES */
+body {
+  overflow: hidden;
+}
+
 /* CHATBOX */
 main .chat-messages {
   display: flex;
