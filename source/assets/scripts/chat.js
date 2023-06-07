@@ -9,8 +9,13 @@ import {
 // When DOM content has loaded, run the main function
 window.addEventListener('DOMContentLoaded', main);
 
-let numberOfSessions = 1; // variable to keep track of the number of sessions
-let sessions; // object to store the palm reading sessions as a sort of state variable that you keep track of until page exit, then you save it to local storage
+// Ensures that the last chat before leaving the page gets saved
+window.addEventListener('visibilitychange', function () {
+  if (document.visibilityState === 'hidden') {
+    saveToHistory();
+  }
+});
+
 let next = false; // variable to check if the user has clicked a button
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
 
@@ -165,7 +170,8 @@ async function readPalm() {
  */
 async function main() {
   // Check if there are previous palm reading sessions in local storage and load them into the sidebar if there are
-  sessions = JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
+  const sessions =
+    JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
 
   // make buttons for each previous session
   for (const key in sessions) {
@@ -180,11 +186,11 @@ async function main() {
     }
 
     // Only save to localstorage if there is an existing session that is being looked at
-    if (currentSession && !(currentSession in sessions)) {
-      saveToHistory(chatArr, currentSession);
+    if (currentSession) {
+      saveToHistory();
     }
 
-    // Modify current session to be a right now
+    // Modify current session to be right now
     currentSession = String(Date.now());
 
     // Clears the previous chat from the chat box
@@ -197,20 +203,17 @@ async function main() {
       true
     );
 
-    createHistoryButton(currentSession);
+    const newChat = createHistoryButton(currentSession);
+
+    inactivateHistoryButtons();
+
+    // set the new chat to active
+    newChat.classList.add('active');
 
     await readPalm();
   });
 
   newChatButton.click();
-}
-
-function saveToLocal() {
-  try {
-    window.localStorage.setItem('palmReadings', JSON.stringify(sessions));
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 /**
@@ -220,10 +223,17 @@ function saveToLocal() {
  * @param {integer} key - The chat key that it will be saved at
  * @returns {void}
  */
-function saveToHistory(chatArr, key) {
+function saveToHistory() {
   try {
-    sessions[key] = chatArr;
-    window.localStorage.setItem('palmReadings', JSON.stringify(sessions));
+    // Don't save if it is the default chat
+    if (chatArr.length <= 3) {
+      return;
+    }
+
+    const palmReadings =
+      JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
+    palmReadings[currentSession] = chatArr;
+    window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
   } catch (error) {
     console.log(error);
   }
@@ -236,7 +246,14 @@ function saveToHistory(chatArr, key) {
  * @returns {void}
  */
 function deleteFromHistory(key) {
-  delete sessions[key];
+  try {
+    const palmReadings =
+      JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
+    delete palmReadings[key];
+    window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /**
@@ -246,7 +263,8 @@ function deleteFromHistory(key) {
  */
 function rebuildChat(key) {
   clearChat();
-  const chatHistory = sessions[key];
+  const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  let chatHistory = palmReadings[key];
 
   const length = chatHistory.length;
   for (let i = 0; i < length; i++) {
@@ -278,7 +296,21 @@ function createHistoryButton(key) {
 
   // create a new a tag for a session
   const chatLink = document.createElement('a');
-  chatLink.textContent = `Chat Session ${numberOfSessions++}`;
+
+  // Make the current date in the user's local timezone the text content
+  const date = new Date(Number(key));
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+  };
+  const shortenedDateString = date.toLocaleDateString(undefined, options);
+
+  chatLink.textContent = shortenedDateString;
   chatLink.classList.add('text-md');
 
   // Make list item and append the a tag to it then append it to the history list
@@ -287,49 +319,50 @@ function createHistoryButton(key) {
   newItem.appendChild(chatLink);
   historyList.insertBefore(newItem, historyList.firstChild);
 
-  // Event listeners remain the same...
+  // Event listener for the chat link
   chatLink.addEventListener('click', async function () {
     // If the chat link is already active, do nothing
     if (chatLink.classList.contains('active')) {
       return;
     }
 
-    // save it to local storage
-    if (chatArr.length === 3) {
-      delete sessions[currentSession];
-      saveToLocal();
+    // if current chat is the default chat with only intro messages, then we don't need to save it
+    if (chatArr.length <= 3) {
       const childNodes = historyList.childNodes;
       childNodes.forEach(function (childNode) {
         if (childNode.dataset.value === currentSession) {
           childNode.remove();
-          numberOfSessions--;
         }
       });
     } else {
-      saveToHistory(chatArr, currentSession);
-      saveToLocal();
+      // save otherwise because it actually contains content
+      saveToHistory();
     }
 
-    // Set the current session to the clicked session and save the old one again
+    // Set the current session to the clicked session
     currentSession = key;
-    chatArr = [];
+
+    clearChat();
 
     // Rebuild the chat from the session
-    rebuildChat(key);
+    rebuildChat(currentSession);
+
+    // Inactivate all buttons
+    inactivateHistoryButtons();
 
     // Set the clicked session to active
     chatLink.classList.add('active');
-
-    // Reset the other sessions to inactive
-    const historyButtons = document.querySelectorAll('.text-md');
-    historyButtons.forEach((button) => {
-      if (button !== chatLink) {
-        button.classList.remove('active');
-      }
-    });
   });
 
   return chatLink;
+}
+
+function inactivateHistoryButtons() {
+  // Reset all buttons to inactive
+  const historyButtons = document.querySelectorAll('.text-md');
+  historyButtons.forEach((button) => {
+    button.classList.remove('active');
+  });
 }
 
 /**
