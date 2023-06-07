@@ -13,6 +13,7 @@ img {
   border-radius: 100%;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  border: 1px solid black;
 }
 
 @media (max-width: 767px) {
@@ -25,6 +26,7 @@ img {
 figcaption {
   text-align: center;
   font-weight: bolder;
+  color: var(--text-primary-dark);
 }
 `;
 // the file path to the default profile image

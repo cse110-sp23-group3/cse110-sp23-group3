@@ -53,6 +53,27 @@ div#about-profile-grid {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: var(--p-lg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 1px solid var(--text-secondary);
+  border-radius: 1rem;
+  padding: var(--p-md);
+  margin-bottom: 1rem;
+}
+
+about-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 1px solid var(--text-secondary);
+  border-radius: 1rem;
+  padding: var(--p-lg);
+  margin-bottom: 1rem;
 }
 
 /* TEXT AND LINK FORMATTING*/
