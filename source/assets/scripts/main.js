@@ -228,10 +228,9 @@ function rebuildChat(key) {
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   const chatHistory = palmReadings[key];
 
-  const length = chatHistory.length;
-  for (let i = 0; i < length; i++) {
-    addMessageToChat(chatHistory[i].message, chatHistory[i].isIncoming);
-  }
+  chatHistory.forEach(({ message, isIncoming }) => {
+    addMessageToChat(message, isIncoming);
+  });
 }
 
 /**
@@ -240,8 +239,8 @@ function rebuildChat(key) {
  * @returns {void}
  */
 function clearChat() {
-  const container = document.getElementById('chat-messages');
-  container.innerHTML = '';
+  const chatContainer = document.getElementById('chat-messages');
+  chatContainer.innerHTML = '';
 
   // reset state variable
   chatArr = [];
