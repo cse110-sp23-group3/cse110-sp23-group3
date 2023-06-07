@@ -60,10 +60,7 @@
 .sidebar ul li a:hover {
   color: var(--text-primary-light);
   text-decoration: underline;
-}
-
-.sidebar ul li.active {
-  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
 
 .sidebar ul li.active a {
@@ -99,18 +96,31 @@
   color: var(--text-primary-light);
 }
 
+.sidebar__history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.sidebar__history ul li a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__history ul li.active,
+.sidebar__history ul li a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .sidebar > .sidebar__history {
   flex-grow: 1;
   overflow-y: auto;
 }
 
 /* SIDEBAR - HISTORY - ACTIONS */
-
-.sidebar__history li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .sidebar__history .actions {
   display: none;
