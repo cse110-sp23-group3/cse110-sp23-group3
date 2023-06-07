@@ -7,6 +7,7 @@
     "profilePos": "left"
   },
   {
+    "profileSrc": "./assets/images/profile_images/henry.jpeg",
     "name": "Henry",
     "role": "Team Lead",
     "description": "Henry is a 2nd year studying CS in Sixth College. His favorite animal is the lion and a fun fact is that his middle name is his favorite animal.",
@@ -62,6 +63,7 @@
     "profilePos": "left"
   },
   {
+    "profileSrc": "./assets/images/profile_images/dylan.jpg",
     "name": "Dylan",
     "role": "Developer",
     "description": "Dylan is a third-year CS major in muir college. His favorite animal is a dog because they are man's best friend. His hobbies outside of school related things are playing volleyball and going to the gym.",
