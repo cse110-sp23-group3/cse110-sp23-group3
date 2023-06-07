@@ -83,9 +83,13 @@ async function readPalm() {
                     )}, ${chosenLineFortuneMap.get(
       shapeChoice
     )}, ${chosenLineFortuneMap.get(abnormalChoice)}.`;
-    overallFortune.chosenLine = fortune;
+
+    // Update the overall fortune
+    overallFortune[chosenLine] = fortune;
+
     addMessageToChat(fortune, true);
 
+    // ask if the user wants to have a more detailed reading
     addMessageToChat(
       `Would you like a more detailed reading for your ${chosenLine}?`,
       true
@@ -114,8 +118,10 @@ async function readPalm() {
         // Get the bot's response
         botResponse = await botResponse.json();
 
+        // Overwrite the previous simple palm reading response on the overall fortune
+        overallFortune[chosenLine] = botResponse.chatResponse;
+
         // Add the bot's response to the chat
-        overallFortune.chosenLine = botResponse.chatResponse;
         addMessageToChat(botResponse.chatResponse, true);
       } else {
         addMessageToChat(
@@ -146,22 +152,27 @@ async function readPalm() {
     'That concludes your palm reading! As a recap, your overall fortune is below.',
     true
   );
-  let overallFortuneString = '';
-  for (const line in overallFortune) {
-    if (line === '') {
-      continue;
-    }
 
-    overallFortuneString += ` ${overallFortune[line]}`;
+  //console.log(overallFortune);
+
+  for (const line in overallFortune) {
+    addMessageToChat(
+      `${
+        overallFortune[line] === ''
+          ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
+          : `${line}: ${overallFortune[line]}`
+      }`, 
+      true
+    );
   }
-  addMessageToChat(
-    `${
-      overallFortuneString === ''
-        ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
-        : overallFortuneString
-    }`,
-    true
-  );
+  // addMessageToChat(
+  //   `${
+  //     overallFortuneString === ''
+  //       ? 'Sorry we were not able to determine your fortune. Try again by reloading!'
+  //       : overallFortuneString
+  //   }`,
+  //   true
+  // );
 }
 
 /**
