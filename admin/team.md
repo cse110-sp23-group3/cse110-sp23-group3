@@ -36,7 +36,7 @@ Chris is a developer.
 
 ### [Dylan Olivares](https://github.com/dolivares11)
 
-Dylan is a developer.
+Dylan is a developer currently in his third year (first year transfer) as a CS major. In his free time, Dylan enjoys playing volleyball, and going to the gym.
 
 ### [Mico Guinto](https://github.com/lemangomeister)
 
