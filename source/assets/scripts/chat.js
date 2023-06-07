@@ -212,7 +212,7 @@ async function main() {
     // set the new chat to active
     newChat.classList.add('active');
 
-    await readPalm();
+    readPalm();
   });
 
   newChatButton.click();
@@ -386,7 +386,9 @@ async function timeout(ms) {
  */
 async function waitUserInput() {
   // eslint-disable-next-line no-unmodified-loop-condition
-  while (next === false) await timeout(50); // pauses script
+  while (next === false) {
+    await timeout(50); // pauses script
+  }
   next = false; // reset var for next wait
 }
 
