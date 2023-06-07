@@ -26,7 +26,7 @@ img {
 figcaption {
   text-align: center;
   font-weight: bolder;
-  color: var(--text-primary-dark);
+  color: var(--text-primary-light);
 }
 `;
 // the file path to the default profile image
