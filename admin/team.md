@@ -28,7 +28,7 @@ Anh is a developer.
 
 ### [Chaeyeon Park](https://github.com/ChayPark)
 
-Chaeyeon is a designer.
+Chaeyeon is a designer. She is a fourth-year CS major at Sixth. She is interested in VR, AR, and web
 
 ### [Chris Tian](https://github.com/Christby)
 
