@@ -78,11 +78,9 @@ async function readPalm() {
 
     // Show fortune for the chosen line
     const fortune = `Your ${chosenLine} ${positionChoice}, is ${shapeChoice}, and has ${abnormalChoice}. Your characteristics are:
-                    ${chosenLineFortuneMap.get(
-                      positionChoice
-                    )}, ${chosenLineFortuneMap.get(
-      shapeChoice
-    )}, ${chosenLineFortuneMap.get(abnormalChoice)}.`;
+                    ${chosenLineFortuneMap.get(positionChoice)}, 
+                    ${chosenLineFortuneMap.get(shapeChoice)}, 
+                    ${chosenLineFortuneMap.get(abnormalChoice)}.`;
 
     // Update the overall fortune
     overallFortune[chosenLine] = fortune;
@@ -246,6 +244,40 @@ function clearChat() {
   chatArr = [];
 }
 
+// TODO: Add functionality to the edit button
+// TODO: Add functionality to the delete button
+function createActionsForHistoryButton(key) {
+  const actions = document.createElement('div');
+  actions.classList.add('actions');
+
+  const editButton = document.createElement('button');
+  editButton.classList.add('text-md');
+  editButton.setAttribute('aria-label', 'edit');
+
+  const editIcon = document.createElement('img');
+  editIcon.setAttribute('src', './assets/images/ic_edit.svg');
+  editIcon.setAttribute('alt', 'edit');
+  editIcon.classList.add('sidebar__icons', 'white');
+
+  editButton.appendChild(editIcon);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('text-md');
+  deleteButton.setAttribute('aria-label', 'delete');
+
+  const deleteIcon = document.createElement('img');
+  deleteIcon.setAttribute('src', './assets/images/ic_delete.svg');
+  deleteIcon.setAttribute('alt', 'delete');
+
+  deleteIcon.classList.add('sidebar__icons', 'white');
+  deleteButton.appendChild(deleteIcon);
+
+  actions.appendChild(editButton);
+  actions.appendChild(deleteButton);
+
+  return actions;
+}
+
 /**
  * @description this will create the history button with the specified key attatched to it, if no key attached it will create a new one based on the time
  * @param {integer} key - chat key that would be correlating to localStorage key, and if none is available make a new one
@@ -257,6 +289,8 @@ function createHistoryButton(key) {
 
   // create a new a tag for a session
   const chatLink = document.createElement('a');
+  const actions = createActionsForHistoryButton(key);
+  chatLink.appendChild(actions);
 
   // Make the current date in the user's local timezone the text content
   const date = new Date(Number(key));
@@ -278,6 +312,7 @@ function createHistoryButton(key) {
   const newItem = document.createElement('li');
   newItem.setAttribute('data-value', key);
   newItem.appendChild(chatLink);
+  newItem.appendChild(actions);
   historyList.insertBefore(newItem, historyList.firstChild);
 
   // Event listener for the chat link
