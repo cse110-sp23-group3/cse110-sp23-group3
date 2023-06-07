@@ -123,9 +123,15 @@
 /* SIDEBAR - HISTORY - ACTIONS */
 
 .sidebar__history .actions {
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .sidebar__history .actions {
+    display: none;
+  }
 }
 
 .sidebar__history .actions button {
