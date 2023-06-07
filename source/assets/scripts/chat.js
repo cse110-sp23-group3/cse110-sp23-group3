@@ -358,6 +358,10 @@ function createHistoryButton(key) {
   return chatLink;
 }
 
+/**
+ * @description Inactivates all history buttons in the DOM by removing the 'active' class. History buttons are identified by the class 'text-md'.
+ * @returns {void}
+ */
 function inactivateHistoryButtons() {
   // Reset all buttons to inactive
   const historyButtons = document.querySelectorAll('.text-md');
