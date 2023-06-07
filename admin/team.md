@@ -52,6 +52,6 @@ Nick is a developer. He is very interested in the intersection between healthcar
 
 ### [Jiaen Yu](https://github.com/yujiaen1999)
 
-Jiaen is a planner.
+Jiaen is a planner. He is a second year graduate student in CS major. He is a cat person, coconut water lover and soccer fan.
 
 Thank you for visiting our team page! We're excited to bring our values and expertise to your next project.
