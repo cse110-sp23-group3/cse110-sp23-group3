@@ -205,6 +205,7 @@ async function main() {
 
     const newChat = createHistoryButton(currentSession);
 
+    // Inactivate all buttons
     inactivateHistoryButtons();
 
     // set the new chat to active
@@ -264,7 +265,7 @@ function deleteFromHistory(key) {
 function rebuildChat(key) {
   clearChat();
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-  let chatHistory = palmReadings[key];
+  const chatHistory = palmReadings[key];
 
   const length = chatHistory.length;
   for (let i = 0; i < length; i++) {
