@@ -5,7 +5,7 @@
  * @param {integer} key - The chat key that it will be saved at
  * @returns {void}
  */
-export function saveToHistory(chatArr, currentSession) {
+export function saveToHistory(chatArr, currentSession, displayName) {
   try {
     // Don't save if it is the default chat
     if (chatArr.length <= 3) {
@@ -14,7 +14,7 @@ export function saveToHistory(chatArr, currentSession) {
 
     const palmReadings =
       JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
-    palmReadings[currentSession] = chatArr;
+    palmReadings[currentSession] = { displayName, chatArr };
     window.localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
   } catch (error) {
     console.log(error);

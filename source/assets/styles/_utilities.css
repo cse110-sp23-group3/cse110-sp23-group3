@@ -37,9 +37,55 @@
   backdrop-filter: blur(4rem);
 }
 
+@media (prefers-color-scheme: dark) {
+  .bg-blur {
+    background: linear-gradient(
+      10deg,
+      rgba(7, 32, 50, 0.78) 0.47%,
+      rgba(7, 32, 50, 0) 121.14%
+    );
+  }
+
+  .bg-blur-darker {
+    background: linear-gradient(
+      10deg,
+      rgba(7, 32, 50, 0.78) 0.6%,
+      rgba(7, 32, 50, 0) 121.14%
+    );
+    backdrop-filter: blur(1rem);
+  }
+}
+
+[data-theme='dark'] .bg-blur {
+  background: linear-gradient(
+    10deg,
+    rgba(7, 32, 50, 0.78) 0.47%,
+    rgba(7, 32, 50, 0) 121.14%
+  );
+}
+
+[data-theme='dark'] .bg-blur-darker {
+  background: linear-gradient(
+    10deg,
+    rgba(7, 32, 50, 0.78) 0.6%,
+    rgba(7, 32, 50, 0) 121.14%
+  );
+  backdrop-filter: blur(1rem);
+}
+
 /* BORDER */
 .border {
   border: 1px solid rgba(99, 235, 235, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .border {
+    border: 1px solid rgba(205, 175, 227, 0.8);
+  }
+}
+
+[data-theme='dark'] .border {
+  border: 1px solid rgba(205, 175, 227, 0.8);
 }
 
 .border.rounded-sm {
