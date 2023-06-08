@@ -58,14 +58,24 @@ header > label {
 .toggle-slot {
   display: flex;
   padding: 0.1em 0.25em;
-  border: 2px solid #e4e7ec;
-  border-radius: var(--border-radius);
-  background-color: white;
+  border-width: 2px;
+  background: linear-gradient(
+    102.17deg,
+    rgba(32, 80, 115, 0.64) 0.47%,
+    rgba(32, 80, 115, 0) 121.14%
+  );
+  backdrop-filter: blur(1rem);
   transition: background-color 250ms;
 }
 
 .toggle-checkbox:checked ~ .toggle-slot {
-  background-color: #374151;
+  border-width: 2px;
+  background: linear-gradient(
+    10deg,
+    rgba(7, 32, 50, 0.78) 0.6%,
+    rgba(7, 32, 50, 0) 121.14%
+  );
+  backdrop-filter: blur(1rem);
 }
 
 .toggle-checkbox:checked ~ .toggle-slot .toggle-button {
