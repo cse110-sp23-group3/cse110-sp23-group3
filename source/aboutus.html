@@ -23,10 +23,24 @@
 <body>
     <!-- HEADING -->
     <header>
+        <img src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
         <div class="banner">
             <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
         </div>
+        <label>
+            <input id="scheme-toggle" class="toggle-checkbox" type="checkbox"></input>
+            <div class="toggle-slot border rounded-md">
+                <div class="sun-icon-wrapper">
+                    <img src="./assets/images/ic_sun.svg" alt="sun" class="sun-icon orange">
+                </div>
+                <div class="toggle-button"></div>
+                <div class="moon-icon-wrapper">
+                    <img src="./assets/images/ic_moon.svg" alt="moon" class="moon-icon white">
+                </div>
+            </div>
+        </label>
     </header>
+
     <div class="app container">
         <!-- MAIN -->
         <main>
@@ -43,6 +57,13 @@
             </div>
         </main>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="text-xs">For school purposes only. Palm reading is not endorsed by <a
+                href="./aboutus.html">creators</a>.<span>
+    </footer>
+
     <!-- JavaScript -->
     <script src="assets/scripts/aboutprofile.js"></script>
     <script src="assets/scripts/aboutcard.js"></script>

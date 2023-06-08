@@ -132,9 +132,26 @@ header > label {
 /* MAIN */
 body > div.container {
   display: flex;
-  height: calc(100vh - var(--header-height) - 1px);
+  height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 main {
   width: 100%;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: var(--footer-height);
+  color: var(--text-primary-light);
+  padding: 0 1rem var(--p-xs) 1rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+footer a {
+  transition: color 250ms;
+  color: var(--btn-color-primary-light);
 }
