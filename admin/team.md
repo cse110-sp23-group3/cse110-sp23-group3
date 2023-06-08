@@ -24,7 +24,7 @@ Henry is a team lead. He is a second year CS major from Sixth. He is most intere
 
 ### [Anh Pham](https://github.com/phuanh004)
 
-Anh is a developer.
+Anh is a developer who loves to create and solve problems with code. He is a third-year computer science major at Revelle College. When he is not coding, he enjoys going on road trips, exploring new technologies, and listening to pop music.
 
 ### [Chaeyeon Park](https://github.com/ChayPark)
 
