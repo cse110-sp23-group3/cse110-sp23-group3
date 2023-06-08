@@ -80,5 +80,5 @@ body {
 }
 
 [data-theme='dark'] body {
-  background-image: url('../images/bg-dark.png') !important;
+  background-image: url('../images/bg-dark.png');
 }
