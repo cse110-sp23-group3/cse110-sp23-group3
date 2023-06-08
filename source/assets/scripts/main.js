@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', main);
 // Ensures that the last chat before leaving the page gets saved
 window.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'hidden') {
-    saveToHistory(chatArr, currentSession);
+    saveToHistory(chatArr, currentSession, currentChatName);
   }
 });
 
@@ -22,6 +22,7 @@ let next = false; // variable to check if the user has clicked a button
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
 const chatMessagesContainer = document.querySelector('.chat-messages'); // container for the chat messages
 let currentSession; // variable to know which chat we are viewing
+let currentChatName; // variable to know which chat we are viewing
 let chatArr = []; // array to store the current set of chat messages
 let buttonChoice; // variable for the button choice
 
@@ -175,7 +176,7 @@ async function main() {
 
   // make buttons for each previous session
   for (const key in sessions) {
-    createHistoryButton(key);
+    createHistoryButton(key, sessions[key].displayName);
   }
 
   // give the new chat button its functionality
@@ -187,11 +188,12 @@ async function main() {
 
     // Only save to localstorage if there is an existing session that is being looked at
     if (currentSession) {
-      saveToHistory(chatArr, currentSession);
+      saveToHistory(chatArr, currentSession, currentChatName);
     }
 
     // Modify current session to be right now
     currentSession = String(Date.now());
+    currentChatName = '';
 
     // Clears the previous chat from the chat box
     clearChat();
@@ -203,7 +205,7 @@ async function main() {
       true
     );
 
-    const newChat = createHistoryButton(currentSession);
+    const newChat = createHistoryButton(currentSession, currentChatName);
 
     // Inactivate all buttons
     inactivateHistoryButtons();
@@ -218,14 +220,20 @@ async function main() {
 }
 
 /**
- * @description Creates the old chat by going through the array stored in localStorage
- * @param {integer} key - The chat key, which it is stored in the localStorage array
- * @returns {void}
+ * @description Creates an actions div for a history button with 'edit' and 'delete' functionalities.
+ * The 'edit' button, when clicked, prompts the user to input a new chat name. If the user enters a new name,
+ * the chat name in local storage and on the HTML page is updated.
+ * The 'delete' button, when clicked, removes the chat from local storage and the HTML page.
+ * If the chat being deleted is currently active, the chat is cleared.
+ * @param {string} key - The chat key, which is stored in local storage
+ * @param {Object} chatLink - The DOM element of the chat link that is clicked on in the history
+ * @param {Object} newItem - The new DOM element created in the chat history
+ * @returns {Object} The 'actions' div element, which contains both 'edit' and 'delete' buttons for the specific chat history item
  */
 function rebuildChat(key) {
   clearChat();
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-  const chatHistory = palmReadings[key];
+  const chatHistory = palmReadings[key].chatArr;
 
   chatHistory.forEach(({ message, isIncoming }) => {
     addMessageToChat(message, isIncoming);
@@ -245,9 +253,18 @@ function clearChat() {
   chatArr = [];
 }
 
-// TODO: Add functionality to the edit button
-// TODO: Add functionality to the delete button
-function createActionsForHistoryButton(key) {
+/**
+ * Creates an actions div for a history button with both 'edit' and 'delete' functionalities.
+ * The 'edit' button, when clicked, prompts the user to input a new chat name. If the user enters a new name, the chat name in local storage and the HTML page are updated.
+ * The 'delete' button, when clicked, removes the chat from local storage and the HTML page. If the chat being deleted is currently active, it clears the chat.
+ *
+ * @function createActionsForHistoryButton
+ * @param {string} key - The key identifier for the chat, used to fetch or update the chat data in local storage.
+ * @param {Object} chatLink - The DOM element of the chat link that is clicked on in the history.
+ * @param {Object} newItem - The new DOM element created in the chat history.
+ * @returns {Object} The 'actions' div element, which contains both 'edit' and 'delete' buttons for the specific chat history item.
+ */
+function createActionsForHistoryButton(key, chatLink, newItem) {
   const actions = document.createElement('div');
   actions.classList.add('actions');
 
@@ -269,12 +286,47 @@ function createActionsForHistoryButton(key) {
   const deleteIcon = document.createElement('img');
   deleteIcon.setAttribute('src', './assets/images/ic_delete.svg');
   deleteIcon.setAttribute('alt', 'delete');
-
   deleteIcon.classList.add('sidebar__icons', 'white');
   deleteButton.appendChild(deleteIcon);
 
   actions.appendChild(editButton);
   actions.appendChild(deleteButton);
+
+  // Add event listener to the edit button
+  editButton.addEventListener('click', () => {
+    const newName = prompt('Please enter new chat name:');
+    if (newName) {
+      if (chatLink.classList.contains('active')) {
+        currentChatName = newName;
+      }
+
+      // Update the key in local storage
+      const palmReadings =
+        JSON.parse(localStorage.getItem('palmReadings')) || {};
+      palmReadings[key] = {
+        displayName: newName,
+        chatArr: palmReadings[key] ? palmReadings[key].chatArr : chatArr,
+      };
+      localStorage.setItem('palmReadings', JSON.stringify(palmReadings));
+
+      // Update the chat name in the HTML
+      chatLink.textContent = newName;
+    }
+  });
+
+  // Add event listener to the delete button
+  deleteButton.addEventListener('click', () => {
+    // Remove the key from local storage
+    deleteFromHistory(key);
+
+    if (chatLink.classList.contains('active')) {
+      // If the deleted chat is the current chat, clear the chat
+      clearChat();
+    }
+
+    // Remove the chat from the HTML
+    newItem.parentNode.removeChild(newItem);
+  });
 
   return actions;
 }
@@ -284,35 +336,39 @@ function createActionsForHistoryButton(key) {
  * @param {integer} key - chat key that would be correlating to localStorage key, and if none is available make a new one
  * @returns {void}
  */
-function createHistoryButton(key) {
+function createHistoryButton(key, displayName) {
   // Process of creating a new button for a chat session
   const historyList = document.getElementById('history');
 
   // create a new a tag for a session
   const chatLink = document.createElement('a');
-  const actions = createActionsForHistoryButton(key);
-  chatLink.appendChild(actions);
 
   // Make the current date in the user's local timezone the text content
-  const date = new Date(Number(key));
-  const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: true,
-  };
-  const shortenedDateString = date.toLocaleDateString(undefined, options);
+  if (displayName === '') {
+    const date = new Date(Number(key));
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true,
+    };
+    const shortenedDateString = date.toLocaleDateString(undefined, options);
 
-  chatLink.textContent = shortenedDateString;
+    chatLink.textContent = shortenedDateString;
+  } else {
+    chatLink.textContent = displayName;
+  }
+
   chatLink.classList.add('text-md');
 
   // Make list item and append the a tag to it then append it to the history list
   const newItem = document.createElement('li');
   newItem.setAttribute('data-value', key);
   newItem.appendChild(chatLink);
+  const actions = createActionsForHistoryButton(key, chatLink, newItem);
   newItem.appendChild(actions);
   historyList.insertBefore(newItem, historyList.firstChild);
 
@@ -332,12 +388,17 @@ function createHistoryButton(key) {
         }
       });
     } else {
+      console.log(currentChatName);
       // save otherwise because it actually contains content
-      saveToHistory(chatArr, currentSession);
+      saveToHistory(chatArr, currentSession, currentChatName);
     }
 
     // Set the current session to the clicked session
     currentSession = key;
+    const palmReadings = JSON.parse(
+      window.localStorage.getItem('palmReadings')
+    );
+    currentChatName = palmReadings[key].displayName;
 
     clearChat();
 
