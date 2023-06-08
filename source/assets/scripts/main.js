@@ -27,7 +27,7 @@ let chatArr = []; // array to store the current set of chat messages
 let buttonChoice; // variable for the button choice
 
 // variable for overall fortune
-const overallFortune = {
+let overallFortune = {
   'Heart Line': '',
   'Head Line': '',
   'Life Line': '',
@@ -212,6 +212,14 @@ async function main() {
 
     // set the new chat to active
     newChat.classList.add('active');
+
+    // reset overall fortune
+    overallFortune = {
+      'Heart Line': '',
+      'Head Line': '',
+      'Life Line': '',
+      'Fate Line': '',
+    };
 
     readPalm();
   });
