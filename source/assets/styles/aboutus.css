@@ -24,7 +24,7 @@ main .chat-messages {
 }
 
 .app.container {
-  padding: var(--p-sm);
+  padding: var(--p-md) var(--p-md) 0 var(--p-md);
 }
 
 /* ABOUT CARD LAYOUT */
