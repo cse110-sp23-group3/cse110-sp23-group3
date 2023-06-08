@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - tests # TODO: need to change these to the proper branch before merging
   pull_request:
     branches:
-      - main
+      - tests
 
 jobs:
   build:
@@ -42,7 +42,7 @@ jobs:
 
     - name: Jest (optional)
       id: jest
-      run: npx jest || echo '::set-output name=status::failure'
+      run: npm test
 
     - name: JSDoc
       run: npx jsdoc -c jsdoc.config.json
