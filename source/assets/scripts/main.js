@@ -177,7 +177,7 @@ async function readPalm() {
       );
     }
   } catch (error) {
-    console.log('Session interrupted.');
+    console.log(error);
   } finally {
     endedSession = false; // reset the variable
     clearInterval(interval); // Make sure to clear the interval when the function ends
@@ -201,6 +201,8 @@ async function main() {
   // give the new chat button its functionality
   const newChatButton = document.getElementById('new-chat');
   newChatButton.addEventListener('click', async function () {
+    endedSession = true; // end the previous session
+
     if (chatArr.length === 3) {
       return;
     }
@@ -343,8 +345,8 @@ function createActionsForHistoryButton(key, chatLink, newItem) {
     deleteFromHistory(key);
 
     if (chatLink.classList.contains('active')) {
-      // If the deleted chat is the current chat, clear the chat
-      clearChat();
+      endedSession = true; // end the previous session
+      clearChat(); // If the deleted chat is the current chat, clear the chat
     }
 
     // Remove the chat from the HTML
@@ -401,6 +403,8 @@ function createHistoryButton(key, displayName) {
     if (chatLink.classList.contains('active')) {
       return;
     }
+
+    endedSession = true; // end the previous session
 
     // if current chat is the default chat with only intro messages, then we don't need to save it
     if (chatArr.length <= 3) {
