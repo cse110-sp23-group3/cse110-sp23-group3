@@ -53,6 +53,8 @@ async function readPalm() {
       'Which palm line would you like me to read? Select from the buttons below.',
       true
     );
+    addImageToChat('./assets/images/palm-diagram-1.jpeg', 250, 300);
+    addImageToChat('./assets/images/palm-diagram-2.jpeg', 210, 300);
     addButtons(currentPalmLines);
     await waitUserInput();
     if (checkIfEnded()) return;
@@ -554,6 +556,38 @@ function addMessageToChat(message, isIncoming = false) {
     messageImage.classList.add('message-image');
     messageElement.appendChild(messageImage);
   }
+
+  // Append the chat message bubble to the chat messages container
+  messageElement.appendChild(messageBubble);
+  chatMessages.appendChild(messageElement);
+
+  // Scroll to the latest message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/**
+ * Function to add the image of palm reading to the chat
+ * @param {string} image - The image to add to the chat
+ */
+function addImageToChat(image, height, width) {
+  // first add message to currentChatArr
+  chatArr.push({ image });
+
+  // Create a new chat message element
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('chat-message');
+  //messageElement.classList.add('incomming-image');
+
+  const messageBubble = document.createElement('div');
+  messageBubble.classList.add('message-bubble');
+
+  const messageImage = document.createElement('img');
+  messageImage.src = image;
+  messageImage.alt = 'A diagram that exaplains palm lines to be read';
+  messageImage.style.height = `${height}px`;
+  messageImage.style.width = `${width}px`;
+  messageImage.classList.add('message-image');
+  messageElement.appendChild(messageImage);
 
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
