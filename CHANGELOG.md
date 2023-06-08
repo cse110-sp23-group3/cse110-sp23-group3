@@ -1,2 +1,120 @@
 # Changelog
 
+## v2.0.0
+
+- **Bug Fix:**  mock 2 modules instead of all the file
+- **Bug Fix:**  remove ui test - send button
+- **Bug Fix:**  fix all linting/prettier errors
+- **Bug Fix:**  another html syntax error
+- **Bug Fix:**  void tag, no need for end tag
+- **Feature:**  add more getHistory tests
+- **Bug Fix:**  update package.json
+- **Bug Fix:**  update babel
+- **Feature:**  add some unit tests for saveToHistory and clearChat
+- **Feature:**  brute force fix, might need to add more checks
+- **Bug Fix:**  add getHistory helper for the unit test
+- **Feature:**  add get History unit test
+- **Bug Fix:**  highlight TODO
+- **Feature:**  add places where endedSession = true
+- **Feature:**  add solution for readPalm issue
+- **Bug Fix:**  update Anh's part on team page
+- **Bug Fix:**  add disclaimer & theme toggle to about us page
+- **Bug Fix:**  move disclaimer to footer #2
+- **Bug Fix:**  fix #74
+- **Feature:**  working version of renaming and deletion
+- **Feature:**  update historyHelpers for renaming and deletion
+- **Bug Fix:**  switch action to run on main branch
+- **Bug Fix:**  add sample unit test
+- **Bug Fix:**  match toggle button with current theme #71
+- **Bug Fix:**  remove extra newline at end
+- **Bug Fix:**  add theme-toggle icon #71
+- **Bug Fix:**  rename E2E test and add unit tests
+- **Bug Fix:**  jsdoc syntax error
+- **Bug Fix:**  jsdoc syntax error
+- **Bug Fix:**  change input to button
+- **Bug Fix:**  update test to reflect current main branch
+- **Bug Fix:**  string quote in wrong place
+- **Bug Fix:**  url too long in test
+- **Bug Fix:**  update url to go to GitHub pages
+- **Bug Fix:**  remove unnecessary important
+- **Feature:**  have the dark/light button work #71
+- **Bug Fix:**  badly formatted comment in index.css
+- **Bug Fix:**  code style to meet eslint reqs
+- **Bug Fix:**  installed dependency for eslint
+- **Bug Fix:**  update to allow for jest/puppeteer tests
+- **Bug Fix:**  quotes should be single in line 19
+- **Feature:**  add dark/light toggle btn on index's ui #71
+- **Bug Fix:**  scrolling issue #76
+- **Feature:**  add ui dark theme #71
+- **Bug Fix:**  set body background no-repeat
+- **Feature:**  add user input ADR
+- **Bug Fix:**  remove chatbar
+- **Bug Fix:**  remove box from profile grid
+- **Bug Fix:**  remove overflow in index's body
+- **Bug Fix:**  linter
+- **Bug Fix:**  always show actions on mobile
+- **Bug Fix:**  floating issue
+- **Bug Fix:**  re-add edit and delete buttons after merge
+- **Bug Fix:**  update icon
+- **Bug Fix:**  clean up index css
+- **Feature:**  add history edit and delete buttons #46
+- **Bug Fix:**  add chat animations back #46
+- **Feature:**  optimize addButtons function (1 iteration)
+- **Feature:**  optimize rebuildChat and clearChat
+- **Bug Fix:**  rename js files to make more sense
+- **Bug Fix:**  add about us icon to homepage
+- **Bug Fix:**  modularize the history helper functions
+- **Bug Fix:**  add (temporary?) profiles for Henry, Dylan
+- **Bug Fix:**  add boxes so text shows better
+- **Bug Fix:**  no need to await readPalm
+- **Bug Fix:**  delete some comments and resolve prettier
+- **Bug Fix:**  add JSDoc comment for inactivate history buttons
+- **Bug Fix:**  const problem
+- **Feature:**  final fixed version
+- **Bug Fix:**  typos
+- **Bug Fix:**  change package.json and index src
+- **Bug Fix:**  separate constants
+- **Feature:**  add profile grid to about page
+- **Bug Fix:**  manual prettier
+- **Bug Fix:**  remove another placeholder.txt
+- **Feature:**  add definition of "done" ADR
+- **Bug Fix:**  move chat box to the right side. Close #67
+- **Bug Fix:**  make chat bar bigger #67
+- **Bug Fix:**  spacing, indent, eslint aboutus
+- **Bug Fix:**  change my bio
+- **Bug Fix:**  more bugs with autodeletion
+- **Bug Fix:**  remove default chats
+- **Feature:**  add about us page
+- **Bug Fix:**  delete random placeholder.txt
+- **Bug Fix:**  sidebar readability
+- **Bug Fix:**  scrollbar and prev merge conflict on buttons
+- **Bug Fix:**  add border for outline button
+- **Feature:**  new theme #46
+- **Bug Fix:**  new chat button + minor UI changes
+- **Feature:**  new background + blurring #56
+- **Feature:**  new background + blurring
+- **Bug Fix:**  restructure CSSs #56
+- **Bug Fix:**  clean old css from v1 #56
+- **Feature:**  added delete buttons for chats
+- **Feature:**  change JSDocs to be the jsdoc folder
+- **Bug Fix:**  link to app and typo
+- **Feature:**  disclaimer, close #2
+- **Bug Fix:**  manual prettier and linting
+- **Feature:**  add auto fixing for styles
+- **Bug Fix:**  #48
+- **Bug Fix:**  another fix for repeated messages
+- **Bug Fix:**  add delete option/changes to flow
+- **Bug Fix:**  move scope of newchatbutton
+- **Bug Fix:**  save each chat as you click onto a new chat
+- **Feature:**  RUD works well, C still has problems
+- **Feature:**  chat history #26
+- **Bug Fix:**  chat typing after DOMLoaded #48
+- **Bug Fix:**  chat typing after DOMLoaded #48
+- **Bug Fix:**  change to general persona
+- **Bug Fix:**  change course year!!
+- **Bug Fix:**  clean readme
+- **Bug Fix:**  scroller on index
+- **Bug Fix:**  move release notes to separate changelog file
+- **Bug Fix:**  prettier and eslint issues
+- **Feature:**  chat history #26
+- **Feature:**  loading-bubble #37
