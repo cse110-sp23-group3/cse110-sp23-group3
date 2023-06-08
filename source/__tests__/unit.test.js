@@ -9,3 +9,8 @@ test('Save To History', () => {
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   expect(palmReadings[1234]).toEqual([1, 2, 3, 4]);
 });
+
+test('Get History', () => {
+  const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+  expect(functions.getHistory()).toEqual(palmReadings);
+});
