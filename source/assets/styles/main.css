@@ -1,7 +1,7 @@
-@import '_buttons.css';
-@import '_utilities.css';
+@import './_buttons.css';
+@import './_utilities.css';
 
-@import '_sidebar.css';
+@import './_sidebar.css';
 
 /* HEADER */
 
