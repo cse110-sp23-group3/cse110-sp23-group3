@@ -5,4 +5,3 @@ test('Save Array To History', () => {
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   expect(palmReadings.values().includes([])).toBeTruthy();
 });
-
