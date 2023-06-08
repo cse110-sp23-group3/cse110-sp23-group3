@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - tests # TODO: need to change these to the proper branch before merging
+      - main
   pull_request:
     branches:
-      - tests
+      - main
 
 jobs:
   build:
