@@ -16,6 +16,6 @@ describe('Navigation To About Page', () => {
     const aboutUsTitle = await page.$('div#about-title h1');
     const aboutUsTitleInnerText = await aboutUsTitle.getProperty('innerText');
     const aboutUsTitleInnerTextJson = await aboutUsTitleInnerText.jsonValue();
-    expect(aboutUsTitleInnerTextJson).toBe("About Us");
+    expect(aboutUsTitleInnerTextJson).toBe('About Us');
   });
 });
