@@ -35,152 +35,138 @@ let overallFortune = {
   'Fate Line': '',
 };
 
+/**
+ * Checks if the session has ended.
+ *
+ * @returns {boolean} Returns the value of the 'endedSession' variable.
+ */
+function checkIfEnded() {
+  return endedSession;
+}
+
 async function readPalm() {
-  // Create an interval that checks every 50ms if endedSession is true
-  const interval = setInterval(() => {
-    if (endedSession) {
-      clearInterval(interval); // Stop the interval
-      throw new Error('Session ended.'); // Throw an error to stop the execution
-    }
-  }, 50);
-
-  // Make temp var to store the default palm lines before reading
   const currentPalmLines = new Set(palmLines);
-  try {
-    while (true) {
-      addMessageToChat(
-        'Which palm line would you like me to read? Select from the buttons below.',
-        true
-      );
-      addButtons(currentPalmLines);
-      await waitUserInput();
+  while (true) {
+    if (checkIfEnded()) return;
 
-      // First describe the location of the chosen line
-      const chosenLine = buttonChoice;
-      const chosenLineChoicesMap = lineChoicesMap.get(chosenLine);
-      const chosenLineFortuneMap = fortuneDescMap.get(chosenLine);
-      addMessageToChat(`The ${chosenLine} ${palmLineDesc[chosenLine]}`, true);
+    addMessageToChat(
+      'Which palm line would you like me to read? Select from the buttons below.',
+      true
+    );
+    addButtons(currentPalmLines);
+    await waitUserInput();
+    if (checkIfEnded()) return;
 
-      // Ask about the shape of the palm
-      addMessageToChat(
-        `What is the shape of your ${chosenLine}? Select from the buttons below.`,
-        true
-      );
-      addButtons(chosenLineChoicesMap.get('shapeChoices'));
-      await waitUserInput();
-      const shapeChoice = buttonChoice;
+    const chosenLine = buttonChoice;
+    const chosenLineChoicesMap = lineChoicesMap.get(chosenLine);
+    const chosenLineFortuneMap = fortuneDescMap.get(chosenLine);
+    addMessageToChat(`The ${chosenLine} ${palmLineDesc[chosenLine]}`, true);
 
-      // Ask about the position of the palm
-      addMessageToChat(
-        `Where is the position of your ${chosenLine} and its connections with other parts of the palm? Select from the buttons below.`,
-        true
-      );
-      addButtons(chosenLineChoicesMap.get('positionChoices'));
-      await waitUserInput();
-      const positionChoice = buttonChoice;
+    addMessageToChat(
+      `What is the shape of your ${chosenLine}? Select from the buttons below.`,
+      true
+    );
+    addButtons(chosenLineChoicesMap.get('shapeChoices'));
+    await waitUserInput();
+    if (checkIfEnded()) return;
 
-      // Ask about the abnormal patterns of the palm
-      addMessageToChat(
-        `Are there any abnormal patterns on of your ${chosenLine}? Select from the buttons below.`,
-        true
-      );
-      addButtons(chosenLineChoicesMap.get('abnormalChoices'));
-      await waitUserInput();
-      const abnormalChoice = buttonChoice;
+    const shapeChoice = buttonChoice;
+    addMessageToChat(
+      `Where is the position of your ${chosenLine} and its connections with other parts of the palm? Select from the buttons below.`,
+      true
+    );
+    addButtons(chosenLineChoicesMap.get('positionChoices'));
+    await waitUserInput();
+    if (checkIfEnded()) return;
 
-      // Show fortune for the chosen line
-      const fortune = `Your ${chosenLine} ${positionChoice}, is ${shapeChoice}, and has ${abnormalChoice}. Your characteristics are:
+    const positionChoice = buttonChoice;
+    addMessageToChat(
+      `Are there any abnormal patterns on of your ${chosenLine}? Select from the buttons below.`,
+      true
+    );
+    addButtons(chosenLineChoicesMap.get('abnormalChoices'));
+    await waitUserInput();
+    if (checkIfEnded()) return;
+
+    const abnormalChoice = buttonChoice;
+    const fortune = `Your ${chosenLine} ${positionChoice}, is ${shapeChoice}, and has ${abnormalChoice}. Your characteristics are:
                     ${chosenLineFortuneMap.get(positionChoice)}, 
                     ${chosenLineFortuneMap.get(shapeChoice)}, 
                     ${chosenLineFortuneMap.get(abnormalChoice)}.`;
 
-      // Update the overall fortune
-      overallFortune[chosenLine] = fortune;
-
-      addMessageToChat(fortune, true);
-
-      // ask if the user wants to have a more detailed reading
-      addMessageToChat(
-        `Would you like a more detailed reading for your ${chosenLine}?`,
-        true
-      );
-      addButtons(basicChoices);
-      await waitUserInput();
-
-      // If the user does not want a more detailed reading, continue to the next line
-      if (buttonChoice === 'Yes') {
-        // Query AI API for chat response.
-        let botResponse = await fetch(
-          'https://cse110-team3.up.railway.app/api/ask-chat',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              prompt: `Act as a fortune teller for palm reading. I describe my ${chosenLine}as: ${positionChoice}, ${shapeChoice}, and ${abnormalChoice}. What does this indicates? Limit your response to 4 sentences.`,
-            }),
-          }
-        );
-
-        // Fall back to hard-coded response if API fails
-        if (botResponse.ok) {
-          // Get the bot's response
-          botResponse = await botResponse.json();
-
-          // Overwrite the previous simple palm reading response on the overall fortune
-          overallFortune[chosenLine] = botResponse.chatResponse;
-
-          // Add the bot's response to the chat
-          addMessageToChat(botResponse.chatResponse, true);
-        } else {
-          addMessageToChat(
-            'Sorry, the greater animal gods were not available, come back next time for more detailed readings!',
-            true
-          );
-        }
-      }
-
-      currentPalmLines.delete(chosenLine);
-
-      // If now there are no other lines to read, break
-      if (currentPalmLines.size === 0) {
-        break;
-      }
-
-      // Ask the user if they would like to continue with the palm reading
-      addMessageToChat(
-        'Would you like me to continue reading your palm?',
-        true
-      );
-      addButtons(basicChoices);
-      await waitUserInput();
-      const continueReading = buttonChoice;
-      if (continueReading === 'No') {
-        break;
-      }
-    }
+    overallFortune[chosenLine] = fortune;
+    addMessageToChat(fortune, true);
 
     addMessageToChat(
-      'That concludes your palm reading! As a recap, your overall fortune is below.',
+      `Would you like a more detailed reading for your ${chosenLine}?`,
       true
     );
+    addButtons(basicChoices);
+    await waitUserInput();
+    if (checkIfEnded()) return;
 
-    for (const line in overallFortune) {
-      addMessageToChat(
-        `${
-          overallFortune[line] === ''
-            ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
-            : `${line}: ${overallFortune[line]}`
-        }`,
-        true
+    if (buttonChoice === 'Yes') {
+      let botResponse = await fetch(
+        'https://cse110-team3.up.railway.app/api/ask-chat',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt: `Act as a fortune teller for palm reading. I describe my ${chosenLine}as: ${positionChoice}, ${shapeChoice}, and ${abnormalChoice}. What does this indicates? Limit your response to 4 sentences.`,
+          }),
+        }
       );
+
+      if (checkIfEnded()) return;
+
+      if (botResponse.ok) {
+        botResponse = await botResponse.json();
+        overallFortune[chosenLine] = botResponse.chatResponse;
+        addMessageToChat(botResponse.chatResponse, true);
+      } else {
+        addMessageToChat(
+          'Sorry, the greater animal gods were not available, come back next time for more detailed readings!',
+          true
+        );
+      }
     }
-  } catch (error) {
-    console.log(error);
-  } finally {
-    endedSession = false; // reset the variable
-    clearInterval(interval); // Make sure to clear the interval when the function ends
+
+    currentPalmLines.delete(chosenLine);
+    if (currentPalmLines.size === 0) {
+      break;
+    }
+
+    addMessageToChat('Would you like me to continue reading your palm?', true);
+    addButtons(basicChoices);
+    await waitUserInput();
+    if (checkIfEnded()) return;
+
+    const continueReading = buttonChoice;
+    if (continueReading === 'No') {
+      break;
+    }
+  }
+
+  if (checkIfEnded()) return;
+
+  addMessageToChat(
+    'That concludes your palm reading! As a recap, your overall fortune is below.',
+    true
+  );
+
+  for (const line in overallFortune) {
+    if (checkIfEnded()) return;
+
+    addMessageToChat(
+      `${
+        overallFortune[line] === ''
+          ? `${line}: No fortune is read on this palm line. Create a new chat to read it if you want!`
+          : `${line}: ${overallFortune[line]}`
+      }`,
+      true
+    );
   }
 }
 
@@ -200,12 +186,13 @@ async function main() {
 
   // give the new chat button its functionality
   const newChatButton = document.getElementById('new-chat');
+  let firstChat = true;
   newChatButton.addEventListener('click', async function () {
-    endedSession = true; // end the previous session
-
     if (chatArr.length === 3) {
       return;
     }
+
+    endedSession = true; // end the previous session
 
     // Only save to localstorage if there is an existing session that is being looked at
     if (currentSession) {
@@ -237,6 +224,10 @@ async function main() {
       'Life Line': '',
       'Fate Line': '',
     };
+
+    if (firstChat) {
+      endedSession = false;
+    }
 
     readPalm();
   });
@@ -469,7 +460,7 @@ async function timeout(ms) {
  */
 async function waitUserInput() {
   // eslint-disable-next-line no-unmodified-loop-condition
-  while (next === false) {
+  while (next === false && endedSession === false) {
     await timeout(50); // pauses script
   }
   next = false; // reset var for next wait
