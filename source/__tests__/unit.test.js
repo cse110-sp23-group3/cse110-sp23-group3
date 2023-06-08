@@ -1,11 +1,13 @@
-import { saveToHistory, getHistory } from 'assets/scripts/historyHelpers.js';
+const { saveToHistory, getHistory } = require('assets/scripts/historyHelpers.js');
+const { addMessageToChat, clearChat } = require('assets/scripts/main.js');
 
-import { addMessageToChat, clearChat } from 'assets/scripts/main.js';
+jest.mock('assets/scripts/historyHelpers.js', function () {
+  return {
+    saveToHistory: jest.fn(),
+    getHistory: jest.fn()
+  };
+});
 
-jest.mock('assets/scripts/historyHelpers.js', () => ({
-  saveToHistory: jest.fn(),
-  getHistory: jest.fn(),
-}));
 
 describe('Add Message To Chat', () => {
   // Here we are using Jest's mock functions to simulate the DOM functions
