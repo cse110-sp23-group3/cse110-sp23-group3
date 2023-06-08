@@ -58,6 +58,16 @@ main .chat-messages {
   animation: showChatBubbleIncoming 0.1s linear 0.15s forwards;
 }
 
+@media (prefers-color-scheme: dark) {
+  .incoming-message .message-bubble {
+    background: linear-gradient(
+      180deg,
+      rgb(233 230 230) 0%,
+      rgb(229 229 229 / 85%) 100%
+    );
+  }
+}
+
 .incoming-message img {
   width: 2rem;
   height: 2rem;

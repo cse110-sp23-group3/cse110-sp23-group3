@@ -52,3 +52,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* COLORS */
+    --text-primary-light: rgba(245, 251, 242, 0.95);
+    --text-primary-dark: black;
+
+    --text-secondary-light: black;
+    --text-secondary-dark: white;
+  }
+
+  body {
+    background-image: url('../images/bg-dark.png');
+  }
+}
