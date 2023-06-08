@@ -1,4 +1,4 @@
-import { saveToHistory, deleteFromHistory } from 'assets/scripts/historyHelpers.js';
+import { saveToHistory, getHistory } from 'assets/scripts/historyHelpers.js';
 
 import {
   addMessageToChat,
@@ -46,5 +46,39 @@ describe('Save to History', () => {
 
     saveToHistory(chatArrMock, currentSessionMock);
     expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  });
+});
+
+// Mock console log
+global.console = {
+  log: jest.fn(),
+};
+
+describe('getHistory', () => {
+  beforeEach(() => {
+    // values stored in tests will also be available in other tests unless you run
+    localStorage.clear();
+  });
+
+  it('should return an empty object if there is no data', () => {
+    const history = getHistory();
+    expect(history).toEqual({});
+  });
+
+  it('should return the stored data if it exists', () => {
+    const mockData = { HeartLine: 'Your future is bright!' };
+    localStorage.setItem('palmReadings', JSON.stringify(mockData));
+
+    const history = getHistory();
+    expect(history).toEqual(mockData);
+  });
+
+  it('should catch and log error if localStorage data is not valid JSON', () => {
+    const invalidData = '{ HeartLine: Your future is bright!';
+    localStorage.setItem('palmReadings', invalidData);
+
+    const history = getHistory();
+    expect(console.log).toHaveBeenCalled();
+    expect(history).toBeUndefined();
   });
 });
