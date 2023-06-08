@@ -43,7 +43,7 @@ async function loadProfiles(filepath) {
 
 /**
  * @description Adds the about-profiles to the About Us page
- * @param {Array<Object>>} teamProfiles - An array of Objects containing the profile data.
+ * @param {Array<Object>} teamProfiles - An array of Objects containing the profile data.
  * @see {@link AboutProfile}
  */
 function addProfilesToPage(teamProfiles) {
