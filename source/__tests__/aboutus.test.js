@@ -4,12 +4,12 @@ describe('Navigation To About Page', () => {
     await page.goto('http://127.0.0.1:5501/source/');
   });
 
-  it('Check for existence of About Us button', async() => {
+  it('Check for existence of About Us button', async () => {
     const aboutUsButton = await page.$('a[href="aboutus.html"]');
     expect(aboutUsButton).not.toBeNull();
   });
 
-  it('Clicking About Us button takes you to About Us page', async() => {
+  it('Clicking About Us button takes you to About Us page', async () => {
     const aboutUsButton = await page.$('a[href="aboutus.html"]');
     await aboutUsButton.click();
     await page.waitForSelector('div#about-title h1');
