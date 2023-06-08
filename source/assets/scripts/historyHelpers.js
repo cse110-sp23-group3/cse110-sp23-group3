@@ -22,6 +22,20 @@ export function saveToHistory(chatArr, currentSession, displayName) {
 }
 
 /**
+ * Get the palm reading history from the browser's local storage.
+ * @returns {Object} - The palm reading history object.
+ */
+export function getHistory() {
+  try {
+    const palmReadings =
+      JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};
+    return palmReadings;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/**
  * Deletes a session from the history.
  *
  * @param {string} key - The key of the session to delete.

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: aboutcard.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: aboutcard.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// the CSS for each about-card
+const CARD_STYLE = `
+/* CARD LAYOUTS */
+
+/* GENERAL */
+article.about-card-left {
+  width: 100%;
+  display: grid;
+}
+
+article.about-card-right {
+  width: 100%;
+  display: grid;
+}
+
+/* DESKTOP ONLY */
+
+@media (min-width: 768px) {
+  article.about-card-left {
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 100%;
+  }
+
+  article.about-card-right {
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 100%;
+  }
+
+  div.about-card-inner-holder-right {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  div.about-card-inner-holder-left {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+}
+
+/* Mobile Only */
+
+@media (max-width: 767px) {
+  article.about-card-left {
+    grid-template-columns: 100%;
+  }
+
+  article.about-card-right {
+    grid-template-columns: 100%;
+  }
+
+  div.about-card-inner-holder-right {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+  div.about-card-inner-holder-left {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+}
+
+/* PROFILE PICTURE */
+
+/* GENERAL */
+
+img.profile-left {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  align-self: center;
+  object-fit: cover;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+img.profile-right {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  align-self: center;
+  object-fit: cover;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  img.profile-left {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    justify-self: start;
+  }
+  img.profile-right {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    justify-self: end;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  img.profile-left {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    justify-self: center;
+  }
+  img.profile-right {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    justify-self: center;
+  }
+}
+
+/* NAME, ROLE, AND DESCRIPTION TEXT */
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  h1 {
+    text-align: center;
+  }
+  
+  p {
+    text-align: center;
+  }
+}
+
+h1 {
+  font-size: 16pt;
+  font-weight: bolder;
+  z-index: 2;
+  position: relative;
+  color: var(--text-primary-dark);
+}
+
+p {
+  z-index: 2;
+  position: relative;
+  color: var(--text-primary-dark);
+}
+`;
+
+// the file path to the default profile image
+const DEFAULT_PROFILE = './assets/images/profile_images/profile.webp';
+
+/**
+ * @classdesc A custom AboutCard element for the About page that contains information about one person. Includes a person's name, role, and description. Optionally includes a profile picture. The profile picture can be either on the right or the left.
+ * @extends HTMLElement
+ */
+class AboutCard extends HTMLElement {
+  /**
+   * @constructor The constructor for the AboutCard custom HTML element.
+   */
+  constructor() {
+    super();
+    const shadowDOM = this.attachShadow({ mode: 'open' });
+    const article = document.createElement('article');
+    const style = document.createElement('style');
+    style.textContent = CARD_STYLE;
+    shadowDOM.append(style, article);
+  }
+
+  /**
+   * @description This function sets the data in the card (profile pic, name, etc.). It is called when the about-card's data attribute is set. The data attribute should be set to a JavaScript object in the format below.
+   * @param {Object} data - An object containing the data to put into the card in the following format:
+   *                        {
+   *                          "profileSrc": "string",
+   *                          "name": "string",
+   *                          "role": "string",
+   *                          "description": "string",
+   *                          "profilePos": "string"
+   *                        }
+   *                        The "profileSrc" key is the only optional key. If it is not present, the profile picture defaults to a preset one.
+   */
+  set data(data) {
+    // if argument is empty, return
+    if (!data) {
+      return;
+    }
+
+    const shadowDOM = this.shadowRoot;
+    const article = shadowDOM.lastChild;
+
+    // the class name of the article determines whether the profile picture is on the right or left
+    if (data.profilePos === 'left') {
+      article.classList.add('about-card-left');
+    } else if (data.profilePos === 'right') {
+      article.classList.add('about-card-right');
+    }
+    if (article.classList[0] === 'about-card-left') {
+      article.innerHTML = `
+      &lt;img class="profile-left" src="${
+        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
+      }">
+      &lt;div class="about-card-inner-holder-right">
+        &lt;h1 class="name text-xl">${data.name} | ${data.role}&lt;/h1>
+        &lt;p class="description text-base">${data.description}&lt;/p>
+      &lt;/div>
+      `;
+    } else if (article.classList[0] === 'about-card-right') {
+      article.innerHTML = `
+      &lt;img class="profile-right" src="${
+        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
+      }">
+      &lt;div class="about-card-inner-holder-left">
+        &lt;h1 class="name text-xl">${data.name} | ${data.role}&lt;/h1>
+        &lt;p class="description text-base">${data.description}&lt;/p>
+      &lt;/div>
+      `;
+    }
+  }
+
+  get data() {
+    return this.getAttribute('data');
+  }
+}
+
+customElements.define('about-card', AboutCard);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addButtons">addButtons</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addMessageToChat">addMessageToChat</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#clearChat">clearChat</a></li><li><a href="global.html#createHistoryButton">createHistoryButton</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#inactivateHistoryButtons">inactivateHistoryButtons</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#rebuildChat">rebuildChat</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#timeout">timeout</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#waitUserInput">waitUserInput</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 08 2023 07:11:43 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
