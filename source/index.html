@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark" />
     <meta http-equiv=" X-UA-Compatible" content="ie=edge">
     <title>Home</title>
 
@@ -27,13 +28,13 @@
             <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
         </div>
         <label>
-            <input class="toggle-checkbox" type="checkbox"></input>
-            <div class='toggle-slot'>
-                <div class='sun-icon-wrapper'>
+            <input id="scheme-toggle" class="toggle-checkbox" type="checkbox"></input>
+            <div class="toggle-slot">
+                <div class="sun-icon-wrapper">
                     <!-- <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false"></div> -->
                 </div>
-                <div class='toggle-button'></div>
-                <div class='moon-icon-wrapper'>
+                <div class="toggle-button"></div>
+                <div class="moon-icon-wrapper">
                     <!-- <div class="iconify moon-icon" data-icon="feather-moon" data-inline="false"></div> -->
                 </div>
             </div>
@@ -88,6 +89,7 @@
 
     <!-- JavaScript -->
     <script src="assets/scripts/sidebar.js"></script>
+    <script src="assets/scripts/togglescheme.js"></script>
     <script type="module" src="assets/scripts/main.js"></script>
 </body>
 

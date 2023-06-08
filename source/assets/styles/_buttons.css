@@ -45,6 +45,11 @@
   }
 }
 
+[data-scheme='dark'] .btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
 .btn.outline {
   background: none;
   font-weight: 600;
@@ -59,6 +64,10 @@
   .btn.outline {
     border-color: #e4d913;
   }
+}
+
+[data-theme='dark'] .btn.outline {
+  border-color: #e4d913;
 }
 
 // disabled
@@ -83,7 +92,6 @@
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
   border: 1px solid #ccc;
-  /* color: #fef102; */
 }
 
 /* GROUP BUTTONS */

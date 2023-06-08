@@ -53,6 +53,8 @@ body {
   background-size: cover;
 }
 
+/* DARK MODE */
+
 @media (prefers-color-scheme: dark) {
   :root {
     /* COLORS */
@@ -66,4 +68,17 @@ body {
   body {
     background-image: url('../images/bg-dark.png');
   }
+}
+
+[data-theme='dark'] {
+  /* COLORS */
+  --text-primary-light: rgba(245, 251, 242, 0.95);
+  --text-primary-dark: black;
+
+  --text-secondary-light: black;
+  --text-secondary-dark: white;
+}
+
+[data-theme='dark'] body {
+  background-image: url('../images/bg-dark.png') !important;
 }
