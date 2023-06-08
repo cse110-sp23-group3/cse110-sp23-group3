@@ -1,85 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark" />
+    <meta http-equiv=" X-UA-Compatible" content="ie=edge">
     <title>Home</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/styles/main.css" />
-    <link rel="stylesheet" href="assets/styles/index.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Irish Grover"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <link href="https://fonts.cdnfonts.com/css/lion-king" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=erode@700,500,600,400&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-  </head>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
 
-  <body>
+<body>
     <!-- HEADING -->
     <header>
-      <div class="banner">
-        <h1>Powell's Pride Palm Reading</h1>
-      </div>
-      <div class="heading">
-        <h3>Chat History #1</h3>
-      </div>
+        <img src="./assets/images/ic_menu.svg" alt="menu" class="sidebar__toggle orange">
+        <div class="banner">
+            <h1 class="text text-lg orange">Powell's Pride Palm Reading</h1>
+        </div>
+        <label>
+            <input id="scheme-toggle" class="toggle-checkbox" type="checkbox"></input>
+            <div class="toggle-slot border rounded-md">
+                <div class="sun-icon-wrapper">
+                    <img src="./assets/images/ic_sun.svg" alt="sun" class="sun-icon orange">
+                </div>
+                <div class="toggle-button"></div>
+                <div class="moon-icon-wrapper">
+                    <img src="./assets/images/ic_moon.svg" alt="moon" class="moon-icon white">
+                </div>
+            </div>
+        </label>
     </header>
 
-    <div class="container">
-      <!-- SIDEBAR -->
-      <aside>
-        <div class="sidebar">
-          <div class="sidebar__menu">
-            <h3>Chat History</h3>
-            <ul>
-              <li><a href="#">History #1</a></li>
-              <li><a href="#">History #2</a></li>
-              <li><a href="#">History #3</a></li>
-            </ul>
-          </div>
-          <div class="sidebar__settings">
-            <ul>
-              <li><a href="#">Settings</a></li>
-            </ul>
-          </div>
-        </div>
-      </aside>
+    <div class="app container">
+        <!-- SIDEBAR -->
+        <aside>
+            <div class="sidebar bg-blur-darker border rounded-md">
+                <div class="sidebar__history scrollbar">
+                    <button id="new-chat" class="btn outline">+ New Chat</button>
+                    <h3 class="text text-lg">Chat History</h3>
+                    <ul id="history"></ul>
+                </div>
+                <div class="sidebar__settings">
+                    <ul>
+                        <li>
+                            <a class="text-md" href="aboutus.html">
+                                <img src="./assets/images/ic_about.svg" alt="about" class="sidebar__icons white">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-md" href="#">
+                                <img src="./assets/images/ic_setting.svg" alt="settings" class="sidebar__icons white">
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
 
-      <!-- MAIN -->
-      <main>
-        <div id="chat-messages" class="chat-messages"></div>
-      </main>
+        <!-- MAIN -->
+        <main>
+            <div id="chat-image" class="chat-image"></div>
+            <div class="chat-messages bg-blur border rounded-md scrollbar">
+                <!-- CHAT CONTENT -->
+                <div id="chat-messages"></div>
 
-      <div id="spinner" style="display: none">
-        <div class="loader"></div>
-      </div>
+                <!-- LOADER -->
+                <div id="spinner" class="incoming-message message-bubble" style="display: none;">
+                    <div class="loader">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- CHAT INPUT -->
-    <section class="chat-container">
-      <form id="chat-form" action="#" method="post">
-        <label for="image">+</label>
-        <input type="file" name="image" id="image" />
-        <label for="message"></label>
-        <input
-          type="text"
-          name="message"
-          id="message"
-          placeholder="Type your message here..."
-          autocomplete="off"
-        />
-        <button type="submit">Send</button>
-      </form>
-    </section>
+    <!-- FOOTER -->
+    <footer>
+        <span class="text-xs">For school purposes only. Palm reading is not endorsed by <a
+                href="./aboutus.html">creators</a>.<span>
+    </footer>
+
 
     <!-- JavaScript -->
-    <script src="assets/scripts/chat.js"></script>
-  </body>
+    <script src="assets/scripts/sidebar.js"></script>
+    <script src="assets/scripts/togglescheme.js"></script>
+    <script type="module" src="assets/scripts/main.js"></script>
+</body>
+
 </html>

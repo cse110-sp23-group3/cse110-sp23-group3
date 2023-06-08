@@ -1,6 +1,6 @@
 {
   "extends": ["standard", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "jest"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -10,6 +10,17 @@
     ]
   },
   "env": {
-    "node": true
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "page": "readonly",
+    "browser": "readonly",
+    "context": "readonly",
+    "jestPuppeteer": "readonly",
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly"
   }
 }
