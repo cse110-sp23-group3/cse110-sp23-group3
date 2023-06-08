@@ -54,7 +54,6 @@ main .chat-messages {
 
   transform-origin: 100% 50%;
   visibility: hidden;
-  transform-origin: 100% 50%;
   animation: showChatBubbleIncoming 0.1s linear 0.15s forwards;
 }
 

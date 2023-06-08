@@ -20,6 +20,7 @@ window.addEventListener('visibilitychange', function () {
 
 let next = false; // variable to check if the user has clicked a button
 const chatMessages = document.getElementById('chat-messages'); // container for the chat messages
+const chatMessagesContainer = document.querySelector('.chat-messages'); // container for the chat messages
 let currentSession; // variable to know which chat we are viewing
 let chatArr = []; // array to store the current set of chat messages
 let buttonChoice; // variable for the button choice
@@ -428,7 +429,7 @@ function addButtons(message, isIncoming = true) {
   chatMessages.appendChild(messageElement);
 
   // Scroll to the latest message
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessagesContainer.scrollTop = chatMessages.scrollHeight;
 }
 
 /**
