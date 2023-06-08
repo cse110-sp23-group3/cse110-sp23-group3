@@ -57,7 +57,7 @@ function addProfilesToPage(teamProfiles) {
 
 /**
  * @description Adds the about-cards to the About Us page
- * @param {Array<Object>>} teamProfiles - An array of Objects containing the profile data.
+ * @param {Array<Object>} teamProfiles - An array of Objects containing the profile data.
  * @see {@link AboutCard}
  */
 function addCardsToPage(teamProfiles) {
