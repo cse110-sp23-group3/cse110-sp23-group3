@@ -186,7 +186,7 @@ async function main() {
 
   // give the new chat button its functionality
   const newChatButton = document.getElementById('new-chat');
-  let firstChat = true;
+  const firstChat = true;
   newChatButton.addEventListener('click', async function () {
     if (chatArr.length === 3) {
       return;

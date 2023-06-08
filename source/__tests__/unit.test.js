@@ -1,9 +1,6 @@
 import { saveToHistory, getHistory } from 'assets/scripts/historyHelpers.js';
 
-import {
-  addMessageToChat,
-  clearChat,
-} from 'assets/scripts/main.js';
+import { addMessageToChat, clearChat } from 'assets/scripts/main.js';
 
 jest.mock('./historyHelpers.js');
 
