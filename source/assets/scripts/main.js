@@ -53,8 +53,7 @@ async function readPalm() {
       'Which palm line would you like me to read? Select from the buttons below.',
       true
     );
-    addImageToChat('./assets/images/palm-diagram-1.jpeg', 250, 300);
-    addImageToChat('./assets/images/palm-diagram-2.jpeg', 210, 300);
+    addImageToChat('./assets/images/palm-diagram.jpeg', 270, 300);
     addButtons(currentPalmLines);
     await waitUserInput();
     if (checkIfEnded()) return;
@@ -577,10 +576,12 @@ function addImageToChat(image, height, width) {
   const messageElement = document.createElement('div');
   messageElement.classList.add('chat-message');
   //messageElement.classList.add('incomming-image');
+  messageElement.style.marginLeft = '150px';
 
   const messageBubble = document.createElement('div');
   messageBubble.classList.add('message-bubble');
-
+  messageBubble.style.display = 'none';
+  
   const messageImage = document.createElement('img');
   messageImage.src = image;
   messageImage.alt = 'A diagram that exaplains palm lines to be read';
