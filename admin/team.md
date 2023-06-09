@@ -44,7 +44,7 @@ Mico is a developer currently in his fourth year (second year as transfer) as a 
 
 ### [Michael Ye](https://github.com/MichaelYe48)
 
-Michael is a developer currently in his second year as a CS major from ERC. Outside of his courses, he likes baseball, traveling, and skatingboarding with his friends.
+Michael is a developer currently in his second year as a CS major from ERC. While he is still exploring the field of Computer Science, he is leaning more towards concentrating in ML/AI. Outside of his courses, he likes baseball, traveling, and skatingboarding with his friends.
 
 ### [Nick Yousefi](https://github.com/nsyousef)
 
