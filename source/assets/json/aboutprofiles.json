@@ -1,72 +1,72 @@
 [
   {
     "profileSrc": "./assets/images/profile_images/faith.jpg",
-    "name": "Faith",
+    "name": "Faith Rivera",
     "role": "Team Lead",
-    "description": "Faith is a second year undergraduate studying computer science in Sixth College. Her favorite animals are cheetahs or dogs. She loves to dance and also has a twin sister at UCSD!",
+    "description": "Faith is a 2nd year undergraduate studying Computer Science in Sixth College. She is interested in pursuing more knowledge in design and chemistry. Her favorite animals are cheetahs and dogs. She loves to dance and also has a twin sister at UCSD!",
     "profilePos": "left"
   },
   {
     "profileSrc": "./assets/images/profile_images/henry.jpeg",
-    "name": "Henry",
+    "name": "Henry Zhang",
     "role": "Team Lead",
-    "description": "Henry is a 2nd year studying CS in Sixth College. His favorite animal is the lion and a fun fact is that his middle name is his favorite animal.",
+    "description": "Henry is a 2nd year studying Computer Science in Sixth College. His favorite animal is the lion and a fun fact is his middle name is his favorite animal.",
     "profilePos": "right"
   },
   {
     "profileSrc": "./assets/images/profile_images/chay.png",
-    "name": "Chay",
+    "name": "Chay Park",
     "role": "Designer",
-    "description": "Chay is a designer with a keen interest in exploring the worlds of Virtual Reality, Augmented Reality, and web design. Currently in her 4th year of studying Computer Science, she is excited about merging technology and creativity to craft engaging experiences across various platforms, including the web.",
+    "description": "Chay is a designer with a keen interest in exploring the worlds of Virtual Reality, Augmented Reality, and web design. She is currently in her 4th year studying Computer Science at Sixth College. She is excited about merging technology and creativity to craft engaging experiences across various platforms, including the web. Her favorite animal is a dog.",
     "profilePos": "left"
   },
   {
     "profileSrc": "./assets/images/profile_images/jiaen.jpg",
-    "name": "Jiaen",
+    "name": "Jiaen Yu",
     "role": "Planner",
-    "description": "Jiaen Yu, second year graduate student of CSE department. Cat person, Coconut water lover, Soccer fan and amateur football player.",
+    "description": "Jiaen is a 2nd graduate student of UCSD's Computer Science and Engineering department. He is a cat person, coconut water lover, soccer fan and amateur football player.",
     "profilePos": "right"
   },
   {
     "profileSrc": "./assets/images/profile_images/chris.jpg",
-    "name": "Chris",
+    "name": "Chris Tian",
     "role": "Developer",
-    "description": "Chris Tian is a second-year CS major. His favorite animal is the cheetah because it is the fastest animal on earth and he is impressed by its hunting ability. He's a pretty adventurous guy but afraid of the feeling of weightlessness such as bungee jumping and riding roller coasters.",
+    "description": "Chris is a 2nd year Computer Science major in Eleanor Roosevelt College. His favorite animal is the cheetah because it is the fastest animal on earth and he is impressed by its hunting ability. He's a pretty adventurous guy but afraid of the feeling of weightlessness such as bungee jumping and riding roller coasters.",
     "profilePos": "left"
   },
   {
     "profileSrc": "./assets/images/profile_images/mico.jpg",
-    "name": "Mico",
+    "name": "Mico Guinto",
     "role": "Developer",
-    "description": "Mico Guinto; Computer Engineering; Emperor Penguin; His go to In-N-Out order is 2 4x4s Animal Style, extra tomatoes, no pickles, cut in half, banana peppers",
+    "description": "Mico is a 4th year studying Computer Engineering at Muir College. His favorite animal is the Emperor Penguin. His go-to In-N-Out order is 2 4x4s Animal Style, extra tomatoes, no pickles, cut in half, with banana peppers.",
     "profilePos": "right"
   },
   {
     "profileSrc": "./assets/images/profile_images/nick.JPG",
-    "name": "Nick",
+    "name": "Nick Yousefi",
     "role": "Developer",
-    "description": "Nick is a fourth year bioinformatics major at UCSD. His favorite animal is the peacock. He enjoys being out in nature and playing board games with his friends from church. Although he does not endorse the practice of palm reading, he has enjoyed learning about software engineering in CSE 110.",
+    "description": "Nick is a 4th year bioinformatics major at Revelle College. His favorite animal is the peacock. He enjoys being out in nature and playing board games with his friends from church. Although he does not endorse the practice of palm reading, he has enjoyed learning about software engineering in CSE 110.",
     "profilePos": "left"
   },
   {
     "profileSrc": "./assets/images/profile_images/michael.jpg",
-    "name": "Michael",
+    "name": "Michael Ye",
     "role": "Developer",
-    "description": "Michael is a second year Computer Science major from ERC. His favorite animal is the brown bear and he has visited over 20 countries so far.",
+    "description": "Michael is a 2nd year Computer Science major in Eleanor Roosevelt College. His favorite animal is the brown bear and he has visited over 20 countries so far.",
     "profilePos": "right"
   },
   {
     "profileSrc": "./assets/images/profile_images/anh.png",
-    "name": "Anh",
+    "name": "Anh Pham",
     "role": "Developer",
-    "description": "Greetings, Anh from Revelle College at UCSD. He is a Computer Science major student who hates math (not your typical Asian 😬...) but loves coding and creating amazing things with technology. Probably he can rap in three languages.🎤",
+    "description": "Greetings from Anh- a 3rd year in Revelle College. He is a Computer Science major student who hates math (not your typical Asian 😬...) but loves coding and creating amazing things with technology. Fun fact- he can rap in three languages.🎤",
     "profilePos": "left"
   },
   {
     "profileSrc": "./assets/images/profile_images/dylan.jpg",
-    "name": "Dylan",
+    "name": "Dylan Olivares",
     "role": "Developer",
-    "description": "Dylan is a third-year CS major in muir college. His favorite animal is a dog because they are man's best friend. His hobbies outside of school related things are playing volleyball and going to the gym.",
+    "description": "Dylan is a 3rd year Computer Science major in Muir College. His favorite animal is a dog because they are man's best friend. His hobbies outside of school-related things are playing volleyball and going to the gym.",
     "profilePos": "right"
   }
 ]
