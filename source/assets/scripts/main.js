@@ -169,6 +169,9 @@ async function readPalm() {
       true
     );
   }
+
+  // scrol to the bottom of the chat
+  chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 }
 
 /**
