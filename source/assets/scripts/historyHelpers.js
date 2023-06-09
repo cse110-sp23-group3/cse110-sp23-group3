@@ -51,3 +51,9 @@ export function deleteFromHistory(key) {
     console.log(error);
   }
 }
+
+module.exports = {
+  saveToHistory,
+  deleteFromHistory,
+  getHistory,
+};
