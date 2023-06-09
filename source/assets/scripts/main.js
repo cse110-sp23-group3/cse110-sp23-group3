@@ -570,6 +570,8 @@ function addMessageToChat(message, isIncoming = false) {
 /**
  * Function to add the image of palm reading to the chat
  * @param {string} image - The image to add to the chat
+ * @param {number} height - The height of the image in pixels
+ * @param {number} width - The width of the image in pixels
  */
 function addImageToChat(image, height, width) {
   // first add message to currentChatArr
@@ -578,7 +580,6 @@ function addImageToChat(image, height, width) {
   // Create a new chat message element
   const messageElement = document.createElement('div');
   messageElement.classList.add('chat-message');
-  //messageElement.classList.add('incomming-image');
   messageElement.style.marginLeft = '150px';
 
   const messageBubble = document.createElement('div');
