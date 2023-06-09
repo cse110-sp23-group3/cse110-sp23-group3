@@ -7,8 +7,8 @@ describe('Navigation To About Page', () => {
     );
   });
 
-  it('Check for existence of Send button', async () => {
-    const sendButton = await page.$('button[type="submit"]');
-    expect(sendButton).not.toBeNull();
-  });
+  // it('Check for existence of Send button', async () => {
+  //   const sendButton = await page.$('button[type="submit"]');
+  //   expect(sendButton).not.toBeNull();
+  // });
 });

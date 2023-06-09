@@ -4,6 +4,7 @@ import {
   addMessageToChat,
   clearChat,
 } from 'assets/scripts/main.js';
+import { deleteFromHistory } from '../assets/scripts/historyHelpers';
 
 jest.mock('./historyHelpers.js');
 
@@ -81,4 +82,198 @@ describe('getHistory', () => {
     expect(console.log).toHaveBeenCalled();
     expect(history).toBeUndefined();
   });
+});
+
+describe('Delete From History', () => {
+  beforeEach(() => {
+    // values stored in tests will also be available in other tests unless you run
+    localStorage.clear();
+  });
+
+  it('should return the stored data if it exists', () => {
+    const mockData = { "key1": 'Your future is bright!',
+    "key2": '12345',
+    "key3": 'deleteMe'};
+    localStorage.setItem('palmReadings', JSON.stringify(mockData));
+
+    /*const history = getHistory();
+    expect(history).toEqual(mockData);*/
+    deleteFromHistory('key3');
+
+    const newMockData = JSON.parse(localStorage.getItem('palmReadings'));
+    expect(newMockData).toEqual({ "key1": 'Your future is bright!',
+    "key2": '12345'});
+  });
+
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('Check if Ended', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('readPalm testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('rebuildChat', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('clearChat', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('createActionsForHistoryButton', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('createHistoryButton', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('inactivateHistoryButton', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('waitUserInput', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('addButtons', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('addMessageToChat', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+
+
+
+
+describe('loadProfiles testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('addProfilesToPage testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('addCardstoPage testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('toggleMenu testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('detectScheme testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
+});
+
+describe('toggleScheme testing', () => {
+  // test('Should call saveToHistory with correct parameters', () => {
+  //   const chatArrMock = ['message1', 'message2'];
+  //   const currentSessionMock = '12345';
+
+  //   saveToHistory(chatArrMock, currentSessionMock);
+  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // });
 });
