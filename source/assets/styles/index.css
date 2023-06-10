@@ -1,6 +1,6 @@
-@import '_base.css';
+@import '../../assets/styles/base.css';
 
-@import 'main.css';
+@import '../../assets/styles/main.css';
 
 /* VARIABLES */
 :root {
