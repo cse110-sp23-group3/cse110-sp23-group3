@@ -53,6 +53,7 @@ async function readPalm() {
       'Which palm line would you like me to read? Select from the buttons below.',
       true
     );
+    addImageToChat('./assets/images/palm-diagram.jpeg', 270, 300);
     addButtons(currentPalmLines);
     await waitUserInput();
     if (checkIfEnded()) return;
@@ -168,6 +169,9 @@ async function readPalm() {
       true
     );
   }
+
+  // scrol to the bottom of the chat
+  chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 }
 
 /**
@@ -554,6 +558,41 @@ function addMessageToChat(message, isIncoming = false) {
     messageImage.classList.add('message-image');
     messageElement.appendChild(messageImage);
   }
+
+  // Append the chat message bubble to the chat messages container
+  messageElement.appendChild(messageBubble);
+  chatMessages.appendChild(messageElement);
+
+  // Scroll to the latest message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/**
+ * Function to add the image of palm reading to the chat
+ * @param {string} image - The image to add to the chat
+ * @param {number} height - The height of the image in pixels
+ * @param {number} width - The width of the image in pixels
+ */
+function addImageToChat(image, height, width) {
+  // first add message to currentChatArr
+  chatArr.push({ image });
+
+  // Create a new chat message element
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('chat-message');
+  messageElement.style.marginLeft = '150px';
+
+  const messageBubble = document.createElement('div');
+  messageBubble.classList.add('message-bubble');
+  messageBubble.style.display = 'none';
+  
+  const messageImage = document.createElement('img');
+  messageImage.src = image;
+  messageImage.alt = 'A diagram that exaplains palm lines to be read';
+  messageImage.style.height = `${height}px`;
+  messageImage.style.width = `${width}px`;
+  messageImage.classList.add('message-image');
+  messageElement.appendChild(messageImage);
 
   // Append the chat message bubble to the chat messages container
   messageElement.appendChild(messageBubble);
