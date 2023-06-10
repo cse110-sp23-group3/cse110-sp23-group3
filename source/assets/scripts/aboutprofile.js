@@ -35,8 +35,9 @@ const PROFILE_DEFAULT = './assets/images/profile_images/profile.webp';
 /**
  * @classdesc A custom AboutProfile element for the About Page that contains information on one person. Includes a person's name and, optionally, profile picture.
  * @extends HTMLElement
- */
+*/
 class AboutProfile extends HTMLElement {
+
   /**
    * @constructor The constructor for the AboutProfile custom HTML element.
    */
@@ -49,8 +50,7 @@ class AboutProfile extends HTMLElement {
     style.textContent = PROFILE_STYLE;
     shadowDOM.append(style, figure);
   }
-
-  /**
+   /**
    * @description This function sets the data in the profile (profile pic, name). It is called when the about-profile's data attribute is set. The data attribute should be set to a JavaScript object in the format below.
    * @param {Object} data - An object containing the data to put into the card in the following format:
    *                        {
@@ -72,7 +72,9 @@ class AboutProfile extends HTMLElement {
     const figure = shadowDOM.lastChild;
 
     figure.innerHTML = `
-    <img src="${data.profileSrc ? data.profileSrc : PROFILE_DEFAULT}">
+    <img src="${
+      data.profileSrc ? data.profileSrc : PROFILE_DEFAULT
+    }">
     <figcaption class="text-xl">${data.name}</figcaption>`;
   }
 

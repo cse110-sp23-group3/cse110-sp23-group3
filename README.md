@@ -26,114 +26,117 @@ This project is developed by [Powell's Pride Tech](./admin/team.md) for the **CS
 ├── CHANGELOG.md
 ├── README.md
 ├── admin
-│   ├── branding
-│   │   ├── Slack_logo.jpg
-│   │   └── team_logo.jpg
-│   ├── cipipeline
-│   │   ├── Phase1.mp4
-│   │   ├── phase1.md
-│   │   └── phase1.png
-│   ├── meetings
-│   │   ├── 041923-ADR_approval.md
-│   │   ├── 042023-kickoff.md
-│   │   ├── 042223-8BallBrainstorm.md
-│   │   ├── 043023-Big_Project_Brainstorm.md
-│   │   ├── 050423-Big_Project_Brainstorm_2.md
-│   │   ├── 052723-Milestone1_Recap.md
-│   │   ├── 052723-retrospective.md
-│   │   ├── 060123-Milestone2-Checkin.md
-│   │   ├── 060423-Milestone2_Recap.md
-│   │   └── 060423-milestone2-retrospective.md
-│   ├── misc
-│   │   ├── rules-anhpham.pdf
-│   │   ├── rules-boyutian.pdf
-│   │   ├── rules-chaeyeonpark.pdf
-│   │   ├── rules-dylanolivares.pdf
-│   │   ├── rules-faithrivera.pdf
-│   │   ├── rules-henryzhang.pdf
-│   │   ├── rules-jiaenyu.pdf
-│   │   ├── rules-michaelye.pdf
-│   │   ├── rules-micoguinto.pdf
-│   │   ├── rules-nicholasyousefi.pdf
-│   │   └── rules.md
-│   ├── team.md
-│   └── videos
-│       ├── statusvideo1.mp4
-│       └── teamintro.mp4
+│   ├── branding
+│   │   ├── Slack_logo.jpg
+│   │   └── team_logo.jpg
+│   ├── cipipeline
+│   │   ├── phase1.md
+│   │   ├── phase1.mp4
+│   │   └── phase1.png
+│   ├── meetings
+│   │   ├── 041923-ADR_approval.md
+│   │   ├── 042023-kickoff.md
+│   │   ├── 042223-8BallBrainstorm.md
+│   │   ├── 043023-Big_Project_Brainstorm.md
+│   │   ├── 050423-Big_Project_Brainstorm_2.md
+│   │   ├── 052723-Milestone1_Recap.md
+│   │   ├── 052723-retrospective.md
+│   │   └── placeholder.txt
+│   ├── misc
+│   │   ├── rules-anhpham.pdf
+│   │   ├── rules-boyutian.pdf
+│   │   ├── rules-chaeyeonpark.pdf
+│   │   ├── rules-dylanolivares.pdf
+│   │   ├── rules-faithrivera.pdf
+│   │   ├── rules-henryzhang.pdf
+│   │   ├── rules-jiaenyu.pdf
+│   │   ├── rules-michaelye.pdf
+│   │   ├── rules-micoguinto.pdf
+│   │   ├── rules-nicholasyousefi.pdf
+│   │   └── rules.md
+│   ├── team.md
+│   └── videos
+│       ├── statusvideo1.mp4
+│       └── teamintro.mp4
+├── jest.config.js
 ├── jsdoc.config.json
+├── out
+│   ├── chat.js.html
+│   ├── fonts
+│   │   ├── OpenSans-Bold-webfont.eot
+│   │   ├── OpenSans-Bold-webfont.svg
+│   │   ├── OpenSans-Bold-webfont.woff
+│   │   ├── OpenSans-BoldItalic-webfont.eot
+│   │   ├── OpenSans-BoldItalic-webfont.svg
+│   │   ├── OpenSans-BoldItalic-webfont.woff
+│   │   ├── OpenSans-Italic-webfont.eot
+│   │   ├── OpenSans-Italic-webfont.svg
+│   │   ├── OpenSans-Italic-webfont.woff
+│   │   ├── OpenSans-Light-webfont.eot
+│   │   ├── OpenSans-Light-webfont.svg
+│   │   ├── OpenSans-Light-webfont.woff
+│   │   ├── OpenSans-LightItalic-webfont.eot
+│   │   ├── OpenSans-LightItalic-webfont.svg
+│   │   ├── OpenSans-LightItalic-webfont.woff
+│   │   ├── OpenSans-Regular-webfont.eot
+│   │   ├── OpenSans-Regular-webfont.svg
+│   │   └── OpenSans-Regular-webfont.woff
+│   ├── global.html
+│   ├── good_js_demo.js.html
+│   ├── index.html
+│   ├── js_demo.js.html
+│   ├── script.js.html
+│   ├── scripts
+│   │   ├── linenumber.js
+│   │   └── prettify
+│   │       ├── Apache-License-2.0.txt
+│   │       ├── lang-css.js
+│   │       └── prettify.js
+│   └── styles
+│       ├── jsdoc-default.css
+│       ├── prettify-jsdoc.css
+│       └── prettify-tomorrow.css
 ├── package-lock.json
 ├── package.json
 ├── source
-│   ├── __tests__
-│   │   ├── index.test.js
-│   │   └── unit.test.js
-│   ├── aboutus.html
-│   ├── assets
-│   │   ├── images
-│   │   │   ├── bg-dark.png
-│   │   │   ├── bg-light.jpg
-│   │   │   ├── favicon.ico
-│   │   │   ├── ic_about.svg
-│   │   │   ├── ic_delete.svg
-│   │   │   ├── ic_edit.svg
-│   │   │   ├── ic_menu.svg
-│   │   │   ├── ic_moon.svg
-│   │   │   ├── ic_setting.svg
-│   │   │   ├── ic_sun.svg
-│   │   │   ├── profile_images
-│   │   │   │   ├── anh.png
-│   │   │   │   ├── chay.png
-│   │   │   │   ├── chris.jpg
-│   │   │   │   ├── dylan.jpg
-│   │   │   │   ├── faith.jpg
-│   │   │   │   ├── henry.jpeg
-│   │   │   │   ├── jiaen.jpg
-│   │   │   │   ├── michael.jpg
-│   │   │   │   ├── mico.jpg
-│   │   │   │   ├── nick.JPG
-│   │   │   │   └── profile.webp
-│   │   │   ├── simba.png
-│   │   │   ├── simbaNoBG.png
-│   │   │   └── trash-can.svg
-│   │   ├── json
-│   │   │   └── aboutprofiles.json
-│   │   ├── scripts
-│   │   │   ├── aboutcard.js
-│   │   │   ├── aboutprofile.js
-│   │   │   ├── aboutus.js
-│   │   │   ├── constants.js
-│   │   │   ├── historyHelpers.js
-│   │   │   ├── main.js
-│   │   │   ├── sidebar.js
-│   │   │   └── togglescheme.js
-│   │   └── styles
-│   │       ├── aboutus.css
-│   │       ├── base.css
-│   │       ├── buttons.css
-│   │       ├── index.css
-│   │       ├── main.css
-│   │       ├── sidebar.css
-│   │       └── utilities.css
-│   └── index.html
+│   ├── assets
+│   │   ├── images
+│   │   │   └── favicon.ico
+│   │   ├── scripts
+│   │   │   └── chat.js
+│   │   └── styles
+│   │       ├── bg
+│   │       │   └── cosmic.jpg
+│   │       ├── index.css
+│   │       └── main.css
+│   ├── index.html
+│   └── styles.css
 └── specs
+    ├── ROADMAP.md
     ├── adrs
-    │   ├── 051923-Documentation-Standards.md
-    │   ├── 051923-Frontend-Technologies.md
-    │   ├── 051923-Hosting.md
-    │   ├── 051923-Linter.md
-    │   ├── 052923-Issue-Completion.md
-    │   ├── 052923-Summary.md
-    │   ├── 052923-Testing.md
-    │   ├── 052923-Versioning-Standards.md
-    │   ├── 053023-Indentation-Standard.md
-    │   ├── 060523-Done-Definition.md
-    │   ├── 060723-User-Input.md
-    │   └── README.md
+    │   ├── 051923-Documentation-Standards.md
+    │   ├── 051923-Frontend-Technologies.md
+    │   ├── 051923-Hosting.md
+    │   ├── 051923-Linter.md
+    │   ├── 052923-Issue-Completion.md
+    │   ├── 052923-Summary.md
+    │   ├── 052923-Testing.md
+    │   ├── 052923-Versioning-Standards.md
+    │   ├── 053023-Indentation-Standard.md
+    │   └── README.md
     ├── brainstorm
-    │   ├── 110 project (team 3_ Powell's Pride Tech).pdf
-    │   └── README.md
+    │   ├── 110 project (team 3_ Powell's Pride Tech).pdf
+    │   └── README.md
     ├── interface
-    │   └── interface.md
-    └── pitch
-        └── CSE 110 Team 3 Brainstorming Presentation (1).pdf
+    │   ├── highfidelity
+    │   │   └── README.md
+    │   ├── rough
+    │   │   └── README.md
+    │   └── wireframes
+    │       └── README.md
+    ├── pitch
+    │   └── CSE 110 Team 3 Brainstorming Presentation (1).pdf
+    ├── placeholder.txt
+    └── users
+        └── README.md
 ```

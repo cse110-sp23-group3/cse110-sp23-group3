@@ -23,13 +23,13 @@ jobs:
     - name: Cache node modules
       uses: actions/cache@v2
       with:
-        path: node_modules
+        path: ~/.npm
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.OS }}-node-
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: ESLint and Prettier
       run: |
@@ -42,7 +42,7 @@ jobs:
     - name: HTMLHint
       run: npx htmlhint --config .htmlhintrc "./source/**/*.html"
 
-    - name: Jest
+    - name: Jest (optional)
       id: jest
       run: npm test
 
