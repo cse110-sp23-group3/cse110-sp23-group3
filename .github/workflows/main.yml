@@ -42,7 +42,7 @@ jobs:
     - name: HTMLHint
       run: npx htmlhint --config .htmlhintrc "./source/**/*.html"
 
-    - name: Jest (optional)
+    - name: Jest
       id: jest
       run: npm test
 
