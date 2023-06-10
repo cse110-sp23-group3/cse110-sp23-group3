@@ -585,7 +585,7 @@ function addImageToChat(image, height, width) {
   const messageBubble = document.createElement('div');
   messageBubble.classList.add('message-bubble');
   messageBubble.style.display = 'none';
-  
+
   const messageImage = document.createElement('img');
   messageImage.src = image;
   messageImage.alt = 'A diagram that exaplains palm lines to be read';
