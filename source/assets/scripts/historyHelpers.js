@@ -42,6 +42,7 @@ export function getHistory() {
  * @returns {void}
  */
 export function deleteFromHistory(key) {
+  console.log("function called!");
   try {
     const palmReadings =
       JSON.parse(window.localStorage.getItem('palmReadings')) ?? {};

@@ -1,12 +1,17 @@
-import { saveToHistory, getHistory } from 'assets/scripts/historyHelpers.js';
+/**
+ * @jest-environment jsdom
+ */
+
+import { saveToHistory, getHistory } from '../assets/scripts/historyHelpers.js';
 
 import {
   addMessageToChat,
   clearChat,
-} from 'assets/scripts/main.js';
+  checkIfEnded
+} from '../assets/scripts/main.js';
 import { deleteFromHistory } from '../assets/scripts/historyHelpers';
 
-jest.mock('./historyHelpers.js');
+// jest.mock('../assets/scripts/historyHelpers.js');
 
 describe('Add Message To Chat', () => {
   // Here we are using Jest's mock functions to simulate the DOM functions
@@ -90,38 +95,60 @@ describe('Delete From History', () => {
     localStorage.clear();
   });
 
-  it('should return the stored data if it exists', () => {
+  it('check to see if entry is deleted from local storage', () => {
     const mockData = { "key1": 'Your future is bright!',
     "key2": '12345',
     "key3": 'deleteMe'};
-    localStorage.setItem('palmReadings', JSON.stringify(mockData));
-
-    /*const history = getHistory();
-    expect(history).toEqual(mockData);*/
+    window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
+    
     deleteFromHistory('key3');
 
-    const newMockData = JSON.parse(localStorage.getItem('palmReadings'));
+    const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
     expect(newMockData).toEqual({ "key1": 'Your future is bright!',
     "key2": '12345'});
   });
 
-  // test('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
+  it('check deleteFromHistory when palmReadings not in local storage', () => {
+    deleteFromHistory('deleteMe');
+    
+    const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(newMockData).toEqual({});
+    
+  });
 
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
+  it('check deleteFromHistory when one chat session in local storage', () => {
+    const mockData = { "key1": 'Your future is bright!'};
+    window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
+    
+    deleteFromHistory('key1');
+
+    const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(newMockData).toEqual({});
+  });
+
+  it('check deleteFromHistory when key does not exist', () => {
+    const mockData = { "key1": 'Your future is bright!'};
+    window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
+    
+    deleteFromHistory('key3');
+
+    const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(newMockData).toEqual();
+  });
+
+  // check deleting key that doesn't exist when localStorage has stuff in it
 });
 
 describe('Check if Ended', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
+  it('check to see that endedSession matches function return', () => {
+    const endedSession = true;
+    const checkIfEndedOutput = checkIfEnded();
+    expect(endedSession).toEqual(checkIfEndedOutput);
+  });
 
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
+  it('check to see that endedSession matches function return', () => {
+    expect(checkIfEnded()).toThrow(new ReferenceError);
+  });
 });
 
 describe('readPalm testing', () => {
@@ -135,13 +162,7 @@ describe('readPalm testing', () => {
 });
 
 describe('rebuildChat', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
 
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
 });
 
 describe('clearChat', () => {
