@@ -3,7 +3,7 @@
  *
  * @param {Array} chatArr - The current chat array to be saved or added.
  * @param {string} currentSession - The chat key that it will be saved at
- * @param {string} displayName - The name of the chat to be displayed in the sidebar
+ * @param {string} displayName - The name of the chat to be displayed in the sidebar. Pass in an empty string if no name.
  * @returns {void}
  */
 export function saveToHistory(chatArr, currentSession, displayName) {

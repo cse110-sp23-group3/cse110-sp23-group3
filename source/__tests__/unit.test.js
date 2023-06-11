@@ -57,6 +57,11 @@ global.console = {
 };
 
 describe('Save to History', () => {
+  beforeEach(() => {
+    // values stored in tests will also be available in other tests unless you run
+    localStorage.clear();
+  });
+
   test('saves generic chat to history when history empty', () => {
     const chatArrMock = ['message1', 'message2', 'message3', 'message4'];
     const currentSessionMock = '12345';
@@ -66,6 +71,39 @@ describe('Save to History', () => {
     
     const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
     expect(palmReadings).toEqual({'12345': {displayName: 'my first session', chatArr: ['message1', 'message2', 'message3', 'message4']}});
+  });
+
+  test('does not save when chatArr == 3', () => {
+    const chatArrMock = ['message1', 'message2', 'message3'];
+    const currentSessionMock = '12345';
+    const sessionNameMock = 'my first session';
+
+    saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
+    
+    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(palmReadings).toBeNull();
+  });
+
+  test('does not save when chatArr < 3', () => {
+    const chatArrMock = ['message1'];
+    const currentSessionMock = '12345';
+    const sessionNameMock = 'my first session';
+
+    saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
+    
+    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(palmReadings).toBeNull();
+  });
+
+  it('should log error to console if JSON data is badly formatted', () => {
+    window.localStorage.setItem('palmReadings', '{ asdfa![}}}');
+    const chatArrMock = ['message1', 'message2', 'message3', 'message4'];
+    const currentSessionMock = '12345';
+    const sessionNameMock = 'my first session';
+
+    saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
+
+    expect(console.log).toHaveBeenCalled();
   });
 
   test('saves generic chat to history when history has stuff in it', () => {
@@ -293,7 +331,10 @@ describe('readPalm testing', () => {
   // });
 });
 
-describe('rebuildChat', () => {});
+describe('rebuildChat', () => {
+
+
+});
 
 describe('clearChat', () => {
   // test('Should call saveToHistory with correct parameters', () => {
