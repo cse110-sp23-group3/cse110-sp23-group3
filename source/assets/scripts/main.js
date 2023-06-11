@@ -574,8 +574,6 @@ export function addMessageToChat(message, isIncoming = false) {
  * @param {number} width - The width of the image in pixels
  */
 export function addImageToChat(image, height, width) {
-  // first add message to currentChatArr
-  chatArr.push({ image });
 
   // Create a new chat message element
   const messageElement = document.createElement('div');
