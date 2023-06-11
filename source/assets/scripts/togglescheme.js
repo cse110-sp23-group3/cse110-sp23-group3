@@ -9,6 +9,11 @@ function detectScheme() {
   const scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';
+
+  // change the toggle button
+  const toggle = document.querySelector('#scheme-toggle');
+  toggle.checked = scheme === 'dark';
+
   document.documentElement.setAttribute(DATA_THEME, scheme);
 }
 
