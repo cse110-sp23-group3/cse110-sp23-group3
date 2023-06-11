@@ -2,7 +2,8 @@
  * Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
  *
  * @param {Array} chatArr - The current chat array to be saved or added.
- * @param {integer} key - The chat key that it will be saved at
+ * @param {string} currentSession - The chat key that it will be saved at
+ * @param {string} displayName - The name of the chat to be displayed in the sidebar
  * @returns {void}
  */
 export function saveToHistory(chatArr, currentSession, displayName) {
