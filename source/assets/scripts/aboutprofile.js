@@ -52,13 +52,10 @@ class AboutProfile extends HTMLElement {
 
   /**
    * @description This function sets the data in the profile (profile pic, name). It is called when the about-profile's data attribute is set. The data attribute should be set to a JavaScript object in the format below.
-   * @param {Object} data - An object containing the data to put into the card in the following format:
+   * @param {Object} data - An object containing the data to put into the profile in the following format:
    *                        {
    *                          "profileSrc": "string",
-   *                          "name": "string",
-   *                          "role": "string",
-   *                          "description": "string",
-   *                          "profilePos": "string"
+   *                          "name": "string"
    *                        }
    *                        The "profileSrc" key is the only optional key. If it is not present, the profile picture defaults to a preset one.
    */
@@ -76,6 +73,10 @@ class AboutProfile extends HTMLElement {
     <figcaption class="text-xl">${data.name}</figcaption>`;
   }
 
+  /**
+   * @description This function gets the data from the profile. It is called when the about-profile's data attribute is accessed.
+   * @returns {string} The current value of the data attribute of the profile.
+   */
   get data() {
     return this.getAttribute('data');
   }
