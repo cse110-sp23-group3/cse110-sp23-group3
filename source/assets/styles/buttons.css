@@ -60,12 +60,6 @@
   border: 1px solid var(--btn-color-primary-light);
 }
 
-@media (prefers-color-scheme: dark) {
-  .btn.outline {
-    border-color: #e4d913;
-  }
-}
-
 [data-theme='dark'] .btn.outline {
   border-color: #e4d913;
 }
