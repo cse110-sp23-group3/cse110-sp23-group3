@@ -190,34 +190,36 @@ class AboutCard extends HTMLElement {
     const article = shadowDOM.lastChild;
 
     // the class name of the article determines whether the profile picture is on the right or left
+    let position = 'right'; // default to right
     if (data.profilePos === 'left') {
-      article.classList.add('about-card-left');
-    } else if (data.profilePos === 'right') {
-      article.classList.add('about-card-right');
+      position = 'left';
     }
-    if (article.classList[0] === 'about-card-left') {
-      article.innerHTML = `
-      <img class="profile-left" src="${
-        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
-      }">
-      <div class="about-card-inner-holder-right">
-        <h1 class="name text-xl">${data.name} | ${data.role}</h1>
-        <p class="description text-base">${data.description}</p>
-      </div>
-      `;
-    } else if (article.classList[0] === 'about-card-right') {
-      article.innerHTML = `
-      <img class="profile-right" src="${
-        data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
-      }">
-      <div class="about-card-inner-holder-left">
-        <h1 class="name text-xl">${data.name} | ${data.role}</h1>
-        <p class="description text-base">${data.description}</p>
-      </div>
-      `;
-    }
+
+    // Add class to article
+    article.classList.add(`about-card-${position}`);
+
+    // Choose image class and holder class based on position
+    const imgClass = `profile-${position}`;
+    const holderClass = `about-card-inner-holder-${
+      position === 'left' ? 'right' : 'left'
+    }`;
+
+    // Set HTML
+    article.innerHTML = `
+    <img class="${imgClass}" src="${
+      data.profileSrc ? data.profileSrc : DEFAULT_PROFILE
+    }">
+    <div class="${holderClass}">
+      <h1 class="name text-xl">${data.name} | ${data.role}</h1>
+      <p class="description text-base">${data.description}</p>
+    </div>
+    `;
   }
 
+  /**
+   * @description This function gets the data from the card. It is called when the about-card's data attribute is accessed.
+   * @returns {string} The current value of the data attribute of the card.
+   */
   get data() {
     return this.getAttribute('data');
   }
