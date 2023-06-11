@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+// only put unit tests here that require mock functions from main.js and/or historyHelpers.js
 jest.mock('../assets/scripts/main.js');
 
 describe('rebuildChat', () => {

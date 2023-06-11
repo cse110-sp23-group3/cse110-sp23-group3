@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+// Only put unit tests here that do not require mock functions from main.js or historyHelpers.js
 import {
   saveToHistory,
   getHistory,
