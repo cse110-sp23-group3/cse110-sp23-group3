@@ -40,7 +40,7 @@ let overallFortune = {
  *
  * @returns {boolean} Returns the value of the 'endedSession' variable.
  */
-function checkIfEnded() {
+export function checkIfEnded() {
   return endedSession;
 }
 
@@ -519,7 +519,7 @@ function addButtons(message, isIncoming = true) {
  * Function to add a message to the chat
  * @param {string} message - The message to add to the chat
  */
-function addMessageToChat(message, isIncoming = false) {
+export function addMessageToChat(message, isIncoming = false) {
   // first add message to currentChatArr
   chatArr.push({ message, isIncoming });
 

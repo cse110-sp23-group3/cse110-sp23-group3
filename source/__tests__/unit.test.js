@@ -22,6 +22,8 @@ describe('Add Message To Chat', () => {
   // but they keep track of how many times they're called and with what arguments
   document.createElement = jest.fn();
   document.appendChild = jest.fn();
+  //const mockElement = document.createElement('div');
+  //const addSpy = jest.spyOn(mockElement.classList, 'add');
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -33,6 +35,7 @@ describe('Add Message To Chat', () => {
     expect(document.createElement).toHaveBeenCalledWith('div');
     // we're asserting that appendChild was called once (to append the message to the chat)
     expect(document.appendChild).toHaveBeenCalledTimes(1);
+    //expect(addSpy).toHaveBeenCalledWith('chat-message');
   });
 });
 
@@ -48,20 +51,122 @@ describe('Clear Chat', () => {
   });
 });
 
-describe('Save to History', () => {
-  test('Should call saveToHistory with correct parameters', () => {
-    const chatArrMock = ['message1', 'message2'];
-    const currentSessionMock = '12345';
-
-    saveToHistory(chatArrMock, currentSessionMock);
-    expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  });
-});
-
 // Mock console log
 global.console = {
   log: jest.fn(),
 };
+
+describe('Save to History', () => {
+  test('saves generic chat to history when history empty', () => {
+    const chatArrMock = ['message1', 'message2', 'message3', 'message4'];
+    const currentSessionMock = '12345';
+    const sessionNameMock = 'my first session';
+
+    saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
+    
+    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(palmReadings).toEqual({'12345': {displayName: 'my first session', chatArr: ['message1', 'message2', 'message3', 'message4']}});
+  });
+
+  test('saves generic chat to history when history has stuff in it', () => {
+    // pre-existing chats in history
+    const mockData = {
+      "1686445888833": {
+          "displayName": "",
+          "chatArr": [
+              {
+                  "message": "Hi, I'm Simba!",
+                  "isIncoming": true
+              },
+              {
+                  "message": "Which palm line?",
+                  "isIncoming": true
+              },
+              {
+                  "image": "./assets/images/palm-diagram.jpeg"
+              }
+          ]
+      },
+      "1686445888834": {
+        "displayName": "",
+        "chatArr": [
+            {
+                "message": "Hi, I'm Simba!",
+                "isIncoming": true
+            },
+            {
+                "message": "Which palm line?",
+                "isIncoming": true
+            },
+            {
+                "image": "./assets/images/palm-diagram.jpeg"
+            }
+        ]
+      }
+    };
+
+    localStorage.setItem('palmReadings', JSON.stringify(mockData));
+
+    // new chat to save
+    const chatArrMock = [
+      { "message": "Hi, I'm Scar!", "isIncoming": true },
+      { "message": "Which palm line?", "isIncoming": true },
+      { "image": "./assets/images/palm-diagram.jpeg" },
+      { "image": "./assets/images/palm-diagram.jpeg" }
+    ];
+    const currentSessionMock = '12345';
+    const sessionNameMock = 'my first session';
+
+    saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
+
+    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(palmReadings).toEqual(
+      {
+        "1686445888833": {
+            "displayName": "",
+            "chatArr": [
+                {
+                    "message": "Hi, I'm Simba!",
+                    "isIncoming": true
+                },
+                {
+                    "message": "Which palm line?",
+                    "isIncoming": true
+                },
+                {
+                    "image": "./assets/images/palm-diagram.jpeg"
+                }
+            ]
+        },
+        "1686445888834": {
+          "displayName": "",
+          "chatArr": [
+              {
+                  "message": "Hi, I'm Simba!",
+                  "isIncoming": true
+              },
+              {
+                  "message": "Which palm line?",
+                  "isIncoming": true
+              },
+              {
+                  "image": "./assets/images/palm-diagram.jpeg"
+              }
+          ]
+        },
+        "12345": {
+          "displayName": "my first session",
+          "chatArr": [
+            { "message": "Hi, I'm Scar!", "isIncoming": true },
+            { "message": "Which palm line?", "isIncoming": true },
+            { "image": "./assets/images/palm-diagram.jpeg" },
+            { "image": "./assets/images/palm-diagram.jpeg" }
+          ]
+        }
+      }
+    );
+  });
+});
 
 describe('getHistory', () => {
   beforeEach(() => {
@@ -133,23 +238,45 @@ describe('Delete From History', () => {
   });
 
   it('check deleteFromHistory when key does not exist', () => {
-    const mockData = { key1: 'Your future is bright!' };
+    const mockData = { 
+      key1: 'Your future is bright!',
+      key2: 'Your future is dark!'
+    };
     window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
 
     deleteFromHistory('key3');
 
     const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
-    expect(newMockData).toEqual();
+    expect(newMockData).toEqual({ 
+      key1: 'Your future is bright!',
+      key2: 'Your future is dark!'
+    });
   });
 
-  // check deleting key that doesn't exist when localStorage has stuff in it
+  it('check deleteFromHistory when palmReadings exists but no chats saved', () => {
+    const mockData = {};
+    window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
+
+    deleteFromHistory('key1');
+
+    const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
+    expect(newMockData).toEqual({});
+  });
+
+  it('should log error to console if JSON data is badly formatted', () => {
+    window.localStorage.setItem('palmReadings', '{ asdfa![}}}');
+
+    deleteFromHistory('key1');
+
+    expect(console.log).toHaveBeenCalled();
+  });
 });
 
 describe('Check if Ended', () => {
   it('check to see that endedSession matches function return', () => {
-    const endedSession = true;
+    global.endedSession = true;
     const checkIfEndedOutput = checkIfEnded();
-    expect(endedSession).toEqual(checkIfEndedOutput);
+    expect(checkIfEndedOutput).toBeTruthy();
   });
 
   it('check to see that endedSession matches function return', () => {
