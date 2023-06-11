@@ -250,7 +250,7 @@ async function main() {
  * @param {Object} newItem - The new DOM element created in the chat history
  * @returns {Object} The 'actions' div element, which contains both 'edit' and 'delete' buttons for the specific chat history item
  */
-function rebuildChat(key) {
+export function rebuildChat(key) {
   clearChat();
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   const chatHistory = palmReadings[key].chatArr;
@@ -573,7 +573,7 @@ export function addMessageToChat(message, isIncoming = false) {
  * @param {number} height - The height of the image in pixels
  * @param {number} width - The width of the image in pixels
  */
-function addImageToChat(image, height, width) {
+export function addImageToChat(image, height, width) {
   // first add message to currentChatArr
   chatArr.push({ image });
 

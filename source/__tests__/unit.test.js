@@ -12,6 +12,8 @@ import {
   addMessageToChat,
   clearChat,
   checkIfEnded,
+  addImageToChat,
+  rebuildChat,
 } from '../assets/scripts/main.js';
 
 // jest.mock('../assets/scripts/historyHelpers.js');
@@ -28,7 +30,7 @@ describe('Add Message To Chat', () => {
     jest.clearAllMocks();
   });
 
-  test('Should create and append a message element', () => {
+  it('Should create and append a message element', () => {
     addMessageToChat('Test message', false);
     // we're asserting that createElement was called once to create a 'div'
     expect(document.createElement).toHaveBeenCalledTimes(1);
@@ -44,7 +46,7 @@ describe('Clear Chat', () => {
     innerHTML: 'not empty',
   }));
 
-  test('Should clear chat', () => {
+  it('Should clear chat', () => {
     clearChat();
     expect(document.getElementById).toHaveBeenCalledWith('chat-messages');
     expect(document.getElementById().innerHTML).toBe('');
@@ -62,7 +64,7 @@ describe('Save to History', () => {
     localStorage.clear();
   });
 
-  test('saves generic chat to history when history empty', () => {
+  it('saves generic chat to history when history empty', () => {
     const chatArrMock = ['message1', 'message2', 'message3', 'message4'];
     const currentSessionMock = '12345';
     const sessionNameMock = 'my first session';
@@ -73,7 +75,7 @@ describe('Save to History', () => {
     expect(palmReadings).toEqual({'12345': {displayName: 'my first session', chatArr: ['message1', 'message2', 'message3', 'message4']}});
   });
 
-  test('does not save when chatArr == 3', () => {
+  it('does not save when chatArr == 3', () => {
     const chatArrMock = ['message1', 'message2', 'message3'];
     const currentSessionMock = '12345';
     const sessionNameMock = 'my first session';
@@ -84,7 +86,7 @@ describe('Save to History', () => {
     expect(palmReadings).toBeNull();
   });
 
-  test('does not save when chatArr < 3', () => {
+  it('does not save when chatArr < 3', () => {
     const chatArrMock = ['message1'];
     const currentSessionMock = '12345';
     const sessionNameMock = 'my first session';
@@ -106,7 +108,7 @@ describe('Save to History', () => {
     expect(console.log).toHaveBeenCalled();
   });
 
-  test('saves generic chat to history when history has stuff in it', () => {
+  it('saves generic chat to history when history has stuff in it', () => {
     // pre-existing chats in history
     const mockData = {
       "1686445888833": {
@@ -322,31 +324,78 @@ describe('Check if Ended', () => {
   });
 });
 
+
+//possible E2E
 describe('readPalm testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
+  // it('Should call saveToHistory with correct parameters', () => {
   // });
 });
 
 describe('rebuildChat', () => {
+  // create mock functions for this test
+  addMessageToChat = jest.fn();
+  clearChat = jest.fn();
+  addImageToChat = jest.fn();
+
+  beforeEach(() => {
+    // values stored in tests will also be available in other tests unless you run
+    jest.clearAllMocks();
+    localStorage.clear();
+  });
+
+  it("adds messages to chat when existing key passed in", () => {
+    const mockData = {
+      "1686445888833": {
+          "displayName": "",
+          "chatArr": [
+              {
+                  "message": "Hi, I'm Simba!",
+                  "isIncoming": true
+              },
+              {
+                  "message": "Which palm line?",
+                  "isIncoming": true
+              },
+              {
+                  "image": "./assets/images/palm-diagram.jpeg"
+              }
+          ]
+      },
+      "1686445888834": {
+        "displayName": "",
+        "chatArr": [
+            {
+                "message": "Hi, I'm Simba!",
+                "isIncoming": true
+            },
+            {
+                "message": "Which palm line?",
+                "isIncoming": true
+            },
+            {
+                "image": "./assets/images/palm-diagram.jpeg"
+            },
+            {
+              "image": "./assets/images/palm-diagram.jpeg"
+            }
+        ]
+      }
+    };
+
+    rebuildChat('1686445888833');
+
+    expect(clearChat).toHaveBeenCalledTimes(1);
+    expect(addMessageToChat).toHaveBeenCalledTimes(3);
+    expect(addMessageToChat).toHaveBeenCalledWith("Hi, I'm Simba!", true);
+    expect(addMessageToChat).toHaveBeenCalledWith("Which palm line?", true);
+    expect(addImageToChat).toHaveBeenCalledWith("./assets/images/palm-diagram.jpeg", 270, 300);
+  });
 
 
-});
-
-describe('clearChat', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
 });
 
 describe('createActionsForHistoryButton', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -355,7 +404,7 @@ describe('createActionsForHistoryButton', () => {
 });
 
 describe('createHistoryButton', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -364,7 +413,7 @@ describe('createHistoryButton', () => {
 });
 
 describe('inactivateHistoryButton', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -373,7 +422,7 @@ describe('inactivateHistoryButton', () => {
 });
 
 describe('waitUserInput', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -382,7 +431,7 @@ describe('waitUserInput', () => {
 });
 
 describe('addButtons', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -391,7 +440,7 @@ describe('addButtons', () => {
 });
 
 describe('addMessageToChat', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -400,7 +449,7 @@ describe('addMessageToChat', () => {
 });
 
 describe('loadProfiles testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -409,7 +458,7 @@ describe('loadProfiles testing', () => {
 });
 
 describe('addProfilesToPage testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -418,7 +467,7 @@ describe('addProfilesToPage testing', () => {
 });
 
 describe('addCardstoPage testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -427,7 +476,7 @@ describe('addCardstoPage testing', () => {
 });
 
 describe('toggleMenu testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -436,7 +485,7 @@ describe('toggleMenu testing', () => {
 });
 
 describe('detectScheme testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
@@ -445,7 +494,7 @@ describe('detectScheme testing', () => {
 });
 
 describe('toggleScheme testing', () => {
-  // test('Should call saveToHistory with correct parameters', () => {
+  // it('Should call saveToHistory with correct parameters', () => {
   //   const chatArrMock = ['message1', 'message2'];
   //   const currentSessionMock = '12345';
   //   saveToHistory(chatArrMock, currentSessionMock);
