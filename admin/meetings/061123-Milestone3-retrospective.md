@@ -5,6 +5,7 @@
 **Type of Meeting:** retrospective
 
 **Time/Place:** Zoom, 3:24 PM - 3:35 PM June 4, 2023
+[Recording: Passcode -> &3DggbZ](https://ucsd.zoom.us/rec/share/P6PLNM_O7oZ8i6MLLS9mMUfFMiW-SAYwsHewMm0OIBe6PgBXuwzvSZG9y4lRszMb.HhN94JjHJ1Mg2XTi)
 
 ## Attendance:
 
