@@ -632,8 +632,6 @@ export function addMessageToChat(message, isIncoming = false) {
  * @exports addImageToChat
  */
 export function addImageToChat(image, height, width) {
-  // first add message to currentChatArr
-  chatArr.push({ image });
 
   // Create a new chat message element
   const messageElement = document.createElement('div');
