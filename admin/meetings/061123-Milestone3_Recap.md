@@ -5,6 +5,7 @@
 **Type of Meeting:** Showcase, reflective
 
 **Time/Place:** Zoom, 2:30PM - 3:54 PM June 4, 2023
+[Recording: Passcode -> &3DggbZ](https://ucsd.zoom.us/rec/share/P6PLNM_O7oZ8i6MLLS9mMUfFMiW-SAYwsHewMm0OIBe6PgBXuwzvSZG9y4lRszMb.HhN94JjHJ1Mg2XTi)
 
 ## Attendance
 
