@@ -265,7 +265,7 @@ export function rebuildChat(key) {
  * @param {}
  * @returns {void}
  */
-function clearChat() {
+export function clearChat() {
   const chatContainer = document.getElementById('chat-messages');
   chatContainer.innerHTML = '';
 
@@ -454,7 +454,7 @@ function inactivateHistoryButtons() {
  * @param {number} ms - The number of milliseconds to wait before the promise should resolve.
  * @returns {Promise} - A promise that resolves after the specified amount of time.
  */
-async function timeout(ms) {
+export async function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
