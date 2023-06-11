@@ -23,7 +23,8 @@ const TEAM_PROFILE_PATH = './assets/json/aboutprofiles.json';
 window.addEventListener('DOMContentLoaded', init);
 
 /**
- * The main function that runs on this page, after the page has loaded.
+ * @description The main function that runs on this page, after the page has loaded. It fetches the team profiles from the JSON file and adds the profiles and cards to the page.
+ * @returns {Promise<void>} The Promise resolves when the profiles have been fetched and added to the page.
  */
 async function init() {
   const teamProfiles = await loadProfiles(TEAM_PROFILE_PATH);
