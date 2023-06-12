@@ -118,3 +118,54 @@
 - **Bug Fix:**  prettier and eslint issues
 - **Feature:**  chat history #26
 - **Feature:**  loading-bubble #37
+## v2.0.1
+
+- **Bug Fix:**  add more time for this one for some reason
+- **Bug Fix:**  add longer timeout for test
+- **Bug Fix:**  remove mock tests and fix lint/prettier on nomock
+- **Bug Fix:**  fix all tests
+- **Bug Fix:**  commented out failing unit tests
+- **Bug Fix:**  manual prettier
+- **Feature:**  all main.js function headers
+- **Documentation:**  add meeting notes for Milestone 3
+- **Bug Fix:**  deleted bug-causing code during meeting
+- **Bug Fix:**  update aboutus.js JSDoc
+- **Bug Fix:**  add JSDoc to togglesheme.js
+- **Bug Fix:**  update sidebar.js JSDoc
+- **Bug Fix:**  modify and make JSDoc better for historyHelpers.js
+- **Feature:**  add JSDoc for constants.js
+- **Bug Fix:**  JSDoc for aboutus.js
+- **Bug Fix:**  update aboutprofile.js JSDoc
+- **Feature:**  refactor aboutcard.js and add JSDoc for get data
+- **Bug Fix:**  add what I have for tests
+- **Bug Fix:**  move tests that require mock to other file
+- **Bug Fix:**  make separate file for using mock functions
+- **Bug Fix:**  add e2e tests for about page
+- **Bug Fix:**  add timeout tests
+- **Bug Fix:**  toggle change when OS set to dark theme #71
+- **Bug Fix:**  add more tests
+- **Bug Fix:**  remove OS auto change darkmode #71
+- **Bug Fix:**  added tests for saveToHistory
+- **Bug Fix:**  added more tests
+- **Bug Fix:**  remove console.log statement
+- **Bug Fix:**  update package-lock.json
+- **Bug Fix:**  some prettier to test if node_modules is cached
+- **Feature:**  try new node_modules caching CI
+- **Bug Fix:**  #86
+- **Bug Fix:**  remove redundant import, manual prettier
+- **Feature:**  update repo structure tree (excluding node_modules and JSDocs))
+- **Bug Fix:**  more cleanup
+- **Bug Fix:**  more repo cleanup
+- **Bug Fix:**  add .DS_Store to gitignore
+- **Bug Fix:**  remove .DS_Store
+- **Bug Fix:** d based on comments from Nick
+- **Bug Fix:**  add last names and fix grammatical errors
+- **Bug Fix:**  require not recognized in browser JS
+- **Bug Fix:**  add modules.export for historyHelpers
+- **Bug Fix:**  #81
+- **Bug Fix:**  rename for partials in CSS, as no SASS/SCSS
+- **Bug Fix:**  add to others absolute path
+- **Bug Fix:**  try again with absolute path
+- **Bug Fix:**  try again for CSS issue #82
+- **Bug Fix:**  CSS paths wrong in live deployment
+- **Bug Fix:**  try tests with commonjs for jest
