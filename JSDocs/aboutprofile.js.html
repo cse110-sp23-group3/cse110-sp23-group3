@@ -63,9 +63,8 @@ const PROFILE_DEFAULT = './assets/images/profile_images/profile.webp';
 /**
  * @classdesc A custom AboutProfile element for the About Page that contains information on one person. Includes a person's name and, optionally, profile picture.
  * @extends HTMLElement
-*/
+ */
 class AboutProfile extends HTMLElement {
-
   /**
    * @constructor The constructor for the AboutProfile custom HTML element.
    */
@@ -78,15 +77,13 @@ class AboutProfile extends HTMLElement {
     style.textContent = PROFILE_STYLE;
     shadowDOM.append(style, figure);
   }
-   /**
+
+  /**
    * @description This function sets the data in the profile (profile pic, name). It is called when the about-profile's data attribute is set. The data attribute should be set to a JavaScript object in the format below.
-   * @param {Object} data - An object containing the data to put into the card in the following format:
+   * @param {Object} data - An object containing the data to put into the profile in the following format:
    *                        {
    *                          "profileSrc": "string",
-   *                          "name": "string",
-   *                          "role": "string",
-   *                          "description": "string",
-   *                          "profilePos": "string"
+   *                          "name": "string"
    *                        }
    *                        The "profileSrc" key is the only optional key. If it is not present, the profile picture defaults to a preset one.
    */
@@ -100,12 +97,14 @@ class AboutProfile extends HTMLElement {
     const figure = shadowDOM.lastChild;
 
     figure.innerHTML = `
-    &lt;img src="${
-      data.profileSrc ? data.profileSrc : PROFILE_DEFAULT
-    }">
+    &lt;img src="${data.profileSrc ? data.profileSrc : PROFILE_DEFAULT}">
     &lt;figcaption class="text-xl">${data.name}&lt;/figcaption>`;
   }
 
+  /**
+   * @description This function gets the data from the profile. It is called when the about-profile's data attribute is accessed.
+   * @returns {string} The current value of the data attribute of the profile.
+   */
   get data() {
     return this.getAttribute('data');
   }
@@ -122,13 +121,13 @@ customElements.define('about-profile', AboutProfile);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addButtons">addButtons</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addMessageToChat">addMessageToChat</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#clearChat">clearChat</a></li><li><a href="global.html#createHistoryButton">createHistoryButton</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#inactivateHistoryButtons">inactivateHistoryButtons</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#rebuildChat">rebuildChat</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#timeout">timeout</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#waitUserInput">waitUserInput</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-addImageToChat.html">addImageToChat</a></li><li><a href="module-addMessageToChat.html">addMessageToChat</a></li><li><a href="module-clearChat.html">clearChat</a></li><li><a href="module-rebuildChat.html">rebuildChat</a></li><li><a href="module-timeout.html">timeout</a></li></ul><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA_THEME">DATA_THEME</a></li><li><a href="global.html#TEAM_PROFILE_PATH">TEAM_PROFILE_PATH</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#basicChoices">basicChoices</a></li><li><a href="global.html#checkIfEnded">checkIfEnded</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#detectScheme">detectScheme</a></li><li><a href="global.html#fateChoicesMap">fateChoicesMap</a></li><li><a href="global.html#fateFortuneMap">fateFortuneMap</a></li><li><a href="global.html#fortuneDescMap">fortuneDescMap</a></li><li><a href="global.html#getHistory">getHistory</a></li><li><a href="global.html#headChoicesMap">headChoicesMap</a></li><li><a href="global.html#headFortuneMap">headFortuneMap</a></li><li><a href="global.html#heartChoicesMap">heartChoicesMap</a></li><li><a href="global.html#heartFortuneMap">heartFortuneMap</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#lifeChoicesMap">lifeChoicesMap</a></li><li><a href="global.html#lifeFortuneMap">lifeFortuneMap</a></li><li><a href="global.html#lineChoicesMap">lineChoicesMap</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#palmLineDesc">palmLineDesc</a></li><li><a href="global.html#palmLines">palmLines</a></li><li><a href="global.html#readPalm">readPalm</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#toggleScheme">toggleScheme</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 08 2023 07:11:43 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 12 2023 00:13:45 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

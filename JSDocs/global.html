@@ -94,118 +94,30 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="DATA_THEME"><span class="type-signature">(constant) </span>DATA_THEME<span class="type-signature"> :string</span></h4>
 
-    
-
-    
-    <h4 class="name" id="addButtons"><span class="type-signature"></span>addButtons<span class="signature">(message, isIncoming)</span><span class="type-signature"></span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    Creates chat message buttons from the provided message array. The buttons are added to the chat interface, and an event listener is set up to handle button clicks.
+    A constant that defines the 'data-theme' attribute.
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
+<span class="param-type">string</span>
 
 
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">An array of message options for the buttons.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isIncoming</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    true
-                
-                </td>
-            
-
-            <td class="description last">Optional boolean that specifies whether the message is incoming (default) or outgoing.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
+        </li>
+    </ul>
 
 
 
@@ -240,7 +152,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line394">line 394</a>
+        <a href="togglescheme.js.html">togglescheme.js</a>, <a href="togglescheme.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -256,19 +168,1035 @@
 
 
 
+        
+            
+<h4 class="name" id="TEAM_PROFILE_PATH"><span class="type-signature">(constant) </span>TEAM_PROFILE_PATH<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    The file path to the JSON file, which contains the data for the profiles.
+The file includes an array of objects. Each object must conform to the format accepted
+by the data attribute of an 'about-card'. For example:
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>[
+  {
+    "profileSrc": "string",
+    "name": "string",
+    "role": "string",
+    "description": "string",
+    "profilePos": "string"
+  }
+]
+Note: "profileSrc" is optional; the other keys are not.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="basicChoices"><span class="type-signature">(constant) </span>basicChoices<span class="type-signature"> :Set.&lt;string></span></h4>
+
+
+
+
+<div class="description">
+    A set containing the basic choices for Yes or No questions.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Set.&lt;string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line287">line 287</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
 
 
 
+        
+            
+<h4 class="name" id="fateChoicesMap"><span class="type-signature">(constant) </span>fateChoicesMap<span class="type-signature"> :Map.&lt;string, Set.&lt;string>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the potential choices for fate line's shape, position, and abnormalities.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Set.&lt;string>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line206">line 206</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
 
 
 
+        
+            
+<h4 class="name" id="fateFortuneMap"><span class="type-signature">(constant) </span>fateFortuneMap<span class="type-signature"> :Map.&lt;string, string></span></h4>
 
+
+
+
+<div class="description">
+    Maps various characteristics of a person's fate line to associated fortunes or traits.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line170">line 170</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="fortuneDescMap"><span class="type-signature">(constant) </span>fortuneDescMap<span class="type-signature"> :Map.&lt;string, Map.&lt;string, string>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the type of palm line to its corresponding fortune map.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Map.&lt;string, string>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line235">line 235</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="headChoicesMap"><span class="type-signature">(constant) </span>headChoicesMap<span class="type-signature"> :Map.&lt;string, Set.&lt;string>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the potential choices for head line's shape, position, and abnormalities.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Set.&lt;string>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line91">line 91</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="headFortuneMap"><span class="type-signature">(constant) </span>headFortuneMap<span class="type-signature"> :Map.&lt;string, string></span></h4>
+
+
+
+
+<div class="description">
+    Maps various characteristics of a person's head line to associated fortunes or traits.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="heartChoicesMap"><span class="type-signature">(constant) </span>heartChoicesMap<span class="type-signature"> :Map.&lt;string, Set.&lt;string>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the potential choices for heart line's shape, position, and abnormalities.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Set.&lt;string>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="heartFortuneMap"><span class="type-signature">(constant) </span>heartFortuneMap<span class="type-signature"> :Map.&lt;string, string></span></h4>
+
+
+
+
+<div class="description">
+    Maps various characteristics of a person's heart line to associated fortunes or traits.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="lifeChoicesMap"><span class="type-signature">(constant) </span>lifeChoicesMap<span class="type-signature"> :Map.&lt;string, Set.&lt;string>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the potential choices for life line's shape, position, and abnormalities.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Set.&lt;string>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="lifeFortuneMap"><span class="type-signature">(constant) </span>lifeFortuneMap<span class="type-signature"> :Map.&lt;string, string></span></h4>
+
+
+
+
+<div class="description">
+    Maps various characteristics of a person's life line to associated fortunes or traits.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line120">line 120</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="lineChoicesMap"><span class="type-signature">(constant) </span>lineChoicesMap<span class="type-signature"> :Map.&lt;string, Map.&lt;string, Set.&lt;string>>></span></h4>
+
+
+
+
+<div class="description">
+    Maps the type of palm line to its corresponding choices map.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Map.&lt;string, Map.&lt;string, Set.&lt;string>>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line247">line 247</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="palmLineDesc"><span class="type-signature">(constant) </span>palmLineDesc<span class="type-signature"> :Object.&lt;string, string></span></h4>
+
+
+
+
+<div class="description">
+    An object containing the names of the four main palm lines as keys, and their descriptions as values.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line271">line 271</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="palmLines"><span class="type-signature">(constant) </span>palmLines<span class="type-signature"> :Set.&lt;string></span></h4>
+
+
+
+
+<div class="description">
+    A set containing the names of the four main palm lines.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Set.&lt;string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line259">line 259</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -377,7 +1305,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line63">line 63</a>
+        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -390,143 +1318,6 @@
             <li><a href="AboutCard.html">AboutCard</a></li>
         </ul>
     </dd>
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="addMessageToChat"><span class="type-signature"></span>addMessageToChat<span class="signature">(message)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Function to add a message to the chat
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The message to add to the chat</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line438">line 438</a>
-    </li></ul></dd>
-    
-
-    
-
     
 
     
@@ -658,7 +1449,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line49">line 49</a>
+        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -701,7 +1492,7 @@
     
 
     
-    <h4 class="name" id="clearChat"><span class="type-signature"></span>clearChat<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="checkIfEnded"><span class="type-signature"></span>checkIfEnded<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -709,7 +1500,7 @@
 
 
 <div class="description">
-    Clears the whole chat
+    Checks if the session has ended.
 </div>
 
 
@@ -718,46 +1509,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -793,7 +1544,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line239">line 239</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -821,170 +1572,19 @@
 <h5>Returns:</h5>
 
         
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createHistoryButton"><span class="type-signature"></span>createHistoryButton<span class="signature">(key)</span><span class="type-signature"> &rarr; {void}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    this will create the history button with the specified key attatched to it, if no key attached it will create a new one based on the time
+<div class="param-desc">
+    Returns the value of the 'endedSession' variable.
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">chat key that would be correlating to localStorage key, and if none is available make a new one</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line286">line 286</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
 <dl>
     <dt>
         Type
     </dt>
     <dd>
         
-<span class="param-type">void</span>
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -1010,7 +1610,7 @@
 
 
 <div class="description">
-    Deletes a session from the history.
+    Removes a specified session from the palm reading history stored in the browser's local storage.
 </div>
 
 
@@ -1062,7 +1662,7 @@
 
             
 
-            <td class="description last">The key of the session to delete.</td>
+            <td class="description last">The identifier of the session to be deleted.</td>
         </tr>
 
     
@@ -1103,12 +1703,156 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="historyHelpers.js.html">historyHelpers.js</a>, <a href="historyHelpers.js.html#line30">line 30</a>
+        <a href="historyHelpers.js.html">historyHelpers.js</a>, <a href="historyHelpers.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
     
 
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        If there is a problem with accessing local storage.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="detectScheme"><span class="type-signature"></span>detectScheme<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that detects the user's preferred color scheme (dark or light)
+and applies it as the theme to the document element. It also updates the state of
+the color scheme toggle button accordingly.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="togglescheme.js.html">togglescheme.js</a>, <a href="togglescheme.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/">https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -1157,7 +1901,7 @@
     
 
     
-    <h4 class="name" id="inactivateHistoryButtons"><span class="type-signature"></span>inactivateHistoryButtons<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="getHistory"><span class="type-signature"></span>getHistory<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -1165,7 +1909,7 @@
 
 
 <div class="description">
-    Inactivates all history buttons in the DOM by removing the 'active' class. History buttons are identified by the class 'text-md'.
+    Retrieves the palm reading history from the browser's local storage.
 </div>
 
 
@@ -1209,7 +1953,146 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line360">line 360</a>
+        <a href="historyHelpers.js.html">historyHelpers.js</a>, <a href="historyHelpers.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        If there is a problem with accessing local storage.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The palm reading history object. If no history is found, an empty object is returned.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    The main function that runs on this page, after the page has loaded. It fetches the team profiles from the JSON file and adds the profiles and cards to the page.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -1237,6 +2120,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    The Promise resolves when the profiles have been fetched and added to the page.
+</div>
+
 
 
 <dl>
@@ -1245,101 +2132,13 @@
     </dt>
     <dd>
         
-<span class="param-type">void</span>
+<span class="param-type">Promise.&lt;void></span>
 
 
     </dd>
 </dl>
 
     
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    The main function that runs on this page, after the page has loaded.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1452,7 +2251,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line39">line 39</a>
+        <a href="aboutus.js.html">aboutus.js</a>, <a href="aboutus.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -1510,7 +2309,7 @@
     
 
     
-    <h4 class="name" id="main"><span class="type-signature">(async) </span>main<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="main"><span class="type-signature">(async) </span>main<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -1518,7 +2317,11 @@
 
 
 <div class="description">
-    Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
+    This is the main function for the application. It starts by checking if there are
+any previous palm reading sessions in local storage. If there are, it loads them into the sidebar.
+Then, it adds functionality to the "new chat" button. When the "new chat" button is clicked, it
+ends the previous session, saves it to local storage (if it exists), clears the previous chat from
+the chat box, starts a new chat, and initiates a new palm reading session.
 </div>
 
 
@@ -1562,7 +2365,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line170">line 170</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line198">line 198</a>
     </li></ul></dd>
     
 
@@ -1591,7 +2394,7 @@
 
         
 <div class="param-desc">
-    - A promise to indicate when the chat process has completed.
+    This function doesn't return anything. Its main task is to orchestrate the execution of the program.
 </div>
 
 
@@ -1602,7 +2405,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">void</span>
 
 
     </dd>
@@ -1620,7 +2423,7 @@
     
 
     
-    <h4 class="name" id="rebuildChat"><span class="type-signature"></span>rebuildChat<span class="signature">(key)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="readPalm"><span class="type-signature">(async) </span>readPalm<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -1628,7 +2431,12 @@
 
 
 <div class="description">
-    Creates the old chat by going through the array stored in localStorage
+    Conducts a palm reading session. Asks the user to choose a palm line to read,
+and guides them through a series of questions about the shape, position, and any abnormal
+patterns on the chosen line. After each palm line reading, the user is asked whether they
+would like to continue with the palm reading. If they choose to continue, they are asked
+to choose another line to read. Once all lines have been read or the user chooses to stop
+the reading, a summary of the overall fortune is displayed.
 </div>
 
 
@@ -1637,55 +2445,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The chat key, which it is stored in the localStorage array</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1721,7 +2480,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line224">line 224</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -1749,6 +2508,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    This function doesn't return anything. It ends when the session ends or the user decides not to continue the reading.
+</div>
+
 
 
 <dl>
@@ -1775,7 +2538,7 @@
     
 
     
-    <h4 class="name" id="saveToHistory"><span class="type-signature"></span>saveToHistory<span class="signature">(chatArr, key)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="saveToHistory"><span class="type-signature"></span>saveToHistory<span class="signature">(chatArr, currentSession, displayName)</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -1783,7 +2546,8 @@
 
 
 <div class="description">
-    Add the chat array to the browser's local storage as a palm reading record in the palm reading object.
+    Stores the current chat array in the browser's local storage as a palm reading record.
+If the chatArr is of length less than or equal to 3, it is considered as a default chat and not saved.
 </div>
 
 
@@ -1835,20 +2599,20 @@
 
             
 
-            <td class="description last">The current chat array to be saved or added.</td>
+            <td class="description last">The chat array to be saved.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>key</code></td>
+                <td class="name"><code>currentSession</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">integer</span>
+<span class="param-type">string</span>
 
 
             
@@ -1858,7 +2622,30 @@
 
             
 
-            <td class="description last">The chat key that it will be saved at</td>
+            <td class="description last">The session identifier under which the chat will be saved.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>displayName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the chat to be displayed in the sidebar. If there is no name, an empty string should be passed.</td>
         </tr>
 
     
@@ -1899,7 +2686,144 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="historyHelpers.js.html">historyHelpers.js</a>, <a href="historyHelpers.js.html#line8">line 8</a>
+        <a href="historyHelpers.js.html">historyHelpers.js</a>, <a href="historyHelpers.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        If there is a problem with accessing local storage.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toggleMenu"><span class="type-signature"></span>toggleMenu<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function that toggles the state of the mobile sidebar menu when the sidebar's toggle button is clicked.
+When a click event occurs outside of the sidebar or the menu toggle, the sidebar is closed.
+This function should be run after the DOM is loaded.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="sidebar.js.html">sidebar.js</a>, <a href="sidebar.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1953,7 +2877,7 @@
     
 
     
-    <h4 class="name" id="timeout"><span class="type-signature">(async) </span>timeout<span class="signature">(ms)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="toggleScheme"><span class="type-signature"></span>toggleScheme<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
     
 
     
@@ -1961,7 +2885,9 @@
 
 
 <div class="description">
-    Returns a promise that resolves after a specified amount of time.
+    Function that toggles the color scheme between dark and light when the color scheme
+toggle button is clicked. The selected scheme is then set as the 'data-theme' attribute
+of the document element and stored in the browser's local storage.
 </div>
 
 
@@ -1970,55 +2896,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>ms</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The number of milliseconds to wait before the promise should resolve.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -2054,7 +2931,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line373">line 373</a>
+        <a href="togglescheme.js.html">togglescheme.js</a>, <a href="togglescheme.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -2082,10 +2959,6 @@
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    - A promise that resolves after the specified amount of time.
-</div>
-
 
 
 <dl>
@@ -2094,205 +2967,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="toggleMenu"><span class="type-signature"></span>toggleMenu<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Toggle the mobile sidebar menu
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sidebar.js.html">sidebar.js</a>, <a href="sidebar.js.html#line4">line 4</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="waitUserInput"><span class="type-signature">(async) </span>waitUserInput<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Pauses script execution until the 'next' variable is set to true. Resets 'next' to false after resuming.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line381">line 381</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - A promise that resolves when 'next' is true.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
+<span class="param-type">void</span>
 
 
     </dd>
@@ -2320,13 +2995,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addButtons">addButtons</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addMessageToChat">addMessageToChat</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#clearChat">clearChat</a></li><li><a href="global.html#createHistoryButton">createHistoryButton</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#inactivateHistoryButtons">inactivateHistoryButtons</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#rebuildChat">rebuildChat</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#timeout">timeout</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#waitUserInput">waitUserInput</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-addImageToChat.html">addImageToChat</a></li><li><a href="module-addMessageToChat.html">addMessageToChat</a></li><li><a href="module-clearChat.html">clearChat</a></li><li><a href="module-rebuildChat.html">rebuildChat</a></li><li><a href="module-timeout.html">timeout</a></li></ul><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA_THEME">DATA_THEME</a></li><li><a href="global.html#TEAM_PROFILE_PATH">TEAM_PROFILE_PATH</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#basicChoices">basicChoices</a></li><li><a href="global.html#checkIfEnded">checkIfEnded</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#detectScheme">detectScheme</a></li><li><a href="global.html#fateChoicesMap">fateChoicesMap</a></li><li><a href="global.html#fateFortuneMap">fateFortuneMap</a></li><li><a href="global.html#fortuneDescMap">fortuneDescMap</a></li><li><a href="global.html#getHistory">getHistory</a></li><li><a href="global.html#headChoicesMap">headChoicesMap</a></li><li><a href="global.html#headFortuneMap">headFortuneMap</a></li><li><a href="global.html#heartChoicesMap">heartChoicesMap</a></li><li><a href="global.html#heartFortuneMap">heartFortuneMap</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#lifeChoicesMap">lifeChoicesMap</a></li><li><a href="global.html#lifeFortuneMap">lifeFortuneMap</a></li><li><a href="global.html#lineChoicesMap">lineChoicesMap</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#palmLineDesc">palmLineDesc</a></li><li><a href="global.html#palmLines">palmLines</a></li><li><a href="global.html#readPalm">readPalm</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#toggleScheme">toggleScheme</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 08 2023 07:11:43 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 12 2023 00:13:45 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

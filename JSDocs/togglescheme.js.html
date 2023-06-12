@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AboutProfile</title>
+    <title>JSDoc: Source: togglescheme.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,276 +17,75 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AboutProfile</h1>
-
-    
-
-
-
-
-<section>
-
-<header>
-    
-        <h2><span class="attribs"><span class="type-signature"></span></span>AboutProfile<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description">A custom AboutProfile element for the About Page that contains information on one person. Includes a person's name and, optionally, profile picture.</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="AboutProfile"><span class="type-signature"></span>new AboutProfile<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutprofile.js.html">aboutprofile.js</a>, <a href="aboutprofile.js.html#line39">line 39</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-        <h3 class="subsection-title">Extends</h3>
-
-        
-
-
-    <ul>
-        <li>HTMLElement</li>
-    </ul>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="data"><span class="type-signature"></span>data<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    This function sets the data in the profile (profile pic, name). It is called when the about-profile's data attribute is set. The data attribute should be set to a JavaScript object in the format below.
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutprofile.js.html">aboutprofile.js</a>, <a href="aboutprofile.js.html#line62">line 62</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="data"><span class="type-signature"></span>data<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    This function gets the data from the profile. It is called when the about-profile's data attribute is accessed.
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="aboutprofile.js.html">aboutprofile.js</a>, <a href="aboutprofile.js.html#line80">line 80</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <h1 class="page-title">Source: togglescheme.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A constant that defines the 'data-theme' attribute.
+ * @constant
+ * @type {string}
+ */
+const DATA_THEME = 'data-theme';
+
+/**
+ * Function that detects the user's preferred color scheme (dark or light)
+ * and applies it as the theme to the document element. It also updates the state of
+ * the color scheme toggle button accordingly.
+ * @function
+ * @returns {void}
+ * @see {@link https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/}
+ */
+function detectScheme() {
+  const scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+
+  // change the toggle button
+  const toggle = document.querySelector('#scheme-toggle');
+  toggle.checked = scheme === 'dark';
+
+  document.documentElement.setAttribute(DATA_THEME, scheme);
+}
+
+/**
+ * Function that toggles the color scheme between dark and light when the color scheme
+ * toggle button is clicked. The selected scheme is then set as the 'data-theme' attribute
+ * of the document element and stored in the browser's local storage.
+ * @function
+ * @returns {void}
+ */
+function toggleScheme() {
+  const toggle = document.querySelector('#scheme-toggle');
+
+  toggle.addEventListener('click', () => {
+    const scheme =
+      document.documentElement.getAttribute(DATA_THEME) === 'dark'
+        ? 'light'
+        : 'dark';
+    document.documentElement.setAttribute(DATA_THEME, scheme);
+    localStorage.setItem('scheme', scheme);
+  });
+}
+
+/**
+ * Adds an event listener to the document to ensure that the `detectScheme` and `toggleScheme`
+ * functions are called after the Document Object Model (DOM) has fully loaded.
+ * @function
+ * @returns {void}
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  detectScheme();
+  toggleScheme();
+});
+</code></pre>
+        </article>
+    </section>
 
 
 

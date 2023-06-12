@@ -26,32 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* The file path to the JSON file, which contains the data for the profiles.
-   This file contains an array of obects. Each object must be in the format accepted by an about-card's data attribute. E.g.:
-   [
-      {
-        "profileSrc": "string",
-        "name": "string",
-        "role": "string",
-        "description": "string",
-        "profilePos": "string"
-      },
-      {
-        "profileSrc": "string",
-        "name": "string",
-        "role": "string",
-        "description": "string",
-        "profilePos": "string"
-      }
-   ]
-   Note: "profileSrc" is optional; the other keys are not.
+            <pre class="prettyprint source linenums"><code>/**
+ * The file path to the JSON file, which contains the data for the profiles.
+ * The file includes an array of objects. Each object must conform to the format accepted
+ * by the data attribute of an 'about-card'. For example:
+ * @example
+ * [
+ *   {
+ *     "profileSrc": "string",
+ *     "name": "string",
+ *     "role": "string",
+ *     "description": "string",
+ *     "profilePos": "string"
+ *   }
+ * ]
+ * Note: "profileSrc" is optional; the other keys are not.
+ * @constant
+ * @type {string}
  */
 const TEAM_PROFILE_PATH = './assets/json/aboutprofiles.json';
 
 window.addEventListener('DOMContentLoaded', init);
 
 /**
- * The main function that runs on this page, after the page has loaded.
+ * @description The main function that runs on this page, after the page has loaded. It fetches the team profiles from the JSON file and adds the profiles and cards to the page.
+ * @returns {Promise&lt;void>} The Promise resolves when the profiles have been fetched and added to the page.
  */
 async function init() {
   const teamProfiles = await loadProfiles(TEAM_PROFILE_PATH);
@@ -106,13 +105,13 @@ function addCardsToPage(teamProfiles) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addButtons">addButtons</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addMessageToChat">addMessageToChat</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#clearChat">clearChat</a></li><li><a href="global.html#createHistoryButton">createHistoryButton</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#inactivateHistoryButtons">inactivateHistoryButtons</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#rebuildChat">rebuildChat</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#timeout">timeout</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#waitUserInput">waitUserInput</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-addImageToChat.html">addImageToChat</a></li><li><a href="module-addMessageToChat.html">addMessageToChat</a></li><li><a href="module-clearChat.html">clearChat</a></li><li><a href="module-rebuildChat.html">rebuildChat</a></li><li><a href="module-timeout.html">timeout</a></li></ul><h3>Classes</h3><ul><li><a href="AboutCard.html">AboutCard</a></li><li><a href="AboutProfile.html">AboutProfile</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutCard%2520custom%2520HTML%2520element..html">The constructor for the AboutCard custom HTML element.</a></li><li><a href="The%2520constructor%2520for%2520the%2520AboutProfile%2520custom%2520HTML%2520element..html">The constructor for the AboutProfile custom HTML element.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA_THEME">DATA_THEME</a></li><li><a href="global.html#TEAM_PROFILE_PATH">TEAM_PROFILE_PATH</a></li><li><a href="global.html#addCardsToPage">addCardsToPage</a></li><li><a href="global.html#addProfilesToPage">addProfilesToPage</a></li><li><a href="global.html#basicChoices">basicChoices</a></li><li><a href="global.html#checkIfEnded">checkIfEnded</a></li><li><a href="global.html#deleteFromHistory">deleteFromHistory</a></li><li><a href="global.html#detectScheme">detectScheme</a></li><li><a href="global.html#fateChoicesMap">fateChoicesMap</a></li><li><a href="global.html#fateFortuneMap">fateFortuneMap</a></li><li><a href="global.html#fortuneDescMap">fortuneDescMap</a></li><li><a href="global.html#getHistory">getHistory</a></li><li><a href="global.html#headChoicesMap">headChoicesMap</a></li><li><a href="global.html#headFortuneMap">headFortuneMap</a></li><li><a href="global.html#heartChoicesMap">heartChoicesMap</a></li><li><a href="global.html#heartFortuneMap">heartFortuneMap</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#lifeChoicesMap">lifeChoicesMap</a></li><li><a href="global.html#lifeFortuneMap">lifeFortuneMap</a></li><li><a href="global.html#lineChoicesMap">lineChoicesMap</a></li><li><a href="global.html#loadProfiles">loadProfiles</a></li><li><a href="global.html#main">main</a></li><li><a href="global.html#palmLineDesc">palmLineDesc</a></li><li><a href="global.html#palmLines">palmLines</a></li><li><a href="global.html#readPalm">readPalm</a></li><li><a href="global.html#saveToHistory">saveToHistory</a></li><li><a href="global.html#toggleMenu">toggleMenu</a></li><li><a href="global.html#toggleScheme">toggleScheme</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 08 2023 07:11:43 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 12 2023 00:13:45 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
