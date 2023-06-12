@@ -10,7 +10,7 @@ const DATA_THEME = 'data-theme';
  * and applies it as the theme to the document element. It also updates the state of
  * the color scheme toggle button accordingly.
  * @function
- * @returns {void}
+ * @returns {void} This function does not return a value.
  * @see {@link https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/}
  */
 function detectScheme() {
@@ -30,7 +30,7 @@ function detectScheme() {
  * toggle button is clicked. The selected scheme is then set as the 'data-theme' attribute
  * of the document element and stored in the browser's local storage.
  * @function
- * @returns {void}
+ * @returns {void} This function does not return a value.
  */
 function toggleScheme() {
   const toggle = document.querySelector('#scheme-toggle');
@@ -49,7 +49,7 @@ function toggleScheme() {
  * Adds an event listener to the document to ensure that the `detectScheme` and `toggleScheme`
  * functions are called after the Document Object Model (DOM) has fully loaded.
  * @function
- * @returns {void}
+ * @returns {void} This function does not return a value.
  */
 document.addEventListener('DOMContentLoaded', () => {
   detectScheme();

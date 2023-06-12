@@ -44,6 +44,7 @@ async function loadProfiles(filepath) {
  * @description Adds the about-profiles to the About Us page
  * @param {Array<Object>} teamProfiles - An array of Objects containing the profile data.
  * @see {@link AboutProfile}
+ * @returns {void} This function does not return a value.
  */
 function addProfilesToPage(teamProfiles) {
   const profileHolder = document.getElementById('about-profile-grid');
@@ -58,6 +59,7 @@ function addProfilesToPage(teamProfiles) {
  * @description Adds the about-cards to the About Us page
  * @param {Array<Object>} teamProfiles - An array of Objects containing the profile data.
  * @see {@link AboutCard}
+ * @returns {void} This function does not return a value.
  */
 function addCardsToPage(teamProfiles) {
   const aboutHolder = document.getElementById('about-column');
