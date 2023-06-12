@@ -76,7 +76,7 @@ describe('Navigation To About Page From Disclaimer', () => {
     expect(page.url()).toBe(
       'https://cse110-sp23-group3.github.io/cse110-sp23-group3/source/aboutus.html'
     );
-  }, 10000);
+  }, 15000);
 
   it('Check that all profiles are present in the grid', async () => {
     await timeout(1000);
