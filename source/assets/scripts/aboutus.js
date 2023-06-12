@@ -35,7 +35,7 @@ async function init() {
  * @param {string} filepath - the path to the JSON file that stores the profile data
  * @returns {Promise<Array<Object>>} The data from the JSON file
  */
-async function loadProfiles(filepath) {
+export async function loadProfiles(filepath) {
   const response = await fetch(filepath);
   return await response.json();
 }
