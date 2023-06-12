@@ -9,14 +9,7 @@ import {
   deleteFromHistory,
 } from '../assets/scripts/historyHelpers.js';
 
-import {
-  addMessageToChat,
-  clearChat,
-  checkIfEnded,
-  addImageToChat,
-  rebuildChat,
-  timeout,
-} from '../assets/scripts/main.js';
+import { timeout } from '../assets/scripts/main.js';
 
 // Mock console log
 global.console = {
@@ -35,9 +28,16 @@ describe('Save to History', () => {
     const sessionNameMock = 'my first session';
 
     saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
-    
-    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-    expect(palmReadings).toEqual({'12345': {displayName: 'my first session', chatArr: ['message1', 'message2', 'message3', 'message4']}});
+
+    const palmReadings = JSON.parse(
+      window.localStorage.getItem('palmReadings')
+    );
+    expect(palmReadings).toEqual({
+      12345: {
+        displayName: 'my first session',
+        chatArr: ['message1', 'message2', 'message3', 'message4'],
+      },
+    });
   });
 
   it('does not save when chatArr == 3', () => {
@@ -46,8 +46,10 @@ describe('Save to History', () => {
     const sessionNameMock = 'my first session';
 
     saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
-    
-    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+
+    const palmReadings = JSON.parse(
+      window.localStorage.getItem('palmReadings')
+    );
     expect(palmReadings).toBeNull();
   });
 
@@ -57,8 +59,10 @@ describe('Save to History', () => {
     const sessionNameMock = 'my first session';
 
     saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
-    
-    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
+
+    const palmReadings = JSON.parse(
+      window.localStorage.getItem('palmReadings')
+    );
     expect(palmReadings).toBeNull();
   });
 
@@ -76,100 +80,100 @@ describe('Save to History', () => {
   it('saves generic chat to history when history has stuff in it', () => {
     // pre-existing chats in history
     const mockData = {
-      "1686445888833": {
-          "displayName": "",
-          "chatArr": [
-              {
-                  "message": "Hi, I'm Simba!",
-                  "isIncoming": true
-              },
-              {
-                  "message": "Which palm line?",
-                  "isIncoming": true
-              },
-              {
-                  "image": "./assets/images/palm-diagram.jpeg"
-              }
-          ]
+      1686445888833: {
+        displayName: '',
+        chatArr: [
+          {
+            message: "Hi, I'm Simba!",
+            isIncoming: true,
+          },
+          {
+            message: 'Which palm line?',
+            isIncoming: true,
+          },
+          {
+            image: './assets/images/palm-diagram.jpeg',
+          },
+        ],
       },
-      "1686445888834": {
-        "displayName": "",
-        "chatArr": [
-            {
-                "message": "Hi, I'm Simba!",
-                "isIncoming": true
-            },
-            {
-                "message": "Which palm line?",
-                "isIncoming": true
-            },
-            {
-                "image": "./assets/images/palm-diagram.jpeg"
-            }
-        ]
-      }
+      1686445888834: {
+        displayName: '',
+        chatArr: [
+          {
+            message: "Hi, I'm Simba!",
+            isIncoming: true,
+          },
+          {
+            message: 'Which palm line?',
+            isIncoming: true,
+          },
+          {
+            image: './assets/images/palm-diagram.jpeg',
+          },
+        ],
+      },
     };
 
     localStorage.setItem('palmReadings', JSON.stringify(mockData));
 
     // new chat to save
     const chatArrMock = [
-      { "message": "Hi, I'm Scar!", "isIncoming": true },
-      { "message": "Which palm line?", "isIncoming": true },
-      { "image": "./assets/images/palm-diagram.jpeg" },
-      { "image": "./assets/images/palm-diagram.jpeg" }
+      { message: "Hi, I'm Scar!", isIncoming: true },
+      { message: 'Which palm line?', isIncoming: true },
+      { image: './assets/images/palm-diagram.jpeg' },
+      { image: './assets/images/palm-diagram.jpeg' },
     ];
     const currentSessionMock = '12345';
     const sessionNameMock = 'my first session';
 
     saveToHistory(chatArrMock, currentSessionMock, sessionNameMock);
 
-    const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
-    expect(palmReadings).toEqual(
-      {
-        "1686445888833": {
-            "displayName": "",
-            "chatArr": [
-                {
-                    "message": "Hi, I'm Simba!",
-                    "isIncoming": true
-                },
-                {
-                    "message": "Which palm line?",
-                    "isIncoming": true
-                },
-                {
-                    "image": "./assets/images/palm-diagram.jpeg"
-                }
-            ]
-        },
-        "1686445888834": {
-          "displayName": "",
-          "chatArr": [
-              {
-                  "message": "Hi, I'm Simba!",
-                  "isIncoming": true
-              },
-              {
-                  "message": "Which palm line?",
-                  "isIncoming": true
-              },
-              {
-                  "image": "./assets/images/palm-diagram.jpeg"
-              }
-          ]
-        },
-        "12345": {
-          "displayName": "my first session",
-          "chatArr": [
-            { "message": "Hi, I'm Scar!", "isIncoming": true },
-            { "message": "Which palm line?", "isIncoming": true },
-            { "image": "./assets/images/palm-diagram.jpeg" },
-            { "image": "./assets/images/palm-diagram.jpeg" }
-          ]
-        }
-      }
+    const palmReadings = JSON.parse(
+      window.localStorage.getItem('palmReadings')
     );
+    expect(palmReadings).toEqual({
+      1686445888833: {
+        displayName: '',
+        chatArr: [
+          {
+            message: "Hi, I'm Simba!",
+            isIncoming: true,
+          },
+          {
+            message: 'Which palm line?',
+            isIncoming: true,
+          },
+          {
+            image: './assets/images/palm-diagram.jpeg',
+          },
+        ],
+      },
+      1686445888834: {
+        displayName: '',
+        chatArr: [
+          {
+            message: "Hi, I'm Simba!",
+            isIncoming: true,
+          },
+          {
+            message: 'Which palm line?',
+            isIncoming: true,
+          },
+          {
+            image: './assets/images/palm-diagram.jpeg',
+          },
+        ],
+      },
+      12345: {
+        displayName: 'my first session',
+        chatArr: [
+          { message: "Hi, I'm Scar!", isIncoming: true },
+          { message: 'Which palm line?', isIncoming: true },
+          { image: './assets/images/palm-diagram.jpeg' },
+          { image: './assets/images/palm-diagram.jpeg' },
+        ],
+      },
+    });
   });
 });
 
@@ -243,18 +247,18 @@ describe('Delete From History', () => {
   });
 
   it('check deleteFromHistory when key does not exist', () => {
-    const mockData = { 
+    const mockData = {
       key1: 'Your future is bright!',
-      key2: 'Your future is dark!'
+      key2: 'Your future is dark!',
     };
     window.localStorage.setItem('palmReadings', JSON.stringify(mockData));
 
     deleteFromHistory('key3');
 
     const newMockData = JSON.parse(window.localStorage.getItem('palmReadings'));
-    expect(newMockData).toEqual({ 
+    expect(newMockData).toEqual({
       key1: 'Your future is bright!',
-      key2: 'Your future is dark!'
+      key2: 'Your future is dark!',
     });
   });
 
@@ -277,129 +281,13 @@ describe('Delete From History', () => {
   });
 });
 
-//possible E2E
-describe('readPalm testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  // });
-});
-
-//E2E
-describe('createActionsForHistoryButton', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-//E2E
-describe('createHistoryButton', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('inactivateHistoryButton', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-    
-  // });
-});
-
 describe('timeout', () => {
   it('returns a resolved promise with expected value', async () => {
-    const expected = 'Hello, world!';
-
     const start = Date.now();
     await timeout(1000);
     const end = Date.now();
 
-    const diff = Math.round((end - start)/1000) * 1000;
+    const diff = Math.round((end - start) / 1000) * 1000;
     expect(diff).toEqual(1000);
   });
-});
-
-
-describe('waitUserInput', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('addButtons', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('addMessageToChat', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('loadProfiles testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('addProfilesToPage testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('addCardstoPage testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('toggleMenu testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('detectScheme testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
-});
-
-describe('toggleScheme testing', () => {
-  // it('Should call saveToHistory with correct parameters', () => {
-  //   const chatArrMock = ['message1', 'message2'];
-  //   const currentSessionMock = '12345';
-  //   saveToHistory(chatArrMock, currentSessionMock);
-  //   expect(saveToHistory).toHaveBeenCalledWith(chatArrMock, currentSessionMock);
-  // });
 });
