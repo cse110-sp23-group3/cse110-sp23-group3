@@ -14,14 +14,22 @@ const DATA_THEME = 'data-theme';
  * @see {@link https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/}
  */
 function detectScheme() {
-  const scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const toggle = document.querySelector('#scheme-toggle');
+
+  let scheme = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';
 
-  // change the toggle button
-  const toggle = document.querySelector('#scheme-toggle');
+  // if the user has already selected a color scheme, use that instead
+  const storedScheme = localStorage.getItem('scheme');
+  if (storedScheme) {
+    scheme = storedScheme;
+  }
+
+  // update the color scheme toggle button
   toggle.checked = scheme === 'dark';
 
+  // set the theme
   document.documentElement.setAttribute(DATA_THEME, scheme);
 }
 
