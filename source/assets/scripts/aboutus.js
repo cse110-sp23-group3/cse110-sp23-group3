@@ -1,29 +1,28 @@
-/* The file path to the JSON file, which contains the data for the profiles.
-   This file contains an array of obects. Each object must be in the format accepted by an about-card's data attribute. E.g.:
-   [
-      {
-        "profileSrc": "string",
-        "name": "string",
-        "role": "string",
-        "description": "string",
-        "profilePos": "string"
-      },
-      {
-        "profileSrc": "string",
-        "name": "string",
-        "role": "string",
-        "description": "string",
-        "profilePos": "string"
-      }
-   ]
-   Note: "profileSrc" is optional; the other keys are not.
+/**
+ * The file path to the JSON file, which contains the data for the profiles.
+ * The file includes an array of objects. Each object must conform to the format accepted
+ * by the data attribute of an 'about-card'. For example:
+ * @example
+ * [
+ *   {
+ *     "profileSrc": "string",
+ *     "name": "string",
+ *     "role": "string",
+ *     "description": "string",
+ *     "profilePos": "string"
+ *   }
+ * ]
+ * Note: "profileSrc" is optional; the other keys are not.
+ * @constant
+ * @type {string}
  */
 const TEAM_PROFILE_PATH = './assets/json/aboutprofiles.json';
 
 window.addEventListener('DOMContentLoaded', init);
 
 /**
- * The main function that runs on this page, after the page has loaded.
+ * @description The main function that runs on this page, after the page has loaded. It fetches the team profiles from the JSON file and adds the profiles and cards to the page.
+ * @returns {Promise<void>} The Promise resolves when the profiles have been fetched and added to the page.
  */
 async function init() {
   const teamProfiles = await loadProfiles(TEAM_PROFILE_PATH);

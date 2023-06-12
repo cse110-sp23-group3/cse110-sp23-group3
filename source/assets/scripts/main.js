@@ -36,14 +36,25 @@ let overallFortune = {
 };
 
 /**
- * Checks if the session has ended.
- *
+ * @description Checks if the session has ended.
+ * @function
  * @returns {boolean} Returns the value of the 'endedSession' variable.
  */
-function checkIfEnded() {
+export function checkIfEnded() {
   return endedSession;
 }
 
+/**
+ * @description Conducts a palm reading session. Asks the user to choose a palm line to read,
+ * and guides them through a series of questions about the shape, position, and any abnormal
+ * patterns on the chosen line. After each palm line reading, the user is asked whether they
+ * would like to continue with the palm reading. If they choose to continue, they are asked
+ * to choose another line to read. Once all lines have been read or the user chooses to stop
+ * the reading, a summary of the overall fortune is displayed.
+ * @function
+ * @async
+ * @returns {void} This function doesn't return anything. It ends when the session ends or the user decides not to continue the reading.
+ */
 async function readPalm() {
   const currentPalmLines = new Set(palmLines);
   while (true) {
@@ -175,8 +186,14 @@ async function readPalm() {
 }
 
 /**
- * @description Handles the main chat flow for a simulated palm reading. The chatbot presents a series of choices to the user, gathers responses, and provides the palm reading result.
- * @returns {Promise} - A promise to indicate when the chat process has completed.
+ * @description This is the main function for the application. It starts by checking if there are
+ * any previous palm reading sessions in local storage. If there are, it loads them into the sidebar.
+ * Then, it adds functionality to the "new chat" button. When the "new chat" button is clicked, it
+ * ends the previous session, saves it to local storage (if it exists), clears the previous chat from
+ * the chat box, starts a new chat, and initiates a new palm reading session.
+ * @function
+ * @async
+ * @returns {void} This function doesn't return anything. Its main task is to orchestrate the execution of the program.
  */
 async function main() {
   // Check if there are previous palm reading sessions in local storage and load them into the sidebar if there are
@@ -240,17 +257,14 @@ async function main() {
 }
 
 /**
- * @description Creates an actions div for a history button with 'edit' and 'delete' functionalities.
- * The 'edit' button, when clicked, prompts the user to input a new chat name. If the user enters a new name,
- * the chat name in local storage and on the HTML page is updated.
- * The 'delete' button, when clicked, removes the chat from local storage and the HTML page.
- * If the chat being deleted is currently active, the chat is cleared.
- * @param {string} key - The chat key, which is stored in local storage
- * @param {Object} chatLink - The DOM element of the chat link that is clicked on in the history
- * @param {Object} newItem - The new DOM element created in the chat history
- * @returns {Object} The 'actions' div element, which contains both 'edit' and 'delete' buttons for the specific chat history item
+ * @description This function retrieves a previously stored chat history associated with the provided key from local storage,
+ * clears the current chat, and then rebuilds the chat by adding each message from the chat history back into the chat box.
+ * @function
+ * @param {string} key - The key associated with the chat history in local storage.
+ * @returns {void} This function doesn't return anything. Its main task is to rebuild the chat history.
+ * @exports rebuildChat
  */
-function rebuildChat(key) {
+export function rebuildChat(key) {
   clearChat();
   const palmReadings = JSON.parse(window.localStorage.getItem('palmReadings'));
   const chatHistory = palmReadings[key].chatArr;
@@ -261,11 +275,13 @@ function rebuildChat(key) {
 }
 
 /**
- * @description Clears the whole chat
- * @param {}
- * @returns {void}
+ * @description This function clears the chat by setting the innerHTML of the chat container to an empty string
+ * and resetting the chatArr state variable to an empty array.
+ * @function
+ * @returns {void} This function doesn't return anything. Its main task is to clear the chat history.
+ * @exports clearChat
  */
-function clearChat() {
+export function clearChat() {
   const chatContainer = document.getElementById('chat-messages');
   chatContainer.innerHTML = '';
 
@@ -274,15 +290,14 @@ function clearChat() {
 }
 
 /**
- * Creates an actions div for a history button with both 'edit' and 'delete' functionalities.
- * The 'edit' button, when clicked, prompts the user to input a new chat name. If the user enters a new name, the chat name in local storage and the HTML page are updated.
- * The 'delete' button, when clicked, removes the chat from local storage and the HTML page. If the chat being deleted is currently active, it clears the chat.
- *
- * @function createActionsForHistoryButton
- * @param {string} key - The key identifier for the chat, used to fetch or update the chat data in local storage.
- * @param {Object} chatLink - The DOM element of the chat link that is clicked on in the history.
- * @param {Object} newItem - The new DOM element created in the chat history.
- * @returns {Object} The 'actions' div element, which contains both 'edit' and 'delete' buttons for the specific chat history item.
+ * @description This function creates an actions div for a chat history button with edit and delete functionality.
+ * The edit functionality allows the user to change the name of the chat, and the delete functionality allows
+ * the user to delete the chat from both local storage and the HTML.
+ * @function
+ * @param {string} key - The key associated with the chat history in local storage.
+ * @param {Object} chatLink - The DOM element representing the chat history button.
+ * @param {Object} newItem - The DOM element that is the parent of the chat history button.
+ * @returns {Object} A DOM element representing the actions div for the chat history button.
  */
 function createActionsForHistoryButton(key, chatLink, newItem) {
   const actions = document.createElement('div');
@@ -352,9 +367,15 @@ function createActionsForHistoryButton(key, chatLink, newItem) {
 }
 
 /**
- * @description this will create the history button with the specified key attatched to it, if no key attached it will create a new one based on the time
- * @param {integer} key - chat key that would be correlating to localStorage key, and if none is available make a new one
- * @returns {void}
+ * @description This function creates a new button for a chat session with the provided key and displayName.
+ * This button is added to the 'history' HTML element. If the displayName is not provided.
+ * the function uses the current date and time as the display name for the button.
+ * The button has an event listener that saves the current chat to history,
+ * sets the current session to the clicked session, clears the chat, and rebuilds the chat from the session.
+ * @function
+ * @param {string} key - The key associated with the chat history in local storage.
+ * @param {string} displayName - The display name for the chat session button.
+ * @returns {Object} A DOM element representing the chat session button.
  */
 function createHistoryButton(key, displayName) {
   // Process of creating a new button for a chat session
@@ -438,7 +459,11 @@ function createHistoryButton(key, displayName) {
 }
 
 /**
- * @description Inactivates all history buttons in the DOM by removing the 'active' class. History buttons are identified by the class 'text-md'.
+ * @description This function inactivates all chat history buttons. It accomplishes this by
+ * removing the 'active' class from each button. It fetches all the buttons from the DOM by selecting
+ * elements with the 'text-md' class.
+ *
+ * @function
  * @returns {void}
  */
 function inactivateHistoryButtons() {
@@ -450,17 +475,25 @@ function inactivateHistoryButtons() {
 }
 
 /**
- * @description Returns a promise that resolves after a specified amount of time.
- * @param {number} ms - The number of milliseconds to wait before the promise should resolve.
- * @returns {Promise} - A promise that resolves after the specified amount of time.
+ * @description This function creates a promise that resolves after a specified number of milliseconds. It's
+ * useful for creating delays in an async/await context.
+ * @function
+ * @param {number} ms - The number of milliseconds to delay.
+ * @returns {Promise} A promise that resolves after the specified delay.
+ * @exports timeout
  */
-async function timeout(ms) {
+export async function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
- * @description Pauses script execution until the 'next' variable is set to true. Resets 'next' to false after resuming.
- * @returns {Promise} - A promise that resolves when 'next' is true.
+ * @description This function repeatedly pauses the script for short intervals until either the user provides
+ * input (signified by the global variable `next` being `true`) or the session ends (signified by the global
+ * variable `endedSession` being `true`). After the function is done waiting, it resets `next` to `false`
+ * for potential future waits.
+ *
+ * @function
+ * @returns {Promise<void>} A Promise that resolves once user input has been received or the session has ended.
  */
 async function waitUserInput() {
   // eslint-disable-next-line no-unmodified-loop-condition
@@ -471,9 +504,17 @@ async function waitUserInput() {
 }
 
 /**
- * @description Creates chat message buttons from the provided message array. The buttons are added to the chat interface, and an event listener is set up to handle button clicks.
- * @param {Array} message - An array of message options for the buttons.
- * @param {boolean} isIncoming - Optional boolean that specifies whether the message is incoming (default) or outgoing.
+ * @description This function creates a new chat message element with choice buttons for each element in
+ * the provided array. When a button is clicked, the text of the button is printed to the chat, all
+ * buttons are disabled, and the global variable `next` is set to `true`. After the buttons are created,
+ * they are appended to the chat messages container and the container is scrolled to display the latest
+ * message.
+ * @function
+ * @param {Array<string>} message An array of strings where each string is the text for a choice button.
+ * @param {boolean} [isIncoming=true] An optional boolean that indicates whether the message is incoming.
+ * If it is incoming, the 'incoming-message' class is added to the message element. Otherwise, the
+ * 'outgoing-message' class is added.
+ * @returns {void} This function does not return a value.
  */
 function addButtons(message, isIncoming = true) {
   // Create a new chat message element
@@ -516,10 +557,20 @@ function addButtons(message, isIncoming = true) {
 }
 
 /**
- * Function to add a message to the chat
- * @param {string} message - The message to add to the chat
+ * @description This function adds a message to the chat. It first adds the message to `chatArr`.
+ * Then, it creates a new chat message element and appends the text of the message to the element. If
+ * the message is incoming, an image is also appended to the message element. The message element
+ * is then appended to the chat messages container, and the container is scrolled to display the
+ * latest message.
+ * @function
+ * @param {string} message The message that will be added to the chat.
+ * @param {boolean} [isIncoming=false] An optional boolean that indicates whether the message is incoming.
+ * If it is incoming, an image is appended to the message element and the 'incoming-message' class is
+ * added to the message element. Otherwise, the 'outgoing-message' class is added.
+ * @returns {void} This function does not return a value.
+ * @exports addMessageToChat
  */
-function addMessageToChat(message, isIncoming = false) {
+export function addMessageToChat(message, isIncoming = false) {
   // first add message to currentChatArr
   chatArr.push({ message, isIncoming });
 
@@ -568,15 +619,19 @@ function addMessageToChat(message, isIncoming = false) {
 }
 
 /**
- * Function to add the image of palm reading to the chat
- * @param {string} image - The image to add to the chat
- * @param {number} height - The height of the image in pixels
- * @param {number} width - The width of the image in pixels
+ * @description This function adds an image to the chat. It first adds the image to `chatArr`.
+ * Then, it creates a new chat message element and appends the image to the element. The image element
+ * has its source, alt text, height, and width set according to the parameters passed to the function.
+ * The message element is then appended to the chat messages container, and the container is scrolled
+ * to display the latest image.
+ * @function
+ * @param {string} image The source URL of the image that will be added to the chat.
+ * @param {number} height The height of the image in pixels.
+ * @param {number} width The width of the image in pixels.
+ * @returns {void} This function does not return a value.
+ * @exports addImageToChat
  */
-function addImageToChat(image, height, width) {
-  // first add message to currentChatArr
-  chatArr.push({ image });
-
+export function addImageToChat(image, height, width) {
   // Create a new chat message element
   const messageElement = document.createElement('div');
   messageElement.classList.add('chat-message');

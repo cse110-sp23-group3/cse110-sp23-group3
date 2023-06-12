@@ -1,3 +1,8 @@
+/**
+ * @constant
+ * @type {Map<string, string>}
+ * @description Maps various characteristics of a person's heart line to associated fortunes or traits.
+ */
 const heartFortuneMap = new Map([
   ['wavy', 'many relationships and lovers, absence of serious'],
   ['long and curvy', 'freely expresses emotions and feelings'],
@@ -11,6 +16,11 @@ const heartFortuneMap = new Map([
   ['no abnormal patterns', 'emotionally stable'],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Set<string>>}
+ * @description Maps the potential choices for heart line's shape, position, and abnormalities.
+ */
 const heartChoicesMap = new Map([
   [
     'shapeChoices',
@@ -39,7 +49,11 @@ const heartChoicesMap = new Map([
   ],
 ]);
 
-// fortune for head line
+/**
+ * @constant
+ * @type {Map<string, string>}
+ * @description Maps various characteristics of a person's head line to associated fortunes or traits.
+ */
 const headFortuneMap = new Map([
   ['wavy', 'short attention span'],
   ['short', 'prefers physical achievements over mental ones'],
@@ -69,6 +83,11 @@ const headFortuneMap = new Map([
   ['no abnormal patterns', 'clear and focused thinking'],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Set<string>>}
+ * @description Maps the potential choices for head line's shape, position, and abnormalities.
+ */
 const headChoicesMap = new Map([
   [
     'shapeChoices',
@@ -93,7 +112,11 @@ const headChoicesMap = new Map([
   ],
 ]);
 
-// fortune for life line
+/**
+ * @constant
+ * @type {Map<string, string>}
+ * @description Maps various characteristics of a person's life line to associated fortunes or traits.
+ */
 const lifeFortuneMap = new Map([
   ['long and deep', 'vitality and strength'],
   ['short and shallow', 'live to the fullest and willing to take risks'],
@@ -113,6 +136,11 @@ const lifeFortuneMap = new Map([
   ['no abnormal patterns', 'stable and balanced life'],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Set<string>>}
+ * @description Maps the potential choices for life line's shape, position, and abnormalities.
+ */
 const lifeChoicesMap = new Map([
   ['shapeChoices', new Set(['long and deep', 'short and shallow', 'curvy'])],
   [
@@ -134,6 +162,11 @@ const lifeChoicesMap = new Map([
   ],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, string>}
+ * @description Maps various characteristics of a person's fate line to associated fortunes or traits.
+ */
 const fateFortuneMap = new Map([
   [
     'long and straight',
@@ -165,6 +198,11 @@ const fateFortuneMap = new Map([
   ['no abnormal patterns', ''],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Set<string>>}
+ * @description Maps the potential choices for fate line's shape, position, and abnormalities.
+ */
 const fateChoicesMap = new Map([
   [
     'shapeChoices',
@@ -189,6 +227,11 @@ const fateChoicesMap = new Map([
   ],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Map<string, string>>}
+ * @description Maps the type of palm line to its corresponding fortune map.
+ */
 export const fortuneDescMap = new Map([
   ['Heart Line', heartFortuneMap],
   ['Head Line', headFortuneMap],
@@ -196,6 +239,11 @@ export const fortuneDescMap = new Map([
   ['Fate Line', fateFortuneMap],
 ]);
 
+/**
+ * @constant
+ * @type {Map<string, Map<string, Set<string>>>}
+ * @description Maps the type of palm line to its corresponding choices map.
+ */
 export const lineChoicesMap = new Map([
   ['Heart Line', heartChoicesMap],
   ['Head Line', headChoicesMap],
@@ -203,6 +251,11 @@ export const lineChoicesMap = new Map([
   ['Fate Line', fateChoicesMap],
 ]);
 
+/**
+ * @constant
+ * @type {Set<string>}
+ * @description A set containing the names of the four main palm lines.
+ */
 export const palmLines = new Set([
   'Heart Line',
   'Head Line',
@@ -210,7 +263,11 @@ export const palmLines = new Set([
   'Fate Line',
 ]);
 
-// description of each palm line
+/**
+ * @constant
+ * @type {Object<string, string>}
+ * @description An object containing the names of the four main palm lines as keys, and their descriptions as values.
+ */
 export const palmLineDesc = {
   'Heart Line':
     "runs horizontally across your palm and is the topmost line you'll see. It begins at the edge of your palm on the pinkie side, and runs to just underneath your index or middle finger.",
@@ -222,4 +279,9 @@ export const palmLineDesc = {
     'is a vertical line running up the palm towards the base of the middle finger.',
 };
 
+/**
+ * @constant
+ * @type {Set<string>}
+ * @description A set containing the basic choices for Yes or No questions.
+ */
 export const basicChoices = new Set(['Yes', 'No']);
