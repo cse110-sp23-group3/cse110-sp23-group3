@@ -6,6 +6,11 @@
 
 When someone pushes or makes a pull request to the `main` branch, the pipeline runs linting software (ESLint, Prettier, Stylelint, HTMLHint) on the JavaScript, CSS, and HTML files. If the linting fails, feedback on why it failed is provided in GitHub. The linters (except HTMLHint) automatically fix style issues if they can. After linting, the workflow runs the unit tests and E2E tests using Jest and Puppeteer. Next, the workflow generates documentation using JSDoc. The JSDoc documentation and any style fixes are commmitted and pushed to the repo if any changes have been made. The workflow caches the tools used so they do not have to be installed each time.
 
+## How to use the CI/CD Pipeline:
+
+1. Simply push code to the `main` branch or create a pull request to merge a branch to the `main` branch in order to run the pipeline.
+2. Results from the run can be viewed in the "Actions" tab by clicking the failed run and clicking "build" in the left sidebar.
+
 ## Step-By-Step breakdown of current pipeline:
 
 * `name: CI`: The name of the workflow, "CI".
