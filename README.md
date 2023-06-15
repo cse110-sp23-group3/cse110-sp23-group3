@@ -1,7 +1,7 @@
 # Palm Reading
 ## Overview
 
-Embark on a journey to find the secrets hidden within the lines of your palm, where ancient wisdom intertwines with the enchanting world of Disney's The Lion King. Our palm reading app will let you chat with Simba and share the details of your palm or send a photo of your hand. Then watch as he reveals the extraordinary meanings behind every line! Brace yourself for a journey of self-discovery that combines the magic of palmistry with the spirit of The Lion King, and allow the whispers of fate to guide you toward a future beyond your imagination!
+Embark on a journey to find the secrets hidden within the lines of your palm, where ancient wisdom intertwines with the enchanting world of Disney's The Lion King. Our palm reading app will let you chat with Simba and share the details of your palm or send a photo of your hand. Then watch as he reveals the extraordinary meanings behind every line! Brace yourself for a journey of self-discovery that combines the magic of palmistry with the spirit of The Lion King, and allow the whispers of fate to guide you toward a future beyond your imagination! 
 
 You can access our palm reading app [here](https://cse110-sp23-group3.github.io/cse110-sp23-group3/source/).
 
@@ -12,7 +12,7 @@ See:
 
 ## Authors
 
-This project is developed by [Powell's Pride Tech](./admin/team.md) for the **CSE 110 - Fall 2023** course at UC San Diego.
+This project is developed by [Powell's Pride Tech](./admin/team.md) for the **CSE 110 - Fall 2023** course at UC San Diego. 
 
 ## Our Planning Documents
 - Design File: [Figma](https://www.figma.com/file/baHcz99UEOscS9AGL6Szx2/Palm-Reading?type=design&node-id=104%3A147&t=HR9pgTiOpjxXK0OA-1)
